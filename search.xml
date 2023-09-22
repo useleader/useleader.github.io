@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>数据库第三周学习日志</title>
+      <link href="/2023/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+      <url>/2023/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><h2 id="1-1-数据库系统概述"><a href="#1-1-数据库系统概述" class="headerlink" title="1.1 数据库系统概述"></a>1.1 数据库系统概述</h2><p>数据库是一种计算机辅助管理数据的方法与技术，研究如何有效地<strong>组织和存储数据</strong>，如何高效地<strong>获取和处理数据</strong></p><h4 id="1-1-1-数据库的4个基本概念"><a href="#1-1-1-数据库的4个基本概念" class="headerlink" title="1.1.1 数据库的4个基本概念"></a>1.1.1 数据库的4个基本概念</h4><h5 id="①-数据-Data"><a href="#①-数据-Data" class="headerlink" title="① 数据 Data"></a>① 数据 Data</h5><p>数据是数据库中存储的基本对象</p><p><strong>Definition</strong>： 是描述事物的符号记录，是可识别的、抽象的符号</p><p><strong>Categories</strong>： </p><ul><li><p>结构化</p><ul><li><p>可以使用关系型数据库表示和存储，表现为规范的二维表格形式的数据</p></li><li><blockquote><person><name>A</name><age>13</age></person></blockquote></li></ul></li><li><p>半结构化</p><ul><li><p>结构化数据的一种形式，并不符合关系数据模型结构，但包括相关标记来分割语义元素，并对记录和字段进行分层</p></li><li><p>自描述的结构</p></li><li><blockquote><p>XML、JSON格式数据</p></blockquote></li></ul></li><li><p>非结构化</p><ul><li>文档、图片、视频等</li></ul></li></ul><p><strong>Another definition：</strong></p><ol><li>数据库 Database</li><li>数据库管理系统 Database Management System</li><li>数据库系统 Database system</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>自然语言处理第三周学习日志</title>
       <link href="/2023/09/22/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
       <url>/2023/09/22/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</url>
