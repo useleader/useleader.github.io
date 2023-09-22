@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta property="og:type" content="website">
@@ -74,6 +74,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/rss2.xml" title="WarmFire" type="application/rss+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -101,6 +102,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -135,11 +137,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -158,6 +187,73 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/22/weblog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/22/weblog/" class="post-title-link" itemprop="url">weblog</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-22 08:55:46 / 修改时间：08:57:54" itemprop="dateCreated datePublished" datetime="2023-09-22T08:55:46+08:00">2023-09-22</time>
+            </span>
+
+          
+
+          
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Q1：hexo-next-主题下博客中数学公式无法正常渲染"><a href="#Q1：hexo-next-主题下博客中数学公式无法正常渲染" class="headerlink" title="Q1：hexo next 主题下博客中数学公式无法正常渲染"></a>Q1：hexo next 主题下博客中数学公式无法正常渲染</h2><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yexiaohhjk/article/details/82526604">https://blog.csdn.net/yexiaohhjk/article/details/82526604</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  
+
       
   
   
@@ -205,6 +301,8 @@
 
           
 
+          
+          
         </div>
       </header>
 
@@ -238,7 +336,7 @@
 </blockquote>
 <h2 id="Defining-Secure-Encryption"><a href="#Defining-Secure-Encryption" class="headerlink" title="Defining Secure Encryption"></a>Defining Secure Encryption</h2><p>Crypto definitions (generally)</p>
 <ul>
-<li>Security guarantee&#x2F;goal</li>
+<li>Security guarantee/goal</li>
 <li>Threat model<ul>
 <li>ciphertext-only attack</li>
 <li>known-plaintext attack</li>
@@ -259,11 +357,14 @@
 <ul>
 <li>r.v. M and K are independent</li>
 </ul>
-<p>$$<br>\ Encryption \ scheme \ with  \ \mathcal{M}  \ and \  \mathcal{C}, if \ for \ every \ distribution \ over \mathcal{M}, \<br>every \ m \in \mathcal{M}, and \ every \ c \in \mathcal{C}  \ with \  Pr[C&#x3D;c] &gt; 0, \  it \ holds \ that<br>\ Pr[M &#x3D; m | C &#x3D; c] &#x3D; Pr[M &#x3D; m]<br>$$</p>
-<h3 id="Equivalent-Def"><a href="#Equivalent-Def" class="headerlink" title="Equivalent Def"></a>Equivalent Def</h3><p>$$<br>Pr[M&#x3D;m | C&#x3D;c ] &#x3D; Pr[M&#x3D;m]<br>$$</p>
-<p>$$<br>Pr[C&#x3D;c | M&#x3D;m] &#x3D; Pr[C&#x3D;c | M &#x3D; m^{‘}], \ i.e. \<br>Pr[Enc_K(m) &#x3D; c] &#x3D; Pr[Enc_K(m^{‘}) &#x3D; c]<br>$$</p>
-<p>$$<br>Pr[C&#x3D;c | M&#x3D;m] &#x3D; Pr[C&#x3D;c]<br>$$</p>
-
+<script type="math/tex; mode=display">
+\ Encryption \ scheme \ with  \ \mathcal{M}  \ and \  \mathcal{C}, if \ for \ every \ distribution \ over \mathcal{M}, \\
+every \ m \in \mathcal{M}, and \ every \ c \in \mathcal{C}  \ with \  Pr[C=c] > 0, \  it \ holds \ that
+\\ Pr[M = m | C = c] = Pr[M = m]</script><h3 id="Equivalent-Def"><a href="#Equivalent-Def" class="headerlink" title="Equivalent Def"></a>Equivalent Def</h3><script type="math/tex; mode=display">
+Pr[M=m | C=c ] = Pr[M=m]</script><script type="math/tex; mode=display">
+Pr[C=c | M=m] = Pr[C=c | M = m^{'}], \ i.e. \\
+Pr[Enc_K(m) = c] = Pr[Enc_K(m^{'}) = c]</script><script type="math/tex; mode=display">
+Pr[C=c | M=m] = Pr[C=c]</script>
       
     </div>
 
@@ -307,13 +408,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-09-21 15:21:08 / 修改时间：15:29:48" itemprop="dateCreated datePublished" datetime="2023-09-21T15:21:08+08:00">2023-09-21</time>
+              <time title="创建时间：2023-09-21 15:21:08" itemprop="dateCreated datePublished" datetime="2023-09-21T15:21:08+08:00">2023-09-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-22 08:56:43" itemprop="dateModified" datetime="2023-09-22T08:56:43+08:00">2023-09-22</time>
+              </span>
 
           
 
+          
+          
         </div>
       </header>
 
@@ -411,7 +520,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -543,6 +652,8 @@ $(document).ready(function() {
 
 
 
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -553,6 +664,10 @@ $(document).ready(function() {
 
 
 
+
+
+
+  
 
   
 

@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Principles of Modern CryptoA. Formal definitions Precise, mathematical model and definition of what security means  Definitions are essential for the design, analysis, and usage of crypto.  Design: fo">
@@ -78,6 +78,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/rss2.xml" title="WarmFire" type="application/rss+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -105,6 +106,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -139,11 +141,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -216,6 +245,8 @@
               <span id="busuanzi_value_page_pv"></span>
             </span>
 
+          
+          
         </div>
       </header>
 
@@ -249,7 +280,7 @@
 </blockquote>
 <h2 id="Defining-Secure-Encryption"><a href="#Defining-Secure-Encryption" class="headerlink" title="Defining Secure Encryption"></a>Defining Secure Encryption</h2><p>Crypto definitions (generally)</p>
 <ul>
-<li>Security guarantee&#x2F;goal</li>
+<li>Security guarantee/goal</li>
 <li>Threat model<ul>
 <li>ciphertext-only attack</li>
 <li>known-plaintext attack</li>
@@ -270,16 +301,34 @@
 <ul>
 <li>r.v. M and K are independent</li>
 </ul>
-<p>$$<br>\ Encryption \ scheme \ with  \ \mathcal{M}  \ and \  \mathcal{C}, if \ for \ every \ distribution \ over \mathcal{M}, \<br>every \ m \in \mathcal{M}, and \ every \ c \in \mathcal{C}  \ with \  Pr[C&#x3D;c] &gt; 0, \  it \ holds \ that<br>\ Pr[M &#x3D; m | C &#x3D; c] &#x3D; Pr[M &#x3D; m]<br>$$</p>
-<h3 id="Equivalent-Def"><a href="#Equivalent-Def" class="headerlink" title="Equivalent Def"></a>Equivalent Def</h3><p>$$<br>Pr[M&#x3D;m | C&#x3D;c ] &#x3D; Pr[M&#x3D;m]<br>$$</p>
-<p>$$<br>Pr[C&#x3D;c | M&#x3D;m] &#x3D; Pr[C&#x3D;c | M &#x3D; m^{‘}], \ i.e. \<br>Pr[Enc_K(m) &#x3D; c] &#x3D; Pr[Enc_K(m^{‘}) &#x3D; c]<br>$$</p>
-<p>$$<br>Pr[C&#x3D;c | M&#x3D;m] &#x3D; Pr[C&#x3D;c]<br>$$</p>
-
+<script type="math/tex; mode=display">
+\ Encryption \ scheme \ with  \ \mathcal{M}  \ and \  \mathcal{C}, if \ for \ every \ distribution \ over \mathcal{M}, \\
+every \ m \in \mathcal{M}, and \ every \ c \in \mathcal{C}  \ with \  Pr[C=c] > 0, \  it \ holds \ that
+\\ Pr[M = m | C = c] = Pr[M = m]</script><h3 id="Equivalent-Def"><a href="#Equivalent-Def" class="headerlink" title="Equivalent Def"></a>Equivalent Def</h3><script type="math/tex; mode=display">
+Pr[M=m | C=c ] = Pr[M=m]</script><script type="math/tex; mode=display">
+Pr[C=c | M=m] = Pr[C=c | M = m^{'}], \ i.e. \\
+Pr[Enc_K(m) = c] = Pr[Enc_K(m^{'}) = c]</script><script type="math/tex; mode=display">
+Pr[C=c | M=m] = Pr[C=c]</script>
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Yan Zhimin 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
         
 
 <div>
@@ -309,7 +358,10 @@
     <a href="/2023/09/21/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%EF%BC%81/" rel="prev" title="你好，世界！">
       <i class="fa fa-chevron-left"></i> 你好，世界！
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/09/22/weblog/" rel="next" title="weblog">
+      weblog <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -399,7 +451,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -531,6 +583,8 @@ $(document).ready(function() {
 
 
 
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -541,6 +595,10 @@ $(document).ready(function() {
 
 
 
+
+
+
+  
 
   
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>WarmFire</title>
+    <link>http://www.warmfire.com/</link>
+    
+    <atom:link href="http://www.warmfire.com/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description></description>
+    <pubDate>Fri, 22 Sep 2023 00:57:54 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>weblog</title>
+      <link>http://www.warmfire.com/2023/09/22/weblog/</link>
+      <guid>http://www.warmfire.com/2023/09/22/weblog/</guid>
+      <pubDate>Fri, 22 Sep 2023 00:55:46 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;Q1：hexo-next-主题下博客中数学公式无法正常渲染&quot;&gt;&lt;a href=&quot;#Q1：hexo-next-主题下博客中数学公式无法正常渲染&quot; class=&quot;headerlink&quot; title=&quot;Q1：hexo next 主题下博客中数学公式无法正常渲染&quot;&gt;&lt;/a</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="Q1：hexo-next-主题下博客中数学公式无法正常渲染"><a href="#Q1：hexo-next-主题下博客中数学公式无法正常渲染" class="headerlink" title="Q1：hexo next 主题下博客中数学公式无法正常渲染"></a>Q1：hexo next 主题下博客中数学公式无法正常渲染</h2><p>参考教程：<a href="https://blog.csdn.net/yexiaohhjk/article/details/82526604">https://blog.csdn.net/yexiaohhjk/article/details/82526604</a></p>]]></content:encoded>
+      
+      
+      
+      
+      <comments>http://www.warmfire.com/2023/09/22/weblog/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>可证明安全第三周学习日志</title>
+      <link>http://www.warmfire.com/2023/09/21/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</link>
+      <guid>http://www.warmfire.com/2023/09/21/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</guid>
+      <pubDate>Thu, 21 Sep 2023 07:47:11 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;Principles-of-Modern-Crypto&quot;&gt;&lt;a href=&quot;#Principles-of-Modern-Crypto&quot; class=&quot;headerlink&quot; title=&quot;Principles of Modern Crypto&quot;&gt;&lt;/a&gt;Princ</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="Principles-of-Modern-Crypto"><a href="#Principles-of-Modern-Crypto" class="headerlink" title="Principles of Modern Crypto"></a>Principles of Modern Crypto</h2><h3 id="A-Formal-definitions"><a href="#A-Formal-definitions" class="headerlink" title="A. Formal definitions"></a>A. Formal definitions</h3><blockquote><p>Precise, mathematical model and definition of what security means</p></blockquote><p>Definitions are essential for the design, analysis, and usage of crypto.</p><ul><li>Design: force the designer to think about what they really want.</li><li>Analysis: enable meaningful analysis, evaluation, and comparison of schemes</li><li>Usage: understand the security guarantees, modularity, substitute.</li></ul><h3 id="B-Assumptions"><a href="#B-Assumptions" class="headerlink" title="B. Assumptions"></a>B. Assumptions</h3><blockquote><p>Clearly stated and unambiguous</p></blockquote><p><strong>Computational assumptions</strong></p><p>Principle: any such assumptions should be made explicit</p><ul><li>validate assumptions</li><li>meaningful comparison</li><li>practical implications</li></ul><h3 id="C-Proof-of-security"><a href="#C-Proof-of-security" class="headerlink" title="C. Proof of security"></a>C. Proof of security</h3><blockquote><p>Move away from design-break-patch</p></blockquote><h2 id="Defining-Secure-Encryption"><a href="#Defining-Secure-Encryption" class="headerlink" title="Defining Secure Encryption"></a>Defining Secure Encryption</h2><p>Crypto definitions (generally)</p><ul><li>Security guarantee/goal</li><li>Threat model<ul><li>ciphertext-only attack</li><li>known-plaintext attack</li><li>chosen-plaintext attack</li><li>chosen-ciphertext attack</li></ul></li></ul><h2 id="Perfect-Secrecy"><a href="#Perfect-Secrecy" class="headerlink" title="Perfect Secrecy"></a>Perfect Secrecy</h2><h3 id="Informal-def"><a href="#Informal-def" class="headerlink" title="Informal def."></a>Informal def.</h3><p>Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information about the plaintext.</p><h3 id="Basic-concepts"><a href="#Basic-concepts" class="headerlink" title="Basic concepts"></a>Basic concepts</h3><ul><li>Random variable (r.v.)</li><li>Event</li><li>Conditional probability</li><li>Law of total probability</li><li>$\mathcal{M}$ is plaintext space, $\mathcal{K}$ is key space, $\mathcal{C}$ is ciphertext space</li></ul><h3 id="Probability-distributions"><a href="#Probability-distributions" class="headerlink" title="Probability distributions"></a>Probability distributions</h3><p>characterize the probability distributions over key space</p><ul><li>r.v. M and K are independent</li></ul><script type="math/tex; mode=display">\ Encryption \ scheme \ with  \ \mathcal{M}  \ and \  \mathcal{C}, if \ for \ every \ distribution \ over \mathcal{M}, \\every \ m \in \mathcal{M}, and \ every \ c \in \mathcal{C}  \ with \  Pr[C=c] > 0, \  it \ holds \ that\\ Pr[M = m | C = c] = Pr[M = m]</script><h3 id="Equivalent-Def"><a href="#Equivalent-Def" class="headerlink" title="Equivalent Def"></a>Equivalent Def</h3><script type="math/tex; mode=display">Pr[M=m | C=c ] = Pr[M=m]</script><script type="math/tex; mode=display">Pr[C=c | M=m] = Pr[C=c | M = m^{'}], \ i.e. \\Pr[Enc_K(m) = c] = Pr[Enc_K(m^{'}) = c]</script><script type="math/tex; mode=display">Pr[C=c | M=m] = Pr[C=c]</script>]]></content:encoded>
+      
+      
+      <category domain="http://www.warmfire.com/categories/%E5%AD%A6%E4%B9%A0/">学习</category>
+      
+      <category domain="http://www.warmfire.com/categories/%E5%AD%A6%E4%B9%A0/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8/">可证明安全</category>
+      
+      
+      
+      <comments>http://www.warmfire.com/2023/09/21/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>你好，世界！</title>
+      <link>http://www.warmfire.com/2023/09/21/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%EF%BC%81/</link>
+      <guid>http://www.warmfire.com/2023/09/21/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%EF%BC%81/</guid>
+      <pubDate>Thu, 21 Sep 2023 07:21:08 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;这是我的&lt;strong&gt;第一篇&lt;/strong&gt;博客，听说写一个独属于自己的博客最需要的便是坚持，而我相信我能行！&lt;/p&gt;
+&lt;h2 id=&quot;本站简介&quot;&gt;&lt;a href=&quot;#本站简介&quot; class=&quot;headerlink&quot; title=&quot;本站简介&quot;&gt;&lt;/a&gt;本站简介&lt;/h2&gt;</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>这是我的<strong>第一篇</strong>博客，听说写一个独属于自己的博客最需要的便是坚持，而我相信我能行！</p><h2 id="本站简介"><a href="#本站简介" class="headerlink" title="本站简介"></a>本站简介</h2><p>我给我的网站起的名字叫暖火，想要表达的意思是向四周传播自己的光与热，我给我的网站定位是一个学习内容记录的学习性博客，在这里我会定期更新所有在学校学习内容的整理，一方面是作为复习，另一方面也是能够造福于大家，作为经常玩盗版游戏的我来说，开源精神弥足珍贵啦，哈哈。</p><p>我的文学素养有限，专业能力也在萌芽阶段，这篇hello,world一定不会是最终稿的，哈啊，我会再慢慢修改，让他更充实一点！</p>]]></content:encoded>
+      
+      
+      
+      
+      <comments>http://www.warmfire.com/2023/09/21/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%EF%BC%81/#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>
