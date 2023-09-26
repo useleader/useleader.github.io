@@ -30,7 +30,7 @@
 <meta property="og:description" content="第2章 数列极限 为了避免形式主义的情况，这里主要记录一些容易以文字形式呈现或公式呈现不是特别困难的一些式子  2.1 数列的极限2.1.1数列极限的定义数列就是按照正整数编号的一列实数:  a_1,a_2,\cdots,a_n,\cdots通常记为$\{a_n\}_{n \geq 1}$或简记为$\{a_n\}$，其中$a_n$称为数列的通项 定义2.1.1设$\{a_n\}$是一个数列，a是一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-23T08:04:27.000Z">
-<meta property="article:modified_time" content="2023-09-25T00:23:12.737Z">
+<meta property="article:modified_time" content="2023-09-25T00:28:37.194Z">
 <meta property="article:author" content="Yan Zhimin">
 <meta name="twitter:card" content="summary">
 
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-25 08:23:12" itemprop="dateModified" datetime="2023-09-25T08:23:12+08:00">2023-09-25</time>
+                <time title="修改时间：2023-09-25 08:28:37" itemprop="dateModified" datetime="2023-09-25T08:28:37+08:00">2023-09-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,7 +274,7 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
 <p>设$a&gt;1$是给定的正数，证明$lim_{n \rightarrow \infty}{\frac{n}{a^n}} = 0$</p>
 <p>由二项式定理证明指数表示成多项式的最高次幂高于任意的多项式</p>
 <h3 id="2-1-2极限定义的否定形式"><a href="#2-1-2极限定义的否定形式" class="headerlink" title="2.1.2极限定义的否定形式"></a>2.1.2极限定义的否定形式</h3><script type="math/tex; mode=display">
-\lim_{n\rightarrow\infty}{a_n \neq a} \Leftrightarrow \exist \epsilon_0 > 0, s.t. \forall N \in N^*, \exist n_0 > N, \left\vert {a_{n_0} - a}\right\vert \ge \epsilon_0</script><h2 id="2-2-数列极限的性质和运算"><a href="#2-2-数列极限的性质和运算" class="headerlink" title="2.2 数列极限的性质和运算"></a>2.2 数列极限的性质和运算</h2><h4 id="定理2-2-1-极限唯一性"><a href="#定理2-2-1-极限唯一性" class="headerlink" title="定理2.2.1 极限唯一性"></a>定理2.2.1 极限唯一性</h4><p>收敛数列的极限是唯一的</p>
+\lim_{n\rightarrow\infty}{a_n \neq a} \Leftrightarrow \exists \epsilon_0 > 0, s.t. \forall N \in N^*, \exists n_0 > N, \left\vert {a_{n_0} - a}\right\vert \ge \epsilon_0</script><h2 id="2-2-数列极限的性质和运算"><a href="#2-2-数列极限的性质和运算" class="headerlink" title="2.2 数列极限的性质和运算"></a>2.2 数列极限的性质和运算</h2><h4 id="定理2-2-1-极限唯一性"><a href="#定理2-2-1-极限唯一性" class="headerlink" title="定理2.2.1 极限唯一性"></a>定理2.2.1 极限唯一性</h4><p>收敛数列的极限是唯一的</p>
 <h4 id="定义2-2-1"><a href="#定义2-2-1" class="headerlink" title="定义2.2.1"></a>定义2.2.1</h4><p>给定$\{a_n\}$，如果存在一个实数A，s.t.对所有的n都有$a_n \le  A (a_n \ge A)$，则称此数列有上界(下界)，A称为该数列的一个上界（下界），如果该数列既有上界又有下界，则称该数列有界</p>
 <h4 id="定理2-2-2-有界性"><a href="#定理2-2-2-有界性" class="headerlink" title="定理2.2.2 有界性"></a>定理2.2.2 有界性</h4><p>收敛数列都是有界的</p>
 <h4 id="定理2-2-3-保序性"><a href="#定理2-2-3-保序性" class="headerlink" title="定理2.2.3 保序性"></a>定理2.2.3 保序性</h4><ol>
@@ -302,7 +302,7 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
 <li>设$0\le a_n \le b_n$若$\{b_n\}$为无穷小，则$\{a_n\}$也为无穷小</li>
 <li>$\lim_{n\rightarrow\infty}{a_n=a} \Leftrightarrow \{a_n -a \}无穷小$</li>
 </ol>
-<h3 id="2-3-2-无穷大"><a href="#2-3-2-无穷大" class="headerlink" title="2.3.2 无穷大"></a>2.3.2 无穷大</h3><h4 id="定义2-3-2"><a href="#定义2-3-2" class="headerlink" title="定义2.3.2"></a>定义2.3.2</h4><p>设$\{a_n\}$是一个数列，如果对任意给定的整数M，总存在正整数N，使得当$n&gt;N$时，有$|a_n| &gt; M$，则称$\{a_n\}$无穷大，记为$\lim_{n\rarr\infty}{a_n =  \infty}$</p>
+<h3 id="2-3-2-无穷大"><a href="#2-3-2-无穷大" class="headerlink" title="2.3.2 无穷大"></a>2.3.2 无穷大</h3><h4 id="定义2-3-2"><a href="#定义2-3-2" class="headerlink" title="定义2.3.2"></a>定义2.3.2</h4><p>设$\{a_n\}$是一个数列，如果对任意给定的整数M，总存在正整数N，使得当$n&gt;N$时，有$|a_n| &gt; M$，则称$\{a_n\}$无穷大，记为$\lim_{n\rightarrow\infty}{a_n =  \infty}$</p>
 <h4 id="性质2-3-1"><a href="#性质2-3-1" class="headerlink" title="性质2.3.1"></a>性质2.3.1</h4><ol>
 <li>$\{a_n\}$无穷大，则$\{a_n\}$无界</li>
 <li>任何无界数列都有无穷大的子列</li>
@@ -311,10 +311,10 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
 <h4 id="性质2-3-2"><a href="#性质2-3-2" class="headerlink" title="性质2.3.2"></a>性质2.3.2</h4><p>$\{a_n\}$无穷大 等价于 $\{\frac{1}{a_n}\}$无穷小</p>
 <h3 id="2-3-2-Stolz定理"><a href="#2-3-2-Stolz定理" class="headerlink" title="2.3.2 Stolz定理"></a>2.3.2 Stolz定理</h3><h4 id="定理2-3-2-frac-infty-infty"><a href="#定理2-3-2-frac-infty-infty" class="headerlink" title="定理2.3.2 $\frac{\infty}{\infty}$"></a>定理2.3.2 $\frac{\infty}{\infty}$</h4><p>设$\{b_n\}$是严格递增趋于正无穷的数列，如果</p>
 <script type="math/tex; mode=display">
-\lim_{n\rarr\infty} \frac{a_n - a_{n-1}}{b_n-b_{n-1}} = A</script><p>则$\lim_{n\rarr\infty}\frac{a_n}{b_n}=A$</p>
+\lim_{n\rarr\infty} \frac{a_n - a_{n-1}}{b_n-b_{n-1}} = A</script><p>则$\lim_{n\rightarrow\infty}\frac{a_n}{b_n}=A$</p>
 <h4 id="定理2-3-3-frac-0-0"><a href="#定理2-3-3-frac-0-0" class="headerlink" title="定理2.3.3 $\frac{0}{0}$"></a>定理2.3.3 $\frac{0}{0}$</h4><p>设$\{b_n\}$ $\{a_n\}$都是无穷小的数列且$\{b_n\}$严格单调，如果</p>
 <script type="math/tex; mode=display">
-\lim_{n\rarr\infty} \frac{a_n - a_{n-1}}{b_n-b_{n-1}} = A</script><p>则$\lim_{n\rarr\infty}\frac{a_n}{b_n}=A$</p>
+\lim_{n\rarr\infty} \frac{a_n - a_{n-1}}{b_n-b_{n-1}} = A</script><p>则$\lim_{n\rightarrow\infty}\frac{a_n}{b_n}=A$</p>
 <h2 id="2-4-单调数列的极限及其应用"><a href="#2-4-单调数列的极限及其应用" class="headerlink" title="2.4 单调数列的极限及其应用"></a>2.4 单调数列的极限及其应用</h2><h4 id="定义2-4-1-单调数列"><a href="#定义2-4-1-单调数列" class="headerlink" title="定义2.4.1 单调数列"></a>定义2.4.1 单调数列</h4><p>$a_n \le a_{n+1}$单调递增，$a_n &lt; a_{n+1}$ 严格单调</p>
 <h4 id="定理2-4-1-单调有界定理"><a href="#定理2-4-1-单调有界定理" class="headerlink" title="定理2.4.1 单调有界定理"></a>定理2.4.1 单调有界定理</h4><p>若$\{a_n\}$单调递增且有上界，则数列收敛，递减类似</p>
 <p>e.g. 2.4.3</p>
@@ -322,9 +322,9 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
 
 <h4 id="引理-Bernoulli-不等式"><a href="#引理-Bernoulli-不等式" class="headerlink" title="引理 Bernoulli 不等式"></a>引理 Bernoulli 不等式</h4><p>对任意的$x&gt;1, x\neq 0, n\ge 2, (1+x) ^ n &gt; 1 + nx$</p>
 <p>e.g. 2.4.4</p>
-<p>$\lim_{n\rarr\infty}{1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n} - \ln n} = \gamma$欧拉常数，0.57721566…</p>
+<p>$\lim_{n\rightarrow\infty}{1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n} - \ln n} = \gamma$欧拉常数，0.57721566…</p>
 <h4 id="定理2-4-2"><a href="#定理2-4-2" class="headerlink" title="定理2.4.2"></a>定理2.4.2</h4><ol>
-<li>ww若单调数列有一个子列收敛，则这个数列收敛</li>
+<li>若单调数列有一个子列收敛，则这个数列收敛</li>
 <li>若单调数列有一个子列趋于$\infty$，则数列也趋于$\infty$</li>
 <li>一个单调数列有么极限存在，有么趋于无穷</li>
 <li>单调数列收敛的充要条件是数列有界</li>
@@ -332,26 +332,26 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
 <h2 id="2-5-实数连续性的基本定理"><a href="#2-5-实数连续性的基本定理" class="headerlink" title="2.5 实数连续性的基本定理"></a>2.5 实数连续性的基本定理</h2><h4 id="定理2-5-1-闭区间套定理"><a href="#定理2-5-1-闭区间套定理" class="headerlink" title="定理2.5.1 闭区间套定理"></a>定理2.5.1 闭区间套定理</h4><p>设$I_n=[a_n,b_n]$为一列闭区间，满足：</p>
 <ol>
 <li>$I_1 \supset I_2 \supset \cdots \supset I_n \supset \cdots $</li>
-<li>这些闭区间的长度满足$\lim_{n\rarr\infty}{|I_n|} = \lim_{n\rarr\infty}{b_n-a_n}=0$则存在唯一的点$\xi \in  \bigcap_{i=1}^{\infty}I_i$</li>
+<li>这些闭区间的长度满足$\lim_{n\rightarrow\infty}{|I_n|} = \lim_{n\rightarrow\infty}{b_n-a_n}=0$则存在唯一的点$\xi \in  \bigcap_{i=1}^{\infty}I_i$</li>
 </ol>
 <p>通常满足条件1的一列闭区间是一个闭区间套</p>
 <h4 id="定理2-5-2-列紧性定理"><a href="#定理2-5-2-列紧性定理" class="headerlink" title="定理2.5.2 列紧性定理"></a>定理2.5.2 列紧性定理</h4><p>任何有界的无穷数列中都存在收敛的子列</p>
-<h4 id="定义2-5-1-基本列定义"><a href="#定义2-5-1-基本列定义" class="headerlink" title="定义2.5.1 基本列定义"></a>定义2.5.1 基本列定义</h4><p>给定$\{a_n\}$，若满足：$\forall \epsilon &gt; 0, \exist N, s.t. \forall n,m &gt; N, |a_m - a_n| &lt; \epsilon$则称$\{a_n\}$为一个基本列（Cauchy列），这里的N仅与$\epsilon$有关</p>
+<h4 id="定义2-5-1-基本列定义"><a href="#定义2-5-1-基本列定义" class="headerlink" title="定义2.5.1 基本列定义"></a>定义2.5.1 基本列定义</h4><p>给定$\{a_n\}$，若满足：$\forall \epsilon &gt; 0, \exists N, s.t. \forall n,m &gt; N, |a_m - a_n| &lt; \epsilon$则称$\{a_n\}$为一个基本列（Cauchy列），这里的N仅与$\epsilon$有关</p>
 <p>等价定义m=n+p的形式，对于一切$p\in N^*$成立</p>
 <h4 id="定理2-5-3-数列极限的Cauchy收敛原理"><a href="#定理2-5-3-数列极限的Cauchy收敛原理" class="headerlink" title="定理2.5.3 数列极限的Cauchy收敛原理"></a>定理2.5.3 数列极限的Cauchy收敛原理</h4><p>$\{a_n\}$收敛的充要条件是$\{a_n\}$是基本列</p>
-<h4 id="定义2-5-2"><a href="#定义2-5-2" class="headerlink" title="定义2.5.2"></a>定义2.5.2</h4><p>设E是实数集，$\aleph=\{I_\lambda|\lambda\in\Delta\}$是一个开区间族，其中$\Delta$是一个指标集，如果$E\sub\bigcup_{\lambda\in\Delta}I_\lambda$则称，$\aleph$覆盖了E，或者说是一个开覆盖</p>
+<h4 id="定义2-5-2"><a href="#定义2-5-2" class="headerlink" title="定义2.5.2"></a>定义2.5.2</h4><p>设E是实数集，$\aleph=\{I_\lambda|\lambda\in\Delta\}$是一个开区间族，其中$\Delta$是一个指标集，如果$E\subset\bigcup_{\lambda\in\Delta}I_\lambda$则称，$\aleph$覆盖了E，或者说是一个开覆盖</p>
 <h4 id="定理2-5-4-Heine-Borel定理"><a href="#定理2-5-4-Heine-Borel定理" class="headerlink" title="定理2.5.4 Heine-Borel定理"></a>定理2.5.4 Heine-Borel定理</h4><p>设$\aleph=\{I_\lambda|\lambda\in\Delta\}$为有限闭区间[a,b]任意一个开覆盖，则可从$\aleph=\{I_\lambda|\lambda\in\Delta\}$中选出有限个开区间构成[a,b]的覆盖</p>
 <h2 id="2-6-上极限与下极限的概念和性质"><a href="#2-6-上极限与下极限的概念和性质" class="headerlink" title="2.6 上极限与下极限的概念和性质"></a>2.6 上极限与下极限的概念和性质</h2><h4 id="定义2-6-1"><a href="#定义2-6-1" class="headerlink" title="定义2.6.1"></a>定义2.6.1</h4><p>设$\{a_n\}$是一个有界数列，令</p>
 <script type="math/tex; mode=display">
 \overline{a_n} = sup_{k \ge n}\{a_k\} = sup\{a_n,a_{n+1}, \cdots, \} \\
 \underline{a_n} = inf_{k \ge n}\{a_k\} = inf\{a_n,a_{n+1}, \cdots, \}</script><p>上数列和下数列</p>
-<h4 id="定义2-6-2"><a href="#定义2-6-2" class="headerlink" title="定义2.6.2"></a>定义2.6.2</h4><p>设$\{a_n\}$是一个有界数列，则称$\lim_{n\rarr\infty}\overline{a_n}$为$\{a_n\}$上极限，反之下极限</p>
+<h4 id="定义2-6-2"><a href="#定义2-6-2" class="headerlink" title="定义2.6.2"></a>定义2.6.2</h4><p>设$\{a_n\}$是一个有界数列，则称$\lim_{n\rightarrow\infty}\overline{a_n}$为$\{a_n\}$上极限，反之下极限</p>
 <h4 id="定理2-6-1"><a href="#定理2-6-1" class="headerlink" title="定理2.6.1"></a>定理2.6.1</h4><p>设$\{a_n\}$是一个有界数列，则数列$\{a_n\}$收敛充要条件是极限等于上极限等于下极限</p>
 <h4 id="定理2-6-2"><a href="#定理2-6-2" class="headerlink" title="定理2.6.2"></a>定理2.6.2</h4><p>设$\{a_n\}$$\{b_n\}$是有界数列，若存在$N\in N^*,s.t. n&gt;N时 a_n\le b_n，则n&gt;N时，a_n\le b_n,\overline{a_n} \le \overline{b_n}$</p>
 <h4 id="定理2-6-3"><a href="#定理2-6-3" class="headerlink" title="定理2.6.3"></a>定理2.6.3</h4><p>设$\{a_n\}$有界</p>
 <ol>
-<li>对任意的$M &gt; \overline{\lim_{n\rarr\infty}}{a_n}$，都存在$N\in N^*, s.t. n&gt; N 时 a_n&lt;M$</li>
-<li>对任意的$m &lt; \underline{\lim_{n\rarr\infty}}{a_n}$，都存在$N\in N^*, s.t. n&gt; N 时 a_n&gt;m$</li>
+<li>对任意的$M &gt; \overline{\lim_{n\rightarrow\infty}}{a_n}$，都存在$N\in N^*, s.t. n&gt; N 时 a_n&lt;M$</li>
+<li>对任意的$m &lt; \underline{\lim_{n\rightarrow\infty}}{a_n}$，都存在$N\in N^*, s.t. n&gt; N 时 a_n&gt;m$</li>
 </ol>
 <h4 id="定理2-6-4"><a href="#定理2-6-4" class="headerlink" title="定理2.6.4"></a>定理2.6.4</h4>
     </div>
@@ -403,7 +403,10 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
     <a href="/2023/09/23/cpp%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="cpp学习日志">
       <i class="fa fa-chevron-left"></i> cpp学习日志
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/09/25/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="网络内容安全第四周学习日志">
+      网络内容安全第四周学习日志 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -493,14 +496,14 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

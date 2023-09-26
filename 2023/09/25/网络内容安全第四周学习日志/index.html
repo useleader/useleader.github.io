@@ -22,19 +22,24 @@
     var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="参考主教程：C++那些事 (light-city.github.io)  基础进阶部分const那些事 含义：const说明的类型叫做常类型，常类型的变量或对象的值是不能被更新的  作用：  可以定义常量 1const int a &#x3D; 100;  类型检查 const常量与#define宏定义的常量区别： const 常量具有类型，编译器可以进行安全检查；#define宏定义没有数据类型，知识简">
+  <meta name="description" content="一、网络信息内容获取模型PPT乱七八糟绷不住了 1.0 互联网信息类型 网络媒体形态 广播式媒体 新闻网站、论坛、博客   交互式媒体 社交媒体、搜索引擎等     网络媒体信息 互联网网站公开发布的信息，用户通常可以基于通用网络浏览器获取   网络通信信息 实现与特定点通信或点对点通信所交互的信息   发布信息类型 文本 图像 音频 视频   媒体发布方式 匿名 身份认证   网页形态 静态 动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cpp学习日志">
-<meta property="og:url" content="http://www.warmfire.com/2023/09/23/cpp%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:title" content="网络内容安全第四周学习日志">
+<meta property="og:url" content="http://www.warmfire.com/2023/09/25/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/index.html">
 <meta property="og:site_name" content="WarmFire">
-<meta property="og:description" content="参考主教程：C++那些事 (light-city.github.io)  基础进阶部分const那些事 含义：const说明的类型叫做常类型，常类型的变量或对象的值是不能被更新的  作用：  可以定义常量 1const int a &#x3D; 100;  类型检查 const常量与#define宏定义的常量区别： const 常量具有类型，编译器可以进行安全检查；#define宏定义没有数据类型，知识简">
+<meta property="og:description" content="一、网络信息内容获取模型PPT乱七八糟绷不住了 1.0 互联网信息类型 网络媒体形态 广播式媒体 新闻网站、论坛、博客   交互式媒体 社交媒体、搜索引擎等     网络媒体信息 互联网网站公开发布的信息，用户通常可以基于通用网络浏览器获取   网络通信信息 实现与特定点通信或点对点通信所交互的信息   发布信息类型 文本 图像 音频 视频   媒体发布方式 匿名 身份认证   网页形态 静态 动">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-23T01:36:53.000Z">
-<meta property="article:modified_time" content="2023-09-23T07:30:54.659Z">
+<meta property="og:image" content="http://www.warmfire.com/2023/09/25/images/%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E8%8E%B7%E5%8F%96%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://www.warmfire.com/2023/09/25/images/%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96%E6%B5%81%E7%A8%8B.png">
+<meta property="og:image" content="http://www.warmfire.com/2023/09/25/images/%E7%88%AC%E8%99%AB%E5%8E%9F%E7%90%86.png">
+<meta property="og:image" content="http://www.warmfire.com/2023/09/25/images/PR%E7%AE%97%E6%B3%95.png">
+<meta property="article:published_time" content="2023-09-25T07:41:00.000Z">
+<meta property="article:modified_time" content="2023-09-25T13:29:05.599Z">
 <meta property="article:author" content="Yan Zhimin">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.warmfire.com/2023/09/25/images/%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E8%8E%B7%E5%8F%96%E6%A8%A1%E5%9E%8B.png">
 
-<link rel="canonical" href="http://www.warmfire.com/2023/09/23/cpp%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+<link rel="canonical" href="http://www.warmfire.com/2023/09/25/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
 
 <script id="page-configurations">
@@ -47,7 +52,7 @@
   };
 </script>
 
-  <title>cpp学习日志 | WarmFire</title>
+  <title>网络内容安全第四周学习日志 | WarmFire</title>
   
 
 
@@ -196,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/23/cpp%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/25/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -209,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          cpp学习日志
+          网络内容安全第四周学习日志
         </h1>
 
         <div class="post-meta">
@@ -220,7 +225,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-09-23 09:36:53 / 修改时间：15:30:54" itemprop="dateCreated datePublished" datetime="2023-09-23T09:36:53+08:00">2023-09-23</time>
+              <time title="创建时间：2023-09-25 15:41:00 / 修改时间：21:29:05" itemprop="dateCreated datePublished" datetime="2023-09-25T15:41:00+08:00">2023-09-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +237,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/C-%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">C++学习</span></a>
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络内容安全</span></a>
                 </span>
             </span>
 
@@ -256,71 +261,164 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>参考主教程：<a target="_blank" rel="noopener" href="https://light-city.github.io/">C++那些事 (light-city.github.io)</a></p>
-</blockquote>
-<h2 id="基础进阶部分"><a href="#基础进阶部分" class="headerlink" title="基础进阶部分"></a>基础进阶部分</h2><h3 id="const那些事"><a href="#const那些事" class="headerlink" title="const那些事"></a>const那些事</h3><ol>
-<li><p>含义：const说明的类型叫做常类型，常类型的变量或对象的值是不能被更新的</p>
+        <h2 id="一、网络信息内容获取模型"><a href="#一、网络信息内容获取模型" class="headerlink" title="一、网络信息内容获取模型"></a>一、网络信息内容获取模型</h2><p><del><em>PPT乱七八糟绷不住了</em></del></p>
+<h3 id="1-0-互联网信息类型"><a href="#1-0-互联网信息类型" class="headerlink" title="1.0 互联网信息类型"></a>1.0 互联网信息类型</h3><ul>
+<li>网络媒体形态<ul>
+<li>广播式媒体<ul>
+<li>新闻网站、论坛、博客</li>
+</ul>
 </li>
-<li><p>作用：</p>
-<ol>
-<li><p>可以定义常量</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> a = <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+<li>交互式媒体<ul>
+<li>社交媒体、搜索引擎等</li>
+</ul>
 </li>
-<li><p>类型检查</p>
-<p>const常量与#define宏定义的常量区别： const 常量具有类型，编译器可以进行安全检查；#define宏定义没有数据类型，知识简单的字符串替换，不能进行安全检查。</p>
-<p><code>const</code>定义的变量只有类型为整数或枚举，且以常量表达式初始化时才能作为常量表达式。</p>
+</ul>
 </li>
-<li><p>防止修改，起保护作用，加强Robustness</p>
+<li>网络媒体信息<ul>
+<li>互联网网站公开发布的信息，用户通常可以基于通用网络浏览器获取</li>
+</ul>
 </li>
-<li><p>节省空间，避免不必要的内存分配</p>
-<p>const只是给出了对应的内存地址，而不是像#define一样给出的立即数，const在程序运行过程中一份copy，而#define有若干个copy</p>
+<li>网络通信信息<ul>
+<li>实现与特定点通信或点对点通信所交互的信息</li>
+</ul>
+</li>
+<li>发布信息类型<ul>
+<li>文本</li>
+<li>图像</li>
+<li>音频</li>
+<li>视频</li>
+</ul>
+</li>
+<li>媒体发布方式<ul>
+<li>匿名</li>
+<li>身份认证</li>
+</ul>
+</li>
+<li>网页形态<ul>
+<li>静态</li>
+<li>动态：含“？”或输入参数的URL</li>
+</ul>
+</li>
+<li>信息交互协议</li>
+<li>专业客户端软件</li>
+</ul>
+<h3 id="1-1-网络信息内容获取模型"><a href="#1-1-网络信息内容获取模型" class="headerlink" title="1.1 网络信息内容获取模型"></a>1.1 网络信息内容获取模型</h3><p><img src="../images/网络环境下的信息内容获取模型.png" alt="img1"></p>
+<p><strong>信息检索</strong> (Information Search， IS)是信息需求者主动搜寻所需要的信息</p>
+<p><strong>信息推荐</strong></p>
+<p><strong>信息交互</strong></p>
+<p><strong>信息浏览</strong></p>
+<h3 id="1-2-网络媒体信息获取原理"><a href="#1-2-网络媒体信息获取原理" class="headerlink" title="1.2 网络媒体信息获取原理"></a>1.2 网络媒体信息获取原理</h3><p><img src="../images/网络信息获取流程.png" alt="img2"></p>
+<p>网上采集算法（爬虫）</p>
+<h3 id="1-3-网络媒体信息获取的分类"><a href="#1-3-网络媒体信息获取的分类" class="headerlink" title="1.3 网络媒体信息获取的分类"></a>1.3 网络媒体信息获取的分类</h3><ol>
+<li>全网信息获取</li>
+<li>定点信息获取</li>
+<li>基于主题的信息获取和元搜索<ul>
+<li>元搜索又称多搜索引擎<ul>
+<li>搜索机制分为并行式和串行式</li>
+</ul>
+</li>
+<li>高级检索功能：<ul>
+<li>使用布尔逻辑符检索</li>
+<li>域名过滤</li>
+<li>等等</li>
+</ul>
+</li>
+</ul>
 </li>
 </ol>
-</li>
-<li><p>const对象默认为文件局部变量</p>
-<font color="red">非const变量默认为extern， 要使const变量能够在其他文件中访问，必须在文件中显性指定它为extern</font>
-</li>
-<li><p>定义常量</p>
-<ol>
-<li>常量不可更改</li>
-<li>常量必须初始化</li>
-</ol>
-</li>
-<li><p>指针与const</p>
-<ol>
-<li><p>四种相关的const</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *a;  <span class="comment">//指向const对象的指针或者说指向常量的指针</span></span><br><span class="line"><span class="type">char</span> <span class="type">const</span> *a; <span class="comment">//同上</span></span><br><span class="line"><span class="type">char</span> * <span class="type">const</span> a; <span class="comment">//指向类型对象的const指针，或者说常指针、const指针</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> * <span class="type">const</span> a; <span class="comment">//指向const对象的const指针</span></span><br></pre></td></tr></table></figure>
-<p><strong>允许把非const对象的地址赋给指向const对象的指针</strong></p>
-<p>这时无法通过该指针来修改变量的值，即使指向的是非const对象，也不能通过<code>void *</code> 指针来保存const对象的地址，必须使用从const void * 类型的指针保存const对象的地址</p>
-</li>
-<li><p>常指针</p>
-<p>const指针必须初始化，且指针的值不能修改</p>
-</li>
-<li><p>指向常量的常指针</p>
-</li>
-</ol>
-</li>
-<li><p>函数中使用const</p>
-<ol>
-<li><blockquote>
-<p>const 修饰函数返回值</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">const</span> <span class="type">int</span> * <span class="title">func</span><span class="params">()</span> <span class="comment">// 指针所指不可变</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> *<span class="type">const</span> <span class="title">func</span><span class="params">()</span> <span class="comment">//指针不可变</span></span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><blockquote>
-<p>const 修饰函数参数</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void func(const int var) // 传递过来的参数不可变</span><br><span class="line">void func(int *const var) //指针不可变7</span><br></pre></td></tr></table></figure>
-</li>
+<p>信息获取的技术难点</p>
+<ul>
+<li>网络媒体信息：形态各异、信息类型多样</li>
+<li>DDOS</li>
+</ul>
+<h2 id="二、搜索引擎技术"><a href="#二、搜索引擎技术" class="headerlink" title="二、搜索引擎技术"></a>二、搜索引擎技术</h2><ul>
+<li>网络内容分析</li>
+<li>网页索引</li>
+<li>查询解析</li>
+<li>相关性计算</li>
+</ul>
+<h3 id="2-2-1-网上采集算法"><a href="#2-2-1-网上采集算法" class="headerlink" title="2.2.1 网上采集算法"></a>2.2.1 网上采集算法</h3><p>爬虫</p>
+<p><img src="../images/爬虫原理.png" alt="img3"></p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
+<li>通用网络爬虫</li>
+<li>聚焦网络爬虫</li>
+<li>增量式网络爬虫</li>
+<li>深层网络爬虫</li>
+</ul>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ol>
+<li>初始URL集合</li>
+<li>信息获取</li>
+<li>信息解析</li>
+<li>信息判重<ol>
+<li>URL判重</li>
+<li>内容摘要判重</li>
 </ol>
 </li>
 </ol>
-</li>
-</ol>
-<p>​    7. 类中使用const</p>
-<p>​            </p>
+<h4 id="URL爬取策略"><a href="#URL爬取策略" class="headerlink" title="URL爬取策略"></a>URL爬取策略</h4><ul>
+<li>深度优先遍历策略</li>
+<li>广度优先遍历策略</li>
+<li>反向链接数策略：一个网页被其他网页链接指向的数量</li>
+<li>Partial PageRank策略</li>
+<li>OPIC策略 online page importance computation </li>
+<li>大站优先策略</li>
+</ul>
+<h3 id="2-2-2-排级算法"><a href="#2-2-2-排级算法" class="headerlink" title="2.2.2 排级算法"></a>2.2.2 排级算法</h3><h4 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h4><p>原理：民主表决</p>
+<p><img src="../images/PR算法.png" alt="img4"></p>
+<script type="math/tex; mode=display">
+\Pr(t) = (1-d) + d(\sum_{i=1}^{n}{\frac{\Pr(t_i)}{|t_i|}})</script><p>$\Pr(t_i)$入度; $|t_i|$出度 $d$影响因子</p>
+<font color="red">入度为什么是概率呢？</font>
 
+<p>优点：</p>
+<ol>
+<li>直接高效</li>
+<li>主题集中</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>忽略网页内容，干扰挖掘结果</li>
+<li>结果范围窄</li>
+<li>影响因子与网页获取数量缺乏科学性</li>
+</ol>
+<p>用来表现网页等级的一个标准，0-10，值越高越受欢迎</p>
+<h4 id="HITS"><a href="#HITS" class="headerlink" title="HITS"></a>HITS</h4><p><strong>Hub</strong>页面（枢纽页面）指向高质量链接的网页</p>
+<p><strong>Authority</strong>页面（权威页面）相关领域高质量网页</p>
+<p><strong>枢纽值</strong> Hub Scores = sum of all relevant Authority scores</p>
+<p><strong>权威值</strong> Authority Scores = sum of all relevant Hub scores</p>
+<p>基本思想：<strong>相互增强关系</strong></p>
+<h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a><strong>算法</strong></h5><ol>
+<li>构建根集合</li>
+<li>扩展集合Base</li>
+<li>计算扩展集base中所有页面的Hub值和Authority值</li>
+<li>排序，结果输出</li>
+</ol>
+<p><strong>优点</strong></p>
+<ol>
+<li>知识范围扩大</li>
+<li>搜索时部分地考虑了页面内容，挖掘结果科学性大大增强</li>
+</ol>
+<p><strong>缺点</strong></p>
+<ol>
+<li>效率低，实时性差</li>
+<li>主题漂移</li>
+<li>易被操纵者操纵结果</li>
+<li>结构不稳定</li>
+</ol>
+<h3 id="2-2-3-搜索引擎与垃圾消息关系"><a href="#2-2-3-搜索引擎与垃圾消息关系" class="headerlink" title="2.2.3 搜索引擎与垃圾消息关系"></a>2.2.3 搜索引擎与垃圾消息关系</h3><p>垃圾信息制造手段</p>
+<ul>
+<li>提高排名技术 boosting<ul>
+<li>关键字垃圾 term spamming</li>
+<li>链接垃圾 link spamming</li>
+</ul>
+</li>
+<li>隐藏技术 hiding<ul>
+<li>隐藏Boosting技术</li>
+<li>content hiding、 cloaking、 redirection</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、数据挖掘技术"><a href="#三、数据挖掘技术" class="headerlink" title="三、数据挖掘技术"></a>三、数据挖掘技术</h2><p>数据挖掘：通过从数据库中抽取<strong>隐含的</strong>、<strong>未知的</strong>、<strong>具有潜在使用价值</strong>的过程</p>
+<h3 id="2-3-2-Web挖掘技术"><a href="#2-3-2-Web挖掘技术" class="headerlink" title="2.3.2 Web挖掘技术"></a>2.3.2 Web挖掘技术</h3>
     </div>
 
     
@@ -350,7 +448,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.warmfire.com/2023/09/23/cpp%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" title="cpp学习日志">http://www.warmfire.com/2023/09/23/cpp学习日志/</a>
+    <a href="http://www.warmfire.com/2023/09/25/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" title="网络内容安全第四周学习日志">http://www.warmfire.com/2023/09/25/网络内容安全第四周学习日志/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -367,12 +465,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="数据库第三周学习日志">
-      <i class="fa fa-chevron-left"></i> 数据库第三周学习日志
+    <a href="/2023/09/23/%E6%B7%91%E8%8A%AC%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="工科数学分析第二章——数列极限">
+      <i class="fa fa-chevron-left"></i> 工科数学分析第二章——数列极限
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/09/23/%E6%B7%91%E8%8A%AC%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="工科数学分析第二章——数列极限">
-      工科数学分析第二章——数列极限 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/09/26/%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="安全协议第四周学习日志">
+      安全协议第四周学习日志 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -447,7 +545,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%BF%9B%E9%98%B6%E9%83%A8%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">基础进阶部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#const%E9%82%A3%E4%BA%9B%E4%BA%8B"><span class="nav-number">1.1.</span> <span class="nav-text">const那些事</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E8%8E%B7%E5%8F%96%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">一、网络信息内容获取模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-0-%E4%BA%92%E8%81%94%E7%BD%91%E4%BF%A1%E6%81%AF%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1.0 互联网信息类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E8%8E%B7%E5%8F%96%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">1.1 网络信息内容获取模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%BD%91%E7%BB%9C%E5%AA%92%E4%BD%93%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">1.2 网络媒体信息获取原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E7%BD%91%E7%BB%9C%E5%AA%92%E4%BD%93%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">1.3 网络媒体信息获取的分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%8A%80%E6%9C%AF"><span class="nav-number">2.</span> <span class="nav-text">二、搜索引擎技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-%E7%BD%91%E4%B8%8A%E9%87%87%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">2.2.1 网上采集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">2.1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL%E7%88%AC%E5%8F%96%E7%AD%96%E7%95%A5"><span class="nav-number">2.1.3.</span> <span class="nav-text">URL爬取策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E6%8E%92%E7%BA%A7%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.2 排级算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PageRank"><span class="nav-number">2.2.1.</span> <span class="nav-text">PageRank</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HITS"><span class="nav-number">2.2.2.</span> <span class="nav-text">HITS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%B8%8E%E5%9E%83%E5%9C%BE%E6%B6%88%E6%81%AF%E5%85%B3%E7%B3%BB"><span class="nav-number">2.3.</span> <span class="nav-text">2.2.3 搜索引擎与垃圾消息关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%8A%80%E6%9C%AF"><span class="nav-number">3.</span> <span class="nav-text">三、数据挖掘技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-Web%E6%8C%96%E6%8E%98%E6%8A%80%E6%9C%AF"><span class="nav-number">3.1.</span> <span class="nav-text">2.3.2 Web挖掘技术</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
