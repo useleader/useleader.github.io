@@ -9,8 +9,37 @@
     <atom:link href="http://www.warmfire.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 26 Sep 2023 03:25:41 GMT</pubDate>
+    <pubDate>Wed, 27 Sep 2023 06:02:09 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>可证明安全第四周学习日志</title>
+      <link>http://www.warmfire.com/2023/09/27/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</link>
+      <guid>http://www.warmfire.com/2023/09/27/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</guid>
+      <pubDate>Wed, 27 Sep 2023 01:58:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;&lt;strong&gt;randomness extractor&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ext(X,seed)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;One-time pad&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;limitations&lt;ul&gt;
+&lt;li&gt;the key is &lt;st</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p><strong>randomness extractor</strong></p><ul><li>Ext(X,seed)</li></ul><p>One-time pad</p><ul><li>limitations<ul><li>the key is <strong>as long as</strong> the message </li><li>only secure if each key is used to encrypt a <strong>single</strong> message</li><li>Trivially broken by a known-plaintext attack</li></ul></li></ul><p>Optimality of the one-time pad</p><p><strong>Theorem</strong></p><p>if (Gen,Enc,Dec) with message space M is perfectly secret, then $|K| \ge |M|$</p><h2 id="Perfect-Indistinguishability"><a href="#Perfect-Indistinguishability" class="headerlink" title="Perfect Indistinguishability"></a>Perfect Indistinguishability</h2><p>probability &gt; $2^{-60}$</p><p>Def. 2.6</p><p>$\Pi$ is perfectly indistinguishable if for all attackers $\mathcal{A}$, it holds that </p><script type="math/tex; mode=display">\Pr[PrivK^{eav}_{\mathcal{A},\Pi}] = \frac{1}{2}</script><h2 id="Security-Definition-of-Encryption"><a href="#Security-Definition-of-Encryption" class="headerlink" title="Security Definition of Encryption"></a>Security Definition of Encryption</h2><p>$k \leftarrow Gen(1^\lambda)$表示输入的长度是$\lambda$</p><p>two approaches:</p><ol><li>concrete security<ul><li>$(t,\epsilon)$<ul><li>fail probability $\epsilon$</li><li>run time $t$</li></ul></li><li>$\Pr[PrivK^{eav}_{\mathcal{A},\Pi}] \le 0.5 + \epsilon$</li></ul></li><li>Asymptotic security<ul><li>security parameter</li></ul></li></ol>]]></content:encoded>
+      
+      
+      
+      
+      <comments>http://www.warmfire.com/2023/09/27/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>安全协议第四周学习日志</title>
