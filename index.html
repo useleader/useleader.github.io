@@ -266,6 +266,270 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/10/03/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/03/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">图像处理与信息隐藏第四周学习日志</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-03 15:43:25 / 修改时间：17:48:35" itemprop="dateCreated datePublished" datetime="2023-10-03T15:43:25+08:00">2023-10-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">图像处理</span></a>
+                </span>
+            </span>
+
+          
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<h1 id="2-图像信息的基本知识"><a href="#2-图像信息的基本知识" class="headerlink" title="2 图像信息的基本知识"></a>2 图像信息的基本知识</h1><h2 id="2-2-图像数字化"><a href="#2-2-图像数字化" class="headerlink" title="2.2 图像数字化"></a>2.2 图像数字化</h2><p>图像数字化：将代表图像的连续信号转变为离散信号</p>
+<p><strong>采样</strong>：图像在空间上的离散化</p>
+<p><strong>量化</strong>：对样点灰度值的离散化过程。</p>
+<p>为了适应数字计算机的处理，必须对连续图像函数进行<strong>空间和幅值</strong>数字化</p>
+<p><strong>均匀量化</strong>：将样本连续灰度值等间隔分层量化方式</p>
+<p><strong>非均匀量化</strong>：不等间隔分层量化方式</p>
+<p><strong>量化误差</strong>：以有限个离散值来近似表示无限多个连续值，量化器输出与输入之间必然存在误差</p>
+<p>量化分层越多，量化误差越小，但编码时占用比特数越多</p>
+<p>按人的视觉特点的非均匀量化</p>
+<h2 id="2-3-图像的噪声分析"><a href="#2-3-图像的噪声分析" class="headerlink" title="2.3 图像的噪声分析"></a>2.3 图像的噪声分析</h2><h3 id="2-3-1-噪声"><a href="#2-3-1-噪声" class="headerlink" title="2.3.1 噪声"></a>2.3.1 噪声</h3><p><img src="../images/图像处理与信息隐藏/第四周/噪声.png" alt="img1"></p>
+<p>高斯噪声是应用最广的噪声模型</p>
+<h3 id="2-3-2-图像噪声的分类"><a href="#2-3-2-图像噪声的分类" class="headerlink" title="2.3.2 图像噪声的分类"></a>2.3.2 图像噪声的分类</h3><p>根据噪声的产生原因</p>
+<ul>
+<li>外部噪声</li>
+<li>内部噪声</li>
+</ul>
+<p>根据统计理论观点</p>
+<ul>
+<li>平稳噪声：不随时间变化</li>
+<li>非平稳噪声：随</li>
+</ul>
+<p>根据噪声幅度分布</p>
+<ul>
+<li>高斯噪声</li>
+<li>瑞利噪声</li>
+<li>伽马噪声</li>
+</ul>
+<p>根据频谱形状</p>
+<ul>
+<li>白噪声：频谱均匀分布</li>
+<li>1/f噪声：频谱与频率成分反比</li>
+<li>三角噪声：与频率平方成正比的噪声</li>
+</ul>
+<p>根据噪声与图像的结合方式</p>
+<ul>
+<li>加性噪声：输出图像为S(t)+n(t)</li>
+<li>乘性噪声：S(t)(1+n(t))</li>
+</ul>
+<p>为了分析处理方便，</p>
+<ol>
+<li>往往将乘性噪声近似认为是加性噪声</li>
+<li>信号和噪声是互相统计独立的</li>
+</ol>
+<h2 id="2-4-图像质量评价"><a href="#2-4-图像质量评价" class="headerlink" title="2.4 图像质量评价"></a>2.4 图像质量评价</h2><h3 id="2-4-1-概述"><a href="#2-4-1-概述" class="headerlink" title="2.4.1 概述"></a>2.4.1 概述</h3><p>图像质量评价的主要方法：</p>
+<ul>
+<li>客观评价方法<ul>
+<li>实现容易</li>
+<li>可消除不确定行</li>
+<li>不一定反应真实质量</li>
+</ul>
+</li>
+<li>主观评价方法<ul>
+<li>实现困难</li>
+<li>受其他因素影响大</li>
+<li>像评估的最终目标</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-4-2-图像质量的主观评价"><a href="#2-4-2-图像质量的主观评价" class="headerlink" title="2.4.2 图像质量的主观评价"></a>2.4.2 图像质量的主观评价</h3><p>主观评价方法：</p>
+<ol>
+<li>由ITU制定了图像主观评价的标准</li>
+<li>至少挑选10观察者</li>
+<li>测试条件应尽可能与使用条件相匹配</li>
+<li>调查</li>
+<li>设计评分表</li>
+<li>结果分析，MOS Mean Option Score， DMOS Differential Mean Option Score</li>
+</ol>
+<p><img src="../images/图像处理与信息隐藏/第四周/DMOS.png" alt="img2"></p>
+<p>DMOS值越大说明视频越好</p>
+<p><strong>灰度图像的失真度量</strong></p>
+<ol>
+<li><p>归一化的均方误差</p>
+<p><img src="../images/图像处理与信息隐藏/第四周/NMSE.png" alt="img3"></p>
+</li>
+<li><p>峰值均方误差</p>
+<p><img src="../images/图像处理与信息隐藏/第四周/PMSE.png" alt="img4"></p>
+</li>
+<li><p>等效的峰值信噪比</p>
+<p><img src="../images/图像处理与信息隐藏/第四周/PSNR.png" alt="img5"></p>
+</li>
+</ol>
+<h3 id="2-4-3-图像保真度的测量"><a href="#2-4-3-图像保真度的测量" class="headerlink" title="2.4.3 图像保真度的测量"></a>2.4.3 图像保真度的测量</h3><p>保真度并与一定能够反应图像主观质量</p>
+<p><strong>亮度的量度</strong></p>
+<p>人的感觉亮度和亮度y基本称对数关系</p>
+<script type="math/tex; mode=display">
+\Delta(L_1,L_2) = \log_B{(y+\Delta y)} - \log_B(y)</script><p><strong>彩色的量度</strong></p>
+<p>人的彩色感觉：红、绿、蓝</p>
+<ul>
+<li>RGB模式：加式模式</li>
+<li>CMYK模式：印刷彩色，减式模式，反射光</li>
+</ul>
+<h2 id="2-5-彩色图像基本知识"><a href="#2-5-彩色图像基本知识" class="headerlink" title="2.5 彩色图像基本知识"></a>2.5 彩色图像基本知识</h2><ol>
+<li><p>YIQ</p>
+<p><img src="../images/图像处理与信息隐藏/第四周/YIQ.png" alt="img6"></p>
+</li>
+<li><p>YUV</p>
+<p><img src="../images/图像处理与信息隐藏/第四周/YUV.png" alt="img7"></p>
+</li>
+<li><p>YCbCr</p>
+<p><img src="../images/图像处理与信息隐藏/第四周/YCbCr.png" alt="img8"></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">数据库第四周学习日志</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-30 22:31:06" itemprop="dateCreated datePublished" datetime="2023-09-30T22:31:06+08:00">2023-09-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-01 20:18:26" itemprop="dateModified" datetime="2023-10-01T20:18:26+08:00">2023-10-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>[TOC]</p>
+<h1 id="第二章-关系数据库"><a href="#第二章-关系数据库" class="headerlink" title="第二章 关系数据库"></a>第二章 关系数据库</h1><h2 id="2-1-关系数据结构及形式化定义"><a href="#2-1-关系数据结构及形式化定义" class="headerlink" title="2.1 关系数据结构及形式化定义"></a>2.1 关系数据结构及形式化定义</h2><h3 id="2-1-1-关系"><a href="#2-1-1-关系" class="headerlink" title="2.1.1 关系"></a>2.1.1 关系</h3><p>单一的数据结构——关系</p>
+<p>现实世界的<strong>实体以及实体间的各种联系</strong>均用关系来表示</p>
+<p>关系的组成：同一类实体型的实例集合</p>
+<p>关系之间的联系：实体与实体之间、实体的属性之间存在某种关联关系</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/29/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%9B%E6%96%B0%E5%AE%9E%E9%AA%8C%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -297,7 +561,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-30 10:42:54" itemprop="dateModified" datetime="2023-09-30T10:42:54+08:00">2023-09-30</time>
+                <time title="修改时间：2023-10-03 09:16:02" itemprop="dateModified" datetime="2023-10-03T09:16:02+08:00">2023-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,6 +593,32 @@
           <blockquote>
 <p>目前来看网络安全创新实验中给出的例子还是很不错的，既能够初步明白怎么用，还能在具体的应用环境中实现。-20230929</p>
 </blockquote>
+<h2 id="Lab-2"><a href="#Lab-2" class="headerlink" title="Lab-2"></a>Lab-2</h2><h3 id="4-4-MD5算法碰撞实验"><a href="#4-4-MD5算法碰撞实验" class="headerlink" title="4.4 MD5算法碰撞实验"></a>4.4 MD5算法碰撞实验</h3><h4 id="4-4-1-MD5碰撞工具的使用"><a href="#4-4-1-MD5碰撞工具的使用" class="headerlink" title="4.4.1 MD5碰撞工具的使用"></a>4.4.1 MD5碰撞工具的使用</h4><p>快速MD5碰撞生成工具来生成两个拥有相同MD5值的不同文件。这两个文件的开始部分是相同的。因此需要指定前缀：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Lab2/hashclash/ipc_workdir/</span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;prefix&quot;</span> &gt; [prefix_file]</span><br><span class="line">../scripts/poc_no.sh [prefix_file]</span><br></pre></td></tr></table></figure>
+<p>可以通过一下命令来验证文件是否内容不同而MD5值相同。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 比较两个文件是否相同</span><br><span class="line">diff -q collision1.bin collision2.bin</span><br><span class="line">ghex -C collision1.bin</span><br><span class="line"><span class="built_in">md5sum</span> collision1.bin collision2.bin</span><br></pre></td></tr></table></figure>
+<p>如果是64字节的倍数，则会正常处理；如果不是64的倍数，则会去除多余的部分。</p>
+<h4 id="4-4-2-MD5特性探究"><a href="#4-4-2-MD5特性探究" class="headerlink" title="4.4.2 MD5特性探究"></a>4.4.2 MD5特性探究</h4><p>两个相同MD5值的文件加上相同的后缀T会生成两个具有相同哈希值的文件。</p>
+<blockquote>
+<p>cat file1 file2 &gt; file3</p>
+</blockquote>
+<p>将两个文件合并到另一个文件</p>
+<h4 id="4-4-3-产生相同MD5哈希值的两个可执行文件"><a href="#4-4-3-产生相同MD5哈希值的两个可执行文件" class="headerlink" title="4.4.3 产生相同MD5哈希值的两个可执行文件"></a>4.4.3 产生相同MD5哈希值的两个可执行文件</h4><p>利用gcc编译文件的命令如下：</p>
+<blockquote>
+<p>gcc [input_file] -o [output_file]</p>
+</blockquote>
+<p>编译后的文件可以直接运行</p>
+<blockquote>
+<p>./program.out</p>
+</blockquote>
+<p>赋予执行权限</p>
+<blockquote>
+<p>chmod +x [file_name]</p>
+</blockquote>
+<p>验证是否满足要求：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">md5sum</span> program_col1.bin program_col2.bin</span><br><span class="line"><span class="built_in">echo</span> $(./program_col1.bin) | <span class="built_in">md5sum</span></span><br><span class="line"><span class="built_in">echo</span> $(./program_col2.bin) | <span class="built_in">md5sum</span></span><br></pre></td></tr></table></figure>
+<p>接下来用head/tail命令来分割文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 将a.out前3200byte输入到prefix文件中</span><br><span class="line"><span class="built_in">head</span> -c 3200 a.out &gt; prefix</span><br><span class="line">// a.out 后 100字节输入到suffix</span><br><span class="line"><span class="built_in">tail</span> -c 100 a.out &gt; suffix</span><br><span class="line">// a.out 从第3300字节开始至结尾的内容输入到suffix文件中</span><br><span class="line"><span class="built_in">tail</span> -c +3300 a.out &gt; suffix</span><br></pre></td></tr></table></figure>
 <h2 id="Lab-3"><a href="#Lab-3" class="headerlink" title="Lab-3"></a>Lab-3</h2><h3 id="4-3-PKI实验"><a href="#4-3-PKI实验" class="headerlink" title="4.3 PKI实验"></a>4.3 PKI实验</h3><p>PKI利用CA将用户身份与公钥结合，解决公钥可信性问题。</p>
 <p>CA是一个签发电子证书的可信实体。</p>
 <h4 id="4-3-1-建立CA"><a href="#4-3-1-建立CA" class="headerlink" title="4.3.1 建立CA"></a>4.3.1 建立CA</h4><p>将<code>openssl</code>提供的配置文件<code>/usr/lib/ssl/openssl.cnf</code>拷贝进入目录，并且根据配置文件中的要求（[CA_default]）创建以下文件夹或文件：</p>
@@ -1194,7 +1484,7 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-30 22:22:52" itemprop="dateModified" datetime="2023-09-30T22:22:52+08:00">2023-09-30</time>
+                <time title="修改时间：2023-10-01 20:30:40" itemprop="dateModified" datetime="2023-10-01T20:30:40+08:00">2023-10-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1226,7 +1516,8 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
           <p>[TOC]</p>
 <h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><h2 id="1-1-数据库系统概述"><a href="#1-1-数据库系统概述" class="headerlink" title="1.1 数据库系统概述"></a>1.1 数据库系统概述</h2><p>数据库是一种计算机辅助管理数据的方法与技术，研究如何有效地<strong>组织和存储数据</strong>，如何高效地<strong>获取和处理数据</strong></p>
 <h3 id="1-1-1-数据库的4个基本概念"><a href="#1-1-1-数据库的4个基本概念" class="headerlink" title="1.1.1 数据库的4个基本概念"></a>1.1.1 数据库的4个基本概念</h3><h4 id="①-数据-Data"><a href="#①-数据-Data" class="headerlink" title="① 数据 Data"></a>① 数据 Data</h4><p>数据是数据库中存储的基本对象</p>
-<h5 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><strong>Definition</strong></h5><h5 id="是描述事物的符号记录，是可识别的、抽象的符号"><a href="#是描述事物的符号记录，是可识别的、抽象的符号" class="headerlink" title="是描述事物的符号记录，是可识别的、抽象的符号"></a>是描述事物的符号记录，是可识别的、抽象的符号</h5><h5 id="Categories"><a href="#Categories" class="headerlink" title="Categories"></a><strong>Categories</strong></h5><ul>
+<h5 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><strong>Definition</strong></h5><p>是描述事物的符号记录，是可识别的、抽象的符号</p>
+<h5 id="Categories"><a href="#Categories" class="headerlink" title="Categories"></a><strong>Categories</strong></h5><ul>
 <li><p>结构化</p>
 <ul>
 <li><p>可以使用关系型数据库表示和存储，表现为规范的二维表格形式的数据</p>
@@ -1584,293 +1875,6 @@ a_1,a_2,\cdots,a_n,\cdots</script><p>通常记为$\{a_n\}_{n \geq 1}$或简记�
 
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/22/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Yan Zhimin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WarmFire">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/09/22/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">自然语言处理第三周学习日志</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-09-22 13:59:44 / 修改时间：15:28:24" itemprop="dateCreated datePublished" datetime="2023-09-22T13:59:44+08:00">2023-09-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a>
-                </span>
-            </span>
-
-          
-
-          
-          
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-1-问题的提出"><a href="#1-1-问题的提出" class="headerlink" title="1.1 问题的提出"></a>1.1 问题的提出</h2><ul>
-<li>信息检索市场前景广阔</li>
-<li>跨语言通信与信息获取</li>
-<li>机器翻译市场需求大</li>
-<li>舆情监测</li>
-</ul>
-<ol>
-<li>如何让计算机实现自动的或人机互助的语言处理功能？</li>
-<li>如何让计算机实现海量语言信息的自动处理、知识挖掘、有效利用？</li>
-</ol>
-<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2 基本概念"></a>1.2 基本概念</h2><h4 id="Def-1-1-Language-语言"><a href="#Def-1-1-Language-语言" class="headerlink" title="Def. 1-1 Language 语言"></a>Def. 1-1 Language 语言</h4><p>人类所特有的用来表达意思、交流思想的工具，是一种特殊的社会现象，由<strong>语音</strong>、<strong>词汇</strong>和<strong>语法</strong>构成一定的系统。</p>
-<h4 id="Def-1-2-Linguistics-语言学"><a href="#Def-1-2-Linguistics-语言学" class="headerlink" title="Def. 1-2 Linguistics 语言学"></a>Def. 1-2 Linguistics 语言学</h4><p>对语言的科学研究。</p>
-<p><strong>语音</strong>和<strong>文字</strong>是语言的两个基本属性</p>
-<h4 id="Def-1-3-Phonetics-语音学"><a href="#Def-1-3-Phonetics-语音学" class="headerlink" title="Def. 1-3 Phonetics 语音学"></a>Def. 1-3 Phonetics 语音学</h4><p> 研究人类发音特点，特别是语音发音特点，并提出各种语音描述、分类和转写方法的科学。</p>
-<ul>
-<li>发音语音学 (articulatory phonetics)</li>
-<li>声学语音学 (acoustic phonetics)</li>
-<li>听觉语音学 (auditory phonetics)</li>
-</ul>
-<p>综上可以看出语音学的分支非常广，那便将其视为复数的语言科学 (linguistic sciences)</p>
-<h4 id="Def-1-4-Natural-Language-Understanding-自然语言理解"><a href="#Def-1-4-Natural-Language-Understanding-自然语言理解" class="headerlink" title="Def. 1-4 Natural Language Understanding 自然语言理解"></a>Def. 1-4 Natural Language Understanding 自然语言理解</h4><p>微观上讲， 语言理解是指从自然语言到机器内部之间的一种映射；从宏观上讲，语言理解是指机器能够执行人类所期望的某些语言功能。</p>
-<p>如何判断理解、计算机系统的智能呢？</p>
-<ul>
-<li>表现 act</li>
-<li>反应 react</li>
-<li>相互作用 interact</li>
-<li>Turing Test</li>
-</ul>
-<h4 id="Def-1-5-Natural-Language-Processing-自然语言处理"><a href="#Def-1-5-Natural-Language-Processing-自然语言处理" class="headerlink" title="Def. 1-5 Natural Language Processing 自然语言处理"></a>Def. 1-5 Natural Language Processing 自然语言处理</h4><p>研制表示语言能力 (linguistic competence) 和语言应用 (linguistic performance)的模型，建立计算框架来实现这样的语言模型，提出相应的方法来不断地完善语言模型，设计使用系统，并探讨测评技术。</p>
-<h4 id="Def-1-6-Computational-Linguistics-计算语言学"><a href="#Def-1-6-Computational-Linguistics-计算语言学" class="headerlink" title="Def. 1-6: Computational Linguistics 计算语言学"></a>Def. 1-6: Computational Linguistics 计算语言学</h4><p>用计算技术和概念来阐述语言学和语音学问题。</p>
-<h4 id="三个不同的语系"><a href="#三个不同的语系" class="headerlink" title="三个不同的语系"></a>三个不同的语系</h4><ol>
-<li>屈折语 fusional language / inflectional language, 用词的形态变化表示语法关系，英语、法语等</li>
-<li>黏着语 agglutinative language 专门表示语法意义的附加成分， 日语等</li>
-<li>孤立语/分析语 isolating / analytic language 形态变化少，语法关系靠语序和虚词表示，汉语</li>
-</ol>
-<h2 id="1-3-NLP-的产生与发展"><a href="#1-3-NLP-的产生与发展" class="headerlink" title="1.3 NLP 的产生与发展"></a>1.3 NLP 的产生与发展</h2><p>源于机器翻译 (Machine Translation, MT)</p>
-<h2 id="1-4-研究内容"><a href="#1-4-研究内容" class="headerlink" title="1.4 研究内容"></a>1.4 研究内容</h2><p>按应用目标划分，广义上包括</p>
-<ol>
-<li>机器翻译 (Machine translation, MT)</li>
-<li>信息检索 (Information retrieval)</li>
-<li>自动文摘 (Automatic summarization/ Automatic abstracting)</li>
-<li>问答系统 (Question-answering system)</li>
-<li>信息过滤 (Information filtering)</li>
-<li>信息抽取 (Information extraction)</li>
-<li>文档分类 (Document categorization)</li>
-<li>情感分类 (Sentimental classification)</li>
-<li>文字编辑和自动校对 (Automatic proofreading)</li>
-<li>语音教学 (Language teaching)</li>
-<li>文字识别 (Character recognition)</li>
-<li>语音识别 (automatic speech recognition, ASR)</li>
-<li>文语转换/语音合成 (text-to-speech synthesis)</li>
-<li>说话人识别/认同/验证 (speaker recognition/ identification/ verification)</li>
-</ol>
-<h2 id="1-5-基本问题和主要困难"><a href="#1-5-基本问题和主要困难" class="headerlink" title="1.5 基本问题和主要困难"></a>1.5 基本问题和主要困难</h2><h3 id="基本问题一：形态学问题-Morphology-Problem"><a href="#基本问题一：形态学问题-Morphology-Problem" class="headerlink" title="基本问题一：形态学问题(Morphology Problem)"></a>基本问题一：形态学问题(Morphology Problem)</h3><p>word由有意义的词素 morphemes 构成，包括屈折变化和构词法两部分</p>
-<h3 id="基本问题二：语法学问题-Syntax-Problem"><a href="#基本问题二：语法学问题-Syntax-Problem" class="headerlink" title="基本问题二：语法学问题 (Syntax Problem)"></a>基本问题二：语法学问题 (Syntax Problem)</h3><h3 id="基本问题三：-语义学问题-Semantics-Problem"><a href="#基本问题三：-语义学问题-Semantics-Problem" class="headerlink" title="基本问题三： 语义学问题 (Semantics Problem)"></a>基本问题三： 语义学问题 (Semantics Problem)</h3><h3 id="基本问题四：语用学问题-Pragmatics-Problem"><a href="#基本问题四：语用学问题-Pragmatics-Problem" class="headerlink" title="基本问题四：语用学问题 (Pragmatics Problem)"></a>基本问题四：语用学问题 (Pragmatics Problem)</h3><h3 id="基本问题五：-语音学问题-Phonetics-Problem"><a href="#基本问题五：-语音学问题-Phonetics-Problem" class="headerlink" title="基本问题五： 语音学问题 (Phonetics Problem)"></a>基本问题五： 语音学问题 (Phonetics Problem)</h3><h3 id="困难一：大量歧义现象-ambiguity"><a href="#困难一：大量歧义现象-ambiguity" class="headerlink" title="困难一：大量歧义现象 (ambiguity)"></a>困难一：大量歧义现象 (ambiguity)</h3><ul>
-<li>词法歧义</li>
-<li>词性歧义</li>
-<li>结构歧义</li>
-<li>语义歧义</li>
-<li>语音歧义</li>
-<li>多音字及韵律等歧义</li>
-</ul>
-<h3 id="困难二：大量未知语言现象"><a href="#困难二：大量未知语言现象" class="headerlink" title="困难二：大量未知语言现象"></a>困难二：大量未知语言现象</h3><ul>
-<li>新词、人名、地名、术语</li>
-<li>新含义</li>
-<li>新用法、句型</li>
-</ul>
-<h2 id="1-6-基本研究方法"><a href="#1-6-基本研究方法" class="headerlink" title="1.6 基本研究方法"></a>1.6 基本研究方法</h2><h3 id="理性主义"><a href="#理性主义" class="headerlink" title="理性主义"></a>理性主义</h3><p>语言知识来源：语言知识很大部分是由遗传决定的。</p>
-<p>研究对象：语言知识结构</p>
-<p>理论：基于Chomsky语言原则，通过语言所必须遵守的原则来描述语言</p>
-<p>处理方法：特殊语句或语法现象</p>
-<p>求解方法：基于规则的分析方法，建立符号处理系统</p>
-<h3 id="经验主义"><a href="#经验主义" class="headerlink" title="经验主义"></a>经验主义</h3><p>语言知识来源：语言知识是通过感官输入，经过简单联想与通用化的操作而得到的</p>
-<p>研究对象：实际的语言数据</p>
-<p>理论：信息论</p>
-<p>处理方法：统计</p>
-<p>求解方法：基于大规模真实语料的计算方法</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/21/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Yan Zhimin">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WarmFire">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/09/21/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">可证明安全第三周学习日志</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-09-21 15:47:11" itemprop="dateCreated datePublished" datetime="2023-09-21T15:47:11+08:00">2023-09-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-24 20:50:50" itemprop="dateModified" datetime="2023-09-24T20:50:50+08:00">2023-09-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">可证明安全</span></a>
-                </span>
-            </span>
-
-          
-
-          
-          
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Principles-of-Modern-Crypto"><a href="#Principles-of-Modern-Crypto" class="headerlink" title="Principles of Modern Crypto"></a>Principles of Modern Crypto</h2><h3 id="A-Formal-definitions"><a href="#A-Formal-definitions" class="headerlink" title="A. Formal definitions"></a>A. Formal definitions</h3><blockquote>
-<p>Precise, mathematical model and definition of what security means</p>
-</blockquote>
-<p>Definitions are essential for the design, analysis, and usage of crypto.</p>
-<ul>
-<li>Design: force the designer to think about what they really want.</li>
-<li>Analysis: enable meaningful analysis, evaluation, and comparison of schemes</li>
-<li>Usage: understand the security guarantees, modularity, substitute.</li>
-</ul>
-<h3 id="B-Assumptions"><a href="#B-Assumptions" class="headerlink" title="B. Assumptions"></a>B. Assumptions</h3><blockquote>
-<p>Clearly stated and unambiguous</p>
-</blockquote>
-<p><strong>Computational assumptions</strong></p>
-<p>Principle: any such assumptions should be made explicit</p>
-<ul>
-<li>validate assumptions</li>
-<li>meaningful comparison</li>
-<li>practical implications</li>
-</ul>
-<h3 id="C-Proof-of-security"><a href="#C-Proof-of-security" class="headerlink" title="C. Proof of security"></a>C. Proof of security</h3><blockquote>
-<p>Move away from design-break-patch</p>
-</blockquote>
-<h2 id="Defining-Secure-Encryption"><a href="#Defining-Secure-Encryption" class="headerlink" title="Defining Secure Encryption"></a>Defining Secure Encryption</h2><p>Crypto definitions (generally)</p>
-<ul>
-<li>Security guarantee/goal</li>
-<li>Threat model<ul>
-<li>ciphertext-only attack</li>
-<li>known-plaintext attack</li>
-<li>chosen-plaintext attack</li>
-<li>chosen-ciphertext attack</li>
-</ul>
-</li>
-</ul>
-<h2 id="Perfect-Secrecy"><a href="#Perfect-Secrecy" class="headerlink" title="Perfect Secrecy"></a>Perfect Secrecy</h2><h3 id="Informal-def"><a href="#Informal-def" class="headerlink" title="Informal def."></a>Informal def.</h3><p>Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information about the plaintext.</p>
-<h3 id="Basic-concepts"><a href="#Basic-concepts" class="headerlink" title="Basic concepts"></a>Basic concepts</h3><ul>
-<li>Random variable (r.v.)</li>
-<li>Event</li>
-<li>Conditional probability</li>
-<li>Law of total probability</li>
-<li>$\mathcal{M}$ is plaintext space, $\mathcal{K}$ is key space, $\mathcal{C}$ is ciphertext space</li>
-</ul>
-<h3 id="Probability-distributions"><a href="#Probability-distributions" class="headerlink" title="Probability distributions"></a>Probability distributions</h3><p>characterize the probability distributions over key space</p>
-<ul>
-<li>r.v. M and K are independent</li>
-</ul>
-<script type="math/tex; mode=display">
-\ Encryption \ scheme \ with  \ \mathcal{M}  \ and \  \mathcal{C}, if \ for \ every \ distribution \ over \mathcal{M}, \\
-every \ m \in \mathcal{M}, and \ every \ c \in \mathcal{C}  \ with \  Pr[C=c] > 0, \  it \ holds \ that
-\\ Pr[M = m | C = c] = Pr[M = m]</script><h3 id="Equivalent-Def"><a href="#Equivalent-Def" class="headerlink" title="Equivalent Def"></a>Equivalent Def</h3><script type="math/tex; mode=display">
-Pr[M=m | C=c ] = Pr[M=m]</script><script type="math/tex; mode=display">
-Pr[C=c | M=m] = Pr[C=c | M = m^{'}], \ i.e. \\
-Pr[Enc_K(m) = c] = Pr[Enc_K(m^{'}) = c]</script><script type="math/tex; mode=display">
-Pr[C=c | M=m] = Pr[C=c]</script><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/TheFutureIsNow/p/11527610.html">密码学基础(二) - 完美保密 - Hang3 - 博客园 (cnblogs.com)</a></p>
-<p>Perfectly secret and perfectly indistinguishable:</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  
-
 
   
   <nav class="pagination">
@@ -1942,14 +1946,14 @@ Pr[C=c | M=m] = Pr[C=c]</script><p><a target="_blank" rel="noopener" href="https
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

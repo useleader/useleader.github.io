@@ -191,6 +191,293 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/22/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/22/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">自然语言处理第三周学习日志</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-22 13:59:44 / 修改时间：15:28:24" itemprop="dateCreated datePublished" datetime="2023-09-22T13:59:44+08:00">2023-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a>
+                </span>
+            </span>
+
+          
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-1-问题的提出"><a href="#1-1-问题的提出" class="headerlink" title="1.1 问题的提出"></a>1.1 问题的提出</h2><ul>
+<li>信息检索市场前景广阔</li>
+<li>跨语言通信与信息获取</li>
+<li>机器翻译市场需求大</li>
+<li>舆情监测</li>
+</ul>
+<ol>
+<li>如何让计算机实现自动的或人机互助的语言处理功能？</li>
+<li>如何让计算机实现海量语言信息的自动处理、知识挖掘、有效利用？</li>
+</ol>
+<h2 id="1-2-基本概念"><a href="#1-2-基本概念" class="headerlink" title="1.2 基本概念"></a>1.2 基本概念</h2><h4 id="Def-1-1-Language-语言"><a href="#Def-1-1-Language-语言" class="headerlink" title="Def. 1-1 Language 语言"></a>Def. 1-1 Language 语言</h4><p>人类所特有的用来表达意思、交流思想的工具，是一种特殊的社会现象，由<strong>语音</strong>、<strong>词汇</strong>和<strong>语法</strong>构成一定的系统。</p>
+<h4 id="Def-1-2-Linguistics-语言学"><a href="#Def-1-2-Linguistics-语言学" class="headerlink" title="Def. 1-2 Linguistics 语言学"></a>Def. 1-2 Linguistics 语言学</h4><p>对语言的科学研究。</p>
+<p><strong>语音</strong>和<strong>文字</strong>是语言的两个基本属性</p>
+<h4 id="Def-1-3-Phonetics-语音学"><a href="#Def-1-3-Phonetics-语音学" class="headerlink" title="Def. 1-3 Phonetics 语音学"></a>Def. 1-3 Phonetics 语音学</h4><p> 研究人类发音特点，特别是语音发音特点，并提出各种语音描述、分类和转写方法的科学。</p>
+<ul>
+<li>发音语音学 (articulatory phonetics)</li>
+<li>声学语音学 (acoustic phonetics)</li>
+<li>听觉语音学 (auditory phonetics)</li>
+</ul>
+<p>综上可以看出语音学的分支非常广，那便将其视为复数的语言科学 (linguistic sciences)</p>
+<h4 id="Def-1-4-Natural-Language-Understanding-自然语言理解"><a href="#Def-1-4-Natural-Language-Understanding-自然语言理解" class="headerlink" title="Def. 1-4 Natural Language Understanding 自然语言理解"></a>Def. 1-4 Natural Language Understanding 自然语言理解</h4><p>微观上讲， 语言理解是指从自然语言到机器内部之间的一种映射；从宏观上讲，语言理解是指机器能够执行人类所期望的某些语言功能。</p>
+<p>如何判断理解、计算机系统的智能呢？</p>
+<ul>
+<li>表现 act</li>
+<li>反应 react</li>
+<li>相互作用 interact</li>
+<li>Turing Test</li>
+</ul>
+<h4 id="Def-1-5-Natural-Language-Processing-自然语言处理"><a href="#Def-1-5-Natural-Language-Processing-自然语言处理" class="headerlink" title="Def. 1-5 Natural Language Processing 自然语言处理"></a>Def. 1-5 Natural Language Processing 自然语言处理</h4><p>研制表示语言能力 (linguistic competence) 和语言应用 (linguistic performance)的模型，建立计算框架来实现这样的语言模型，提出相应的方法来不断地完善语言模型，设计使用系统，并探讨测评技术。</p>
+<h4 id="Def-1-6-Computational-Linguistics-计算语言学"><a href="#Def-1-6-Computational-Linguistics-计算语言学" class="headerlink" title="Def. 1-6: Computational Linguistics 计算语言学"></a>Def. 1-6: Computational Linguistics 计算语言学</h4><p>用计算技术和概念来阐述语言学和语音学问题。</p>
+<h4 id="三个不同的语系"><a href="#三个不同的语系" class="headerlink" title="三个不同的语系"></a>三个不同的语系</h4><ol>
+<li>屈折语 fusional language / inflectional language, 用词的形态变化表示语法关系，英语、法语等</li>
+<li>黏着语 agglutinative language 专门表示语法意义的附加成分， 日语等</li>
+<li>孤立语/分析语 isolating / analytic language 形态变化少，语法关系靠语序和虚词表示，汉语</li>
+</ol>
+<h2 id="1-3-NLP-的产生与发展"><a href="#1-3-NLP-的产生与发展" class="headerlink" title="1.3 NLP 的产生与发展"></a>1.3 NLP 的产生与发展</h2><p>源于机器翻译 (Machine Translation, MT)</p>
+<h2 id="1-4-研究内容"><a href="#1-4-研究内容" class="headerlink" title="1.4 研究内容"></a>1.4 研究内容</h2><p>按应用目标划分，广义上包括</p>
+<ol>
+<li>机器翻译 (Machine translation, MT)</li>
+<li>信息检索 (Information retrieval)</li>
+<li>自动文摘 (Automatic summarization/ Automatic abstracting)</li>
+<li>问答系统 (Question-answering system)</li>
+<li>信息过滤 (Information filtering)</li>
+<li>信息抽取 (Information extraction)</li>
+<li>文档分类 (Document categorization)</li>
+<li>情感分类 (Sentimental classification)</li>
+<li>文字编辑和自动校对 (Automatic proofreading)</li>
+<li>语音教学 (Language teaching)</li>
+<li>文字识别 (Character recognition)</li>
+<li>语音识别 (automatic speech recognition, ASR)</li>
+<li>文语转换/语音合成 (text-to-speech synthesis)</li>
+<li>说话人识别/认同/验证 (speaker recognition/ identification/ verification)</li>
+</ol>
+<h2 id="1-5-基本问题和主要困难"><a href="#1-5-基本问题和主要困难" class="headerlink" title="1.5 基本问题和主要困难"></a>1.5 基本问题和主要困难</h2><h3 id="基本问题一：形态学问题-Morphology-Problem"><a href="#基本问题一：形态学问题-Morphology-Problem" class="headerlink" title="基本问题一：形态学问题(Morphology Problem)"></a>基本问题一：形态学问题(Morphology Problem)</h3><p>word由有意义的词素 morphemes 构成，包括屈折变化和构词法两部分</p>
+<h3 id="基本问题二：语法学问题-Syntax-Problem"><a href="#基本问题二：语法学问题-Syntax-Problem" class="headerlink" title="基本问题二：语法学问题 (Syntax Problem)"></a>基本问题二：语法学问题 (Syntax Problem)</h3><h3 id="基本问题三：-语义学问题-Semantics-Problem"><a href="#基本问题三：-语义学问题-Semantics-Problem" class="headerlink" title="基本问题三： 语义学问题 (Semantics Problem)"></a>基本问题三： 语义学问题 (Semantics Problem)</h3><h3 id="基本问题四：语用学问题-Pragmatics-Problem"><a href="#基本问题四：语用学问题-Pragmatics-Problem" class="headerlink" title="基本问题四：语用学问题 (Pragmatics Problem)"></a>基本问题四：语用学问题 (Pragmatics Problem)</h3><h3 id="基本问题五：-语音学问题-Phonetics-Problem"><a href="#基本问题五：-语音学问题-Phonetics-Problem" class="headerlink" title="基本问题五： 语音学问题 (Phonetics Problem)"></a>基本问题五： 语音学问题 (Phonetics Problem)</h3><h3 id="困难一：大量歧义现象-ambiguity"><a href="#困难一：大量歧义现象-ambiguity" class="headerlink" title="困难一：大量歧义现象 (ambiguity)"></a>困难一：大量歧义现象 (ambiguity)</h3><ul>
+<li>词法歧义</li>
+<li>词性歧义</li>
+<li>结构歧义</li>
+<li>语义歧义</li>
+<li>语音歧义</li>
+<li>多音字及韵律等歧义</li>
+</ul>
+<h3 id="困难二：大量未知语言现象"><a href="#困难二：大量未知语言现象" class="headerlink" title="困难二：大量未知语言现象"></a>困难二：大量未知语言现象</h3><ul>
+<li>新词、人名、地名、术语</li>
+<li>新含义</li>
+<li>新用法、句型</li>
+</ul>
+<h2 id="1-6-基本研究方法"><a href="#1-6-基本研究方法" class="headerlink" title="1.6 基本研究方法"></a>1.6 基本研究方法</h2><h3 id="理性主义"><a href="#理性主义" class="headerlink" title="理性主义"></a>理性主义</h3><p>语言知识来源：语言知识很大部分是由遗传决定的。</p>
+<p>研究对象：语言知识结构</p>
+<p>理论：基于Chomsky语言原则，通过语言所必须遵守的原则来描述语言</p>
+<p>处理方法：特殊语句或语法现象</p>
+<p>求解方法：基于规则的分析方法，建立符号处理系统</p>
+<h3 id="经验主义"><a href="#经验主义" class="headerlink" title="经验主义"></a>经验主义</h3><p>语言知识来源：语言知识是通过感官输入，经过简单联想与通用化的操作而得到的</p>
+<p>研究对象：实际的语言数据</p>
+<p>理论：信息论</p>
+<p>处理方法：统计</p>
+<p>求解方法：基于大规模真实语料的计算方法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/21/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/21/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">可证明安全第三周学习日志</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-21 15:47:11" itemprop="dateCreated datePublished" datetime="2023-09-21T15:47:11+08:00">2023-09-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-24 20:50:50" itemprop="dateModified" datetime="2023-09-24T20:50:50+08:00">2023-09-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">可证明安全</span></a>
+                </span>
+            </span>
+
+          
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Principles-of-Modern-Crypto"><a href="#Principles-of-Modern-Crypto" class="headerlink" title="Principles of Modern Crypto"></a>Principles of Modern Crypto</h2><h3 id="A-Formal-definitions"><a href="#A-Formal-definitions" class="headerlink" title="A. Formal definitions"></a>A. Formal definitions</h3><blockquote>
+<p>Precise, mathematical model and definition of what security means</p>
+</blockquote>
+<p>Definitions are essential for the design, analysis, and usage of crypto.</p>
+<ul>
+<li>Design: force the designer to think about what they really want.</li>
+<li>Analysis: enable meaningful analysis, evaluation, and comparison of schemes</li>
+<li>Usage: understand the security guarantees, modularity, substitute.</li>
+</ul>
+<h3 id="B-Assumptions"><a href="#B-Assumptions" class="headerlink" title="B. Assumptions"></a>B. Assumptions</h3><blockquote>
+<p>Clearly stated and unambiguous</p>
+</blockquote>
+<p><strong>Computational assumptions</strong></p>
+<p>Principle: any such assumptions should be made explicit</p>
+<ul>
+<li>validate assumptions</li>
+<li>meaningful comparison</li>
+<li>practical implications</li>
+</ul>
+<h3 id="C-Proof-of-security"><a href="#C-Proof-of-security" class="headerlink" title="C. Proof of security"></a>C. Proof of security</h3><blockquote>
+<p>Move away from design-break-patch</p>
+</blockquote>
+<h2 id="Defining-Secure-Encryption"><a href="#Defining-Secure-Encryption" class="headerlink" title="Defining Secure Encryption"></a>Defining Secure Encryption</h2><p>Crypto definitions (generally)</p>
+<ul>
+<li>Security guarantee/goal</li>
+<li>Threat model<ul>
+<li>ciphertext-only attack</li>
+<li>known-plaintext attack</li>
+<li>chosen-plaintext attack</li>
+<li>chosen-ciphertext attack</li>
+</ul>
+</li>
+</ul>
+<h2 id="Perfect-Secrecy"><a href="#Perfect-Secrecy" class="headerlink" title="Perfect Secrecy"></a>Perfect Secrecy</h2><h3 id="Informal-def"><a href="#Informal-def" class="headerlink" title="Informal def."></a>Informal def.</h3><p>Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information about the plaintext.</p>
+<h3 id="Basic-concepts"><a href="#Basic-concepts" class="headerlink" title="Basic concepts"></a>Basic concepts</h3><ul>
+<li>Random variable (r.v.)</li>
+<li>Event</li>
+<li>Conditional probability</li>
+<li>Law of total probability</li>
+<li>$\mathcal{M}$ is plaintext space, $\mathcal{K}$ is key space, $\mathcal{C}$ is ciphertext space</li>
+</ul>
+<h3 id="Probability-distributions"><a href="#Probability-distributions" class="headerlink" title="Probability distributions"></a>Probability distributions</h3><p>characterize the probability distributions over key space</p>
+<ul>
+<li>r.v. M and K are independent</li>
+</ul>
+<script type="math/tex; mode=display">
+\ Encryption \ scheme \ with  \ \mathcal{M}  \ and \  \mathcal{C}, if \ for \ every \ distribution \ over \mathcal{M}, \\
+every \ m \in \mathcal{M}, and \ every \ c \in \mathcal{C}  \ with \  Pr[C=c] > 0, \  it \ holds \ that
+\\ Pr[M = m | C = c] = Pr[M = m]</script><h3 id="Equivalent-Def"><a href="#Equivalent-Def" class="headerlink" title="Equivalent Def"></a>Equivalent Def</h3><script type="math/tex; mode=display">
+Pr[M=m | C=c ] = Pr[M=m]</script><script type="math/tex; mode=display">
+Pr[C=c | M=m] = Pr[C=c | M = m^{'}], \ i.e. \\
+Pr[Enc_K(m) = c] = Pr[Enc_K(m^{'}) = c]</script><script type="math/tex; mode=display">
+Pr[C=c | M=m] = Pr[C=c]</script><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/TheFutureIsNow/p/11527610.html">密码学基础(二) - 完美保密 - Hang3 - 博客园 (cnblogs.com)</a></p>
+<p>Perfectly secret and perfectly indistinguishable:</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/21/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%EF%BC%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -329,14 +616,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -485,6 +772,59 @@ $(document).ready(function() {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
