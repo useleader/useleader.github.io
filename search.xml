@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title>淑芬第五周学习日志</title>
+      <link href="/2023/10/04/%E6%B7%91%E8%8A%AC%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+      <url>/2023/10/04/%E6%B7%91%E8%8A%AC%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 数学 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>安全协议第五周学习日志</title>
+      <link href="/2023/10/04/%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+      <url>/2023/10/04/%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 安全协议 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>图像处理与信息隐藏第四周学习日志</title>
       <link href="/2023/10/03/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
       <url>/2023/10/03/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</url>
@@ -74,6 +116,14 @@
         <content type="html"><![CDATA[<p><strong>randomness extractor</strong></p><ul><li>Ext(X,seed)</li></ul><p>One-time pad</p><ul><li>limitations<ul><li>the key is <strong>as long as</strong> the message </li><li>only secure if each key is used to encrypt a <strong>single</strong> message</li><li>Trivially broken by a known-plaintext attack</li></ul></li></ul><p>Optimality of the one-time pad</p><p><strong>Theorem</strong></p><p>if (Gen,Enc,Dec) with message space M is perfectly secret, then $|K| \ge |M|$</p><h2><span id="perfect-indistinguishability">Perfect Indistinguishability</span></h2><p>probability &gt; $2^{-60}$</p><p>Def. 2.6</p><p>$\Pi$ is perfectly indistinguishable if for all attackers $\mathcal{A}$, it holds that </p><script type="math/tex; mode=display">\Pr[PrivK^{eav}_{\mathcal{A},\Pi}] = \frac{1}{2}</script><h2><span id="security-definition-of-encryption">Security Definition of Encryption</span></h2><p>$k \leftarrow Gen(1^\lambda)$表示输入的长度是$\lambda$</p><p>two approaches:</p><ol><li>concrete security<ul><li>$(t,\epsilon)$<ul><li>fail probability $\epsilon$</li><li>run time $t$</li></ul></li><li>$\Pr[PrivK^{eav}_{\mathcal{A},\Pi}] \le 0.5 + \epsilon$</li></ul></li><li>Asymptotic security<ul><li>security parameter</li></ul></li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> 学习 </category>
+          
+          <category> 可证明安全 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -105,7 +155,7 @@
       <link href="/2023/09/25/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
       <url>/2023/09/25/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/</url>
       
-        <content type="html"><![CDATA[<h2><span id="一-网络信息内容获取模型">一、网络信息内容获取模型</span></h2><p><del><em>PPT乱七八糟绷不住了</em></del></p><h3><span id="10-互联网信息类型">1.0 互联网信息类型</span></h3><ul><li>网络媒体形态<ul><li>广播式媒体<ul><li>新闻网站、论坛、博客</li></ul></li><li>交互式媒体<ul><li>社交媒体、搜索引擎等</li></ul></li></ul></li><li>网络媒体信息<ul><li>互联网网站公开发布的信息，用户通常可以基于通用网络浏览器获取</li></ul></li><li>网络通信信息<ul><li>实现与特定点通信或点对点通信所交互的信息</li></ul></li><li>发布信息类型<ul><li>文本</li><li>图像</li><li>音频</li><li>视频</li></ul></li><li>媒体发布方式<ul><li>匿名</li><li>身份认证</li></ul></li><li>网页形态<ul><li>静态</li><li>动态：含“？”或输入参数的URL</li></ul></li><li>信息交互协议</li><li>专业客户端软件</li></ul><h3><span id="11-网络信息内容获取模型">1.1 网络信息内容获取模型</span></h3><p><img src="../images/网络环境下的信息内容获取模型.png" alt="img1"></p><p><strong>信息检索</strong> (Information Search， IS)是信息需求者主动搜寻所需要的信息</p><p><strong>信息推荐</strong></p><p><strong>信息交互</strong></p><p><strong>信息浏览</strong></p><h3><span id="12-网络媒体信息获取原理">1.2 网络媒体信息获取原理</span></h3><p><img src="../images/网络信息获取流程.png" alt="img2"></p><p>网上采集算法（爬虫）</p><h3><span id="13-网络媒体信息获取的分类">1.3 网络媒体信息获取的分类</span></h3><ol><li>全网信息获取</li><li>定点信息获取</li><li>基于主题的信息获取和元搜索<ul><li>元搜索又称多搜索引擎<ul><li>搜索机制分为并行式和串行式</li></ul></li><li>高级检索功能：<ul><li>使用布尔逻辑符检索</li><li>域名过滤</li><li>等等</li></ul></li></ul></li></ol><p>信息获取的技术难点</p><ul><li>网络媒体信息：形态各异、信息类型多样</li><li>DDOS</li></ul><h2><span id="二-搜索引擎技术">二、搜索引擎技术</span></h2><ul><li>网络内容分析</li><li>网页索引</li><li>查询解析</li><li>相关性计算</li></ul><h3><span id="221-网上采集算法">2.2.1 网上采集算法</span></h3><p>爬虫</p><p><img src="../images/爬虫原理.png" alt="img3"></p><h4><span id="分类">分类</span></h4><ul><li>通用网络爬虫</li><li>聚焦网络爬虫</li><li>增量式网络爬虫</li><li>深层网络爬虫</li></ul><h4><span id="原理">原理</span></h4><ol><li>初始URL集合</li><li>信息获取</li><li>信息解析</li><li>信息判重<ol><li>URL判重</li><li>内容摘要判重</li></ol></li></ol><h4><span id="url爬取策略">URL爬取策略</span></h4><ul><li>深度优先遍历策略</li><li>广度优先遍历策略</li><li>反向链接数策略：一个网页被其他网页链接指向的数量</li><li>Partial PageRank策略</li><li>OPIC策略 online page importance computation </li><li>大站优先策略</li></ul><h3><span id="222-排级算法">2.2.2 排级算法</span></h3><h4><span id="pagerank">PageRank</span></h4><p>原理：民主表决</p><p><img src="../images/PR算法.png" alt="img4"></p><script type="math/tex; mode=display">\Pr(t) = (1-d) + d(\sum_{i=1}^{n}{\frac{\Pr(t_i)}{|t_i|}})</script><p>$\Pr(t_i)$入度; $|t_i|$出度 $d$影响因子</p><font color="red">入度为什么是概率呢？</font><p>优点：</p><ol><li>直接高效</li><li>主题集中</li></ol><p>缺点：</p><ol><li>忽略网页内容，干扰挖掘结果</li><li>结果范围窄</li><li>影响因子与网页获取数量缺乏科学性</li></ol><p>用来表现网页等级的一个标准，0-10，值越高越受欢迎</p><h4><span id="hits">HITS</span></h4><p><strong>Hub</strong>页面（枢纽页面）指向高质量链接的网页</p><p><strong>Authority</strong>页面（权威页面）相关领域高质量网页</p><p><strong>枢纽值</strong> Hub Scores = sum of all relevant Authority scores</p><p><strong>权威值</strong> Authority Scores = sum of all relevant Hub scores</p><p>基本思想：<strong>相互增强关系</strong></p><h5><span id="算法"><strong>算法</strong></span></h5><ol><li>构建根集合</li><li>扩展集合Base</li><li>计算扩展集base中所有页面的Hub值和Authority值</li><li>排序，结果输出</li></ol><p><strong>优点</strong></p><ol><li>知识范围扩大</li><li>搜索时部分地考虑了页面内容，挖掘结果科学性大大增强</li></ol><p><strong>缺点</strong></p><ol><li>效率低，实时性差</li><li>主题漂移</li><li>易被操纵者操纵结果</li><li>结构不稳定</li></ol><h3><span id="223-搜索引擎与垃圾消息关系">2.2.3 搜索引擎与垃圾消息关系</span></h3><p>垃圾信息制造手段</p><ul><li>提高排名技术 boosting<ul><li>关键字垃圾 term spamming</li><li>链接垃圾 link spamming</li></ul></li><li>隐藏技术 hiding<ul><li>隐藏Boosting技术</li><li>content hiding、 cloaking、 redirection</li></ul></li></ul><h2><span id="三-数据挖掘技术">三、数据挖掘技术</span></h2><p>数据挖掘：通过从数据库中抽取<strong>隐含的</strong>、<strong>未知的</strong>、<strong>具有潜在使用价值</strong>的过程</p><h3><span id="232-web挖掘技术">2.3.2 Web挖掘技术</span></h3>]]></content>
+        <content type="html"><![CDATA[<h2><span id="一-网络信息内容获取模型">一、网络信息内容获取模型</span></h2><p><del><em>PPT乱七八糟绷不住了</em></del></p><h3><span id="10-互联网信息类型">1.0 互联网信息类型</span></h3><ul><li>网络媒体形态<ul><li>广播式媒体<ul><li>新闻网站、论坛、博客</li></ul></li><li>交互式媒体<ul><li>社交媒体、搜索引擎等</li></ul></li></ul></li><li>网络媒体信息<ul><li>互联网网站公开发布的信息，用户通常可以基于通用网络浏览器获取</li></ul></li><li>网络通信信息<ul><li>实现与特定点通信或点对点通信所交互的信息</li></ul></li><li>发布信息类型<ul><li>文本</li><li>图像</li><li>音频</li><li>视频</li></ul></li><li>媒体发布方式<ul><li>匿名</li><li>身份认证</li></ul></li><li>网页形态<ul><li>静态</li><li>动态：含“？”或输入参数的URL</li></ul></li><li>信息交互协议</li><li>专业客户端软件</li></ul><h3><span id="11-网络信息内容获取模型">1.1 网络信息内容获取模型</span></h3><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/网络环境下的信息内容获取模型.png" alt="img1"></p><p><strong>信息检索</strong> (Information Search， IS)是信息需求者主动搜寻所需要的信息</p><p><strong>信息推荐</strong></p><p><strong>信息交互</strong></p><p><strong>信息浏览</strong></p><h3><span id="12-网络媒体信息获取原理">1.2 网络媒体信息获取原理</span></h3><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/网络信息获取流程.png" alt="img2"></p><p>网上采集算法（爬虫）</p><h3><span id="13-网络媒体信息获取的分类">1.3 网络媒体信息获取的分类</span></h3><ol><li>全网信息获取</li><li>定点信息获取</li><li>基于主题的信息获取和元搜索<ul><li>元搜索又称多搜索引擎<ul><li>搜索机制分为并行式和串行式</li></ul></li><li>高级检索功能：<ul><li>使用布尔逻辑符检索</li><li>域名过滤</li><li>等等</li></ul></li></ul></li></ol><p>信息获取的技术难点</p><ul><li>网络媒体信息：形态各异、信息类型多样</li><li>DDOS</li></ul><h2><span id="二-搜索引擎技术">二、搜索引擎技术</span></h2><ul><li>网络内容分析</li><li>网页索引</li><li>查询解析</li><li>相关性计算</li></ul><h3><span id="221-网上采集算法">2.2.1 网上采集算法</span></h3><p>爬虫</p><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/爬虫原理.png" alt="img3"></p><h4><span id="分类">分类</span></h4><ul><li>通用网络爬虫</li><li>聚焦网络爬虫</li><li>增量式网络爬虫</li><li>深层网络爬虫</li></ul><h4><span id="原理">原理</span></h4><ol><li>初始URL集合</li><li>信息获取</li><li>信息解析</li><li>信息判重<ol><li>URL判重</li><li>内容摘要判重</li></ol></li></ol><h4><span id="url爬取策略">URL爬取策略</span></h4><ul><li>深度优先遍历策略</li><li>广度优先遍历策略</li><li>反向链接数策略：一个网页被其他网页链接指向的数量</li><li>Partial PageRank策略</li><li>OPIC策略 online page importance computation </li><li>大站优先策略</li></ul><h3><span id="222-排级算法">2.2.2 排级算法</span></h3><h4><span id="pagerank">PageRank</span></h4><p>原理：民主表决</p><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/PR算法.png" alt="img4"></p><script type="math/tex; mode=display">\Pr(t) = (1-d) + d(\sum_{i=1}^{n}{\frac{\Pr(t_i)}{|t_i|}})</script><p>$\Pr(t_i)$入度; $|t_i|$出度 $d$影响因子</p><font color="red">入度为什么是概率呢？</font><p>优点：</p><ol><li>直接高效</li><li>主题集中</li></ol><p>缺点：</p><ol><li>忽略网页内容，干扰挖掘结果</li><li>结果范围窄</li><li>影响因子与网页获取数量缺乏科学性</li></ol><p>用来表现网页等级的一个标准，0-10，值越高越受欢迎</p><h4><span id="hits">HITS</span></h4><p><strong>Hub</strong>页面（枢纽页面）指向高质量链接的网页</p><p><strong>Authority</strong>页面（权威页面）相关领域高质量网页</p><p><strong>枢纽值</strong> Hub Scores = sum of all relevant Authority scores</p><p><strong>权威值</strong> Authority Scores = sum of all relevant Hub scores</p><p>基本思想：<strong>相互增强关系</strong></p><h5><span id="算法"><strong>算法</strong></span></h5><ol><li>构建根集合</li><li>扩展集合Base</li><li>计算扩展集base中所有页面的Hub值和Authority值</li><li>排序，结果输出</li></ol><p><strong>优点</strong></p><ol><li>知识范围扩大</li><li>搜索时部分地考虑了页面内容，挖掘结果科学性大大增强</li></ol><p><strong>缺点</strong></p><ol><li>效率低，实时性差</li><li>主题漂移</li><li>易被操纵者操纵结果</li><li>结构不稳定</li></ol><h3><span id="223-搜索引擎与垃圾消息关系">2.2.3 搜索引擎与垃圾消息关系</span></h3><p>垃圾信息制造手段</p><ul><li>提高排名技术 boosting<ul><li>关键字垃圾 term spamming</li><li>链接垃圾 link spamming</li></ul></li><li>隐藏技术 hiding<ul><li>隐藏Boosting技术</li><li>content hiding、 cloaking、 redirection</li></ul></li></ul><h2><span id="三-数据挖掘技术">三、数据挖掘技术</span></h2><p>数据挖掘：通过从数据库中抽取<strong>隐含的</strong>、<strong>未知的</strong>、<strong>具有潜在使用价值</strong>的过程</p><h3><span id="232-web挖掘技术">2.3.2 Web挖掘技术</span></h3><p>从大量<strong>非结构化、异构</strong>的Web信息资源中发现兴趣性的知识，包括概念、模式、规则、规律、约束及可视化等形式的非平凡过程。</p><p>挖掘过程</p><ol><li>资源发现</li><li>信息选择与预处理</li><li>综合过程</li><li>分析过程</li></ol><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231004222043807.png" alt="image-20231004222043807"></p><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231004222027301.png" alt="image-20231004222027301"></p><h3><span id="233-web文本挖掘技术">2.3.3 Web文本挖掘技术</span></h3><p>从Web文档和Web活动中发现、抽取感兴趣的、潜在有用的模式和隐藏的信息的过程</p><p>定义：从大量文本的集合C中发现隐含的模式p。如果将C当作输入，p当作输出，那么Web文本挖掘的过程就是从输入到输出的一个映射。</p><h2><span id="四-信息推荐技术">四、信息推荐技术</span></h2><p>信息推荐与信息检索的区别：</p><p>关注点上：信息检索侧重检索结果，信息推荐侧重服务对象</p><p>主动性上：信息检索侧重用户主导，信息推荐侧重系统主导</p><h3><span id="241-信息推荐概念和形式化定义">2.4.1 信息推荐概念和形式化定义</span></h3><p>非形式化定义：利用电子商务网站向客户提供商品信息和建议，帮助用户决定应购买什么产品，模拟销售人员帮助客户完成购买过程。</p><p>信息推荐有三个组成要素：<strong>推荐候选对象、用户、推荐方法</strong></p><p>形式化定义：</p><p>设C是所有用户的集合，S是所有可以推荐给用户的商品对象的集合，效用函数u()用以计算对象s对用户c的推荐度和产品的可得性，即：</p><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231004230008763.png" alt="image-20231004230008763"></p><p>R是一定范围内的全序的非负实数，信息推荐要研究的问题就是找到推荐度R最大的那些对象$s^*$，即：</p><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231004230108996.png" alt="image-20231004230108996"></p><blockquote><p>arg   是变元（即自变量argument）的英文缩写。<br>arg min 就是使后面这个式子达到最小值时的变量的取值<br>arg max 就是使后面这个式子达到最大值时的变量的取值</p></blockquote><h3><span id="242-信息推荐算法">2.4.2 信息推荐算法</span></h3><p><strong>基于内容推荐</strong></p><p><strong>根据用户已选择的对象</strong>，推荐其他类似属性的对象作为推荐</p><ul><li><strong>对象内容特征</strong> Content(s)：以对象的文字描述为主</li><li><strong>用户的资料模型</strong> ContentBasedProfile(c)：取决于机器学习方法</li><li>u(c,s) = score(ContentBasedProfile(c), Content(s))</li></ul><p><strong>协同过滤推荐</strong></p><p>推荐<strong>相似用户</strong>所选择的对象</p><ul><li>找到与当前用户相似的其他用户</li><li>计算对象s对于用户的效用值</li><li>利用效用值对所有s进行排序或加权操作，找到$s^*$</li></ul><p><strong>启发式方式</strong>：使用与新用户c相似的用户c’对一个对象的评价来预测效用</p><p>基于模型的方法：利用用户c对众多对象的评分来学习一个c的模型，然后使用概率方法对新的对象s的推荐效用进行预测</p><p>组合推荐：前/中/后融合组合推荐</p><p>后融合：结果层次上的融合</p><p>中融合：以一种推荐方法做框架，融合另一种推荐方法</p><p>前融合：直接融合</p><h2><span id="五-信息还原技术">五、信息还原技术</span></h2><h3><span id="251-电脑还原技术">2.5.1 电脑还原技术</span></h3><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231004231537426.png" alt="image-20231004231537426"></p><h3><span id="252-网页还原技术">2.5.2 网页还原技术</span></h3><ul><li>数据包捕获技术——网卡接收方式为混杂方式</li><li>协议还原技术<ul><li>数据包捕获、重组、存储、分发</li></ul></li><li>网页内容还原技术</li></ul><h3><span id="253-多媒体信息还原技术">2.5.3 多媒体信息还原技术</span></h3><ul><li>基于解码器</li><li>基于封装</li><li>基于远程线程注入</li></ul>]]></content>
       
       
       <categories>
