@@ -262,7 +262,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Principles-of-Modern-Crypto"><a href="#Principles-of-Modern-Crypto" class="headerlink" title="Principles of Modern Crypto"></a>Principles of Modern Crypto</h2><h3 id="A-Formal-definitions"><a href="#A-Formal-definitions" class="headerlink" title="A. Formal definitions"></a>A. Formal definitions</h3><blockquote>
+        <h2><span id="principles-of-modern-crypto">Principles of Modern Crypto</span></h2><h3><span id="a-formal-definitions">A. Formal definitions</span></h3><blockquote>
 <p>Precise, mathematical model and definition of what security means</p>
 </blockquote>
 <p>Definitions are essential for the design, analysis, and usage of crypto.</p>
@@ -271,7 +271,7 @@
 <li>Analysis: enable meaningful analysis, evaluation, and comparison of schemes</li>
 <li>Usage: understand the security guarantees, modularity, substitute.</li>
 </ul>
-<h3 id="B-Assumptions"><a href="#B-Assumptions" class="headerlink" title="B. Assumptions"></a>B. Assumptions</h3><blockquote>
+<h3><span id="b-assumptions">B. Assumptions</span></h3><blockquote>
 <p>Clearly stated and unambiguous</p>
 </blockquote>
 <p><strong>Computational assumptions</strong></p>
@@ -281,10 +281,10 @@
 <li>meaningful comparison</li>
 <li>practical implications</li>
 </ul>
-<h3 id="C-Proof-of-security"><a href="#C-Proof-of-security" class="headerlink" title="C. Proof of security"></a>C. Proof of security</h3><blockquote>
+<h3><span id="c-proof-of-security">C. Proof of security</span></h3><blockquote>
 <p>Move away from design-break-patch</p>
 </blockquote>
-<h2 id="Defining-Secure-Encryption"><a href="#Defining-Secure-Encryption" class="headerlink" title="Defining Secure Encryption"></a>Defining Secure Encryption</h2><p>Crypto definitions (generally)</p>
+<h2><span id="defining-secure-encryption">Defining Secure Encryption</span></h2><p>Crypto definitions (generally)</p>
 <ul>
 <li>Security guarantee/goal</li>
 <li>Threat model<ul>
@@ -295,22 +295,22 @@
 </ul>
 </li>
 </ul>
-<h2 id="Perfect-Secrecy"><a href="#Perfect-Secrecy" class="headerlink" title="Perfect Secrecy"></a>Perfect Secrecy</h2><h3 id="Informal-def"><a href="#Informal-def" class="headerlink" title="Informal def."></a>Informal def.</h3><p>Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information about the plaintext.</p>
-<h3 id="Basic-concepts"><a href="#Basic-concepts" class="headerlink" title="Basic concepts"></a>Basic concepts</h3><ul>
+<h2><span id="perfect-secrecy">Perfect Secrecy</span></h2><h3><span id="informal-def">Informal def.</span></h3><p>Regardless of any prior information the attacker has about the plaintext, the ciphertext should leak no additional information about the plaintext.</p>
+<h3><span id="basic-concepts">Basic concepts</span></h3><ul>
 <li>Random variable (r.v.)</li>
 <li>Event</li>
 <li>Conditional probability</li>
 <li>Law of total probability</li>
 <li>$\mathcal{M}$ is plaintext space, $\mathcal{K}$ is key space, $\mathcal{C}$ is ciphertext space</li>
 </ul>
-<h3 id="Probability-distributions"><a href="#Probability-distributions" class="headerlink" title="Probability distributions"></a>Probability distributions</h3><p>characterize the probability distributions over key space</p>
+<h3><span id="probability-distributions">Probability distributions</span></h3><p>characterize the probability distributions over key space</p>
 <ul>
 <li>r.v. M and K are independent</li>
 </ul>
 <script type="math/tex; mode=display">
 \ Encryption \ scheme \ with  \ \mathcal{M}  \ and \  \mathcal{C}, if \ for \ every \ distribution \ over \mathcal{M}, \\
 every \ m \in \mathcal{M}, and \ every \ c \in \mathcal{C}  \ with \  Pr[C=c] > 0, \  it \ holds \ that
-\\ Pr[M = m | C = c] = Pr[M = m]</script><h3 id="Equivalent-Def"><a href="#Equivalent-Def" class="headerlink" title="Equivalent Def"></a>Equivalent Def</h3><script type="math/tex; mode=display">
+\\ Pr[M = m | C = c] = Pr[M = m]</script><h3><span id="equivalent-def">Equivalent Def</span></h3><script type="math/tex; mode=display">
 Pr[M=m | C=c ] = Pr[M=m]</script><script type="math/tex; mode=display">
 Pr[C=c | M=m] = Pr[C=c | M = m^{'}], \ i.e. \\
 Pr[Enc_K(m) = c] = Pr[Enc_K(m^{'}) = c]</script><script type="math/tex; mode=display">
@@ -443,7 +443,7 @@ Pr[C=c | M=m] = Pr[C=c]</script><p><a target="_blank" rel="noopener" href="https
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Principles-of-Modern-Crypto"><span class="nav-number">1.</span> <span class="nav-text">Principles of Modern Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Formal-definitions"><span class="nav-number">1.1.</span> <span class="nav-text">A. Formal definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Assumptions"><span class="nav-number">1.2.</span> <span class="nav-text">B. Assumptions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Proof-of-security"><span class="nav-number">1.3.</span> <span class="nav-text">C. Proof of security</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defining-Secure-Encryption"><span class="nav-number">2.</span> <span class="nav-text">Defining Secure Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perfect-Secrecy"><span class="nav-number">3.</span> <span class="nav-text">Perfect Secrecy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Informal-def"><span class="nav-number">3.1.</span> <span class="nav-text">Informal def.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-concepts"><span class="nav-number">3.2.</span> <span class="nav-text">Basic concepts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Probability-distributions"><span class="nav-number">3.3.</span> <span class="nav-text">Probability distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Equivalent-Def"><span class="nav-number">3.4.</span> <span class="nav-text">Equivalent Def</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Principles of Modern Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">A. Formal definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">B. Assumptions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">C. Proof of security</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Defining Secure Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Perfect Secrecy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">Informal def.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">Basic concepts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">Probability distributions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">Equivalent Def</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
