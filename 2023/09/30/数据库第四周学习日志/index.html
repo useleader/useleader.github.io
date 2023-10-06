@@ -47,8 +47,13 @@
 <meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112643180.png">
 <meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112723318.png">
 <meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112845740.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006152506295.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006153143548.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006153512116.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006154328941.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006154135461.png">
 <meta property="article:published_time" content="2023-09-30T14:31:06.000Z">
-<meta property="article:modified_time" content="2023-10-06T06:39:49.349Z">
+<meta property="article:modified_time" content="2023-10-06T07:46:55.146Z">
 <meta property="article:author" content="Yan Zhimin">
 <meta property="article:tag" content="学校课程">
 <meta name="twitter:card" content="summary">
@@ -246,7 +251,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-06 14:39:49" itemprop="dateModified" datetime="2023-10-06T14:39:49+08:00">2023-10-06</time>
+                <time title="修改时间：2023-10-06 15:46:55" itemprop="dateModified" datetime="2023-10-06T15:46:55+08:00">2023-10-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -609,8 +614,13 @@
 </ul>
 <p>两种常用连接运算</p>
 <ul>
-<li>等值连接 $\theta$ 为 <code>=</code></li>
-<li>自然连接 <ul>
+<li><p>等值连接 $\theta$ 为 <code>=</code></p>
+<ul>
+<li>两个关系中比较的分量可以是不同的属性组</li>
+</ul>
+</li>
+<li><p>自然连接 </p>
+<ul>
 <li>两个关系中进行比较的分量必须是相同的属性组</li>
 <li>在结果中把重复的属性列去掉</li>
 <li>含义<ul>
@@ -618,10 +628,54 @@
 <li>U是R和S的全体属性集合</li>
 </ul>
 </li>
+<li>同时从行与列的角度进行</li>
+<li>操作步骤<ol>
+<li>对两个表进行广义笛卡尔积</li>
+<li>从广义笛卡尔积中选取在相同列上值相同的元组</li>
+<li>去掉重复的列</li>
+<li>根据需求做投影操作，得到最终结果</li>
+</ol>
+</li>
 </ul>
 </li>
 </ul>
-<h4><span id="4-除运算">4 除运算</span></h4><h2><span id="25-关系演算">2.5* 关系演算</span></h2>
+<p><strong>悬浮元组</strong></p>
+<p>两个关系R和S在做自然连接时，关系R中某些元组有可能在S中不存在公共属性上值相等的元组，从而造成R中这些元组在操作时被舍弃了，被舍弃的元组称为悬浮元组。</p>
+<p><strong>外连接</strong></p>
+<p>如果把悬浮元组也保存在结果关系中，其他属性上填空值，就叫外连接</p>
+<p>左外连接：</p>
+<ul>
+<li>只保留左边关系R的悬浮元组</li>
+<li>以左边关系R为基准，右边关系S不匹配的元组为NULL</li>
+</ul>
+<p>右外连接相反。</p>
+<p><code>外连接 = 自然连接 + 失配的元组</code></p>
+<p>外连接形式：</p>
+<ul>
+<li>左外连接 = 自然连接 + 左侧表失配元组</li>
+<li>右外连接 = 自然连接 + 右侧表失配元组</li>
+<li>全外连接 = 自然连接 + 两侧表失配元组</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006152506295.png" alt="image-20231006152506295"></li>
+</ul>
+<h4><span id="4-除运算">4 除运算</span></h4><p>给定关系R(X, Y) S(Y, Z)，其中 X，Y，Z为属性组</p>
+<p>R中的Y与S中的Y可以有不同的属性名，但是必须出自相同的域集。一般的有$\pi_y(S) \subseteq \pi_y(R)$成立，否则结果为空集。</p>
+<p>R与S的除运算得到了一个新的关系P(X)，P时R中满足下列条件的元组在X上的投影：</p>
+<ul>
+<li>元组在X上分量值x的象集$Y_x$包含S在Y上投影的集合，记作：<img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006153143548.png" alt="image-20231006153143548"></li>
+</ul>
+<p>除操作是从行和列的角度进行的</p>
+<p><strong>数学公式</strong></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006153512116.png" alt="image-20231006153512116"></p>
+<p>一般的有$\pi_x(S) \subseteq \pi_y(R)$成立</p>
+<p>构造$S^{‘} = \pi_x(S) \times \pi_y(R)$</p>
+<ul>
+<li>用例子理解一下</li>
+<li><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006154328941.png" alt="image-20231006154328941"></p>
+</li>
+<li><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006154135461.png" alt="image-20231006154135461"></p>
+</li>
+</ul>
+<h2><span id="25-关系演算">2.5* 关系演算</span></h2>
     </div>
 
     
@@ -774,7 +828,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
