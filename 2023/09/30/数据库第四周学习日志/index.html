@@ -31,9 +31,26 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005214516139.png">
 <meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006090213940.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006093514629.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006101847955.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006105723229.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006105744866.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006110424830.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006110608171.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006110737469.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111238808.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111315271.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111325605.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111605603.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111853380.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112403358.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112643180.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112723318.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112845740.png">
 <meta property="article:published_time" content="2023-09-30T14:31:06.000Z">
-<meta property="article:modified_time" content="2023-10-06T01:20:48.977Z">
+<meta property="article:modified_time" content="2023-10-06T06:39:49.349Z">
 <meta property="article:author" content="Yan Zhimin">
+<meta property="article:tag" content="学校课程">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005214516139.png">
 
@@ -229,7 +246,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-06 09:20:48" itemprop="dateModified" datetime="2023-10-06T09:20:48+08:00">2023-10-06</time>
+                <time title="修改时间：2023-10-06 14:39:49" itemprop="dateModified" datetime="2023-10-06T14:39:49+08:00">2023-10-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -266,7 +283,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>[TOC]</p>
+        <!--ttoc -->
 <h1><span id="第二章-关系数据库">第二章 关系数据库</span></h1><h2><span id="21-关系数据结构及形式化定义">2.1 关系数据结构及形式化定义</span></h2><h3><span id="211-关系">2.1.1 关系</span></h3><p>单一的数据结构——关系</p>
 <ul>
 <li><p>现实世界的<strong>实体以及实体间的各种联系</strong>均用关系来表示</p>
@@ -369,7 +386,242 @@
 <li>数据冗余</li>
 <li>自底向上遍历可能会产生多个父节点，导致具体实例的父子关系难以区分</li>
 </ul>
-<h3><span id="212-关系模式">2.1.2 关系模式</span></h3><h3><span id="213-关系数据库">2.1.3 关系数据库</span></h3><h3><span id="214-关系模型的存储结构">2.1.4 关系模型的存储结构</span></h3><h2><span id="22-关系操作">2.2 关系操作</span></h2><h2><span id="23-关系的完整性">2.3 关系的完整性</span></h2><h2><span id="24-关系代数">2.4 关系代数</span></h2><h2><span id="25-关系演算">2.5* 关系演算</span></h2>
+<p>主键外键区别</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006093514629.png" alt="image-20231006093514629"></p>
+<h5><span id="7-三类关系">7 三类关系</span></h5><ol>
+<li>基本关系 （基本表或基表）<ul>
+<li>实际存在的表，是实际存储数据的逻辑表示</li>
+</ul>
+</li>
+<li>查询表<ul>
+<li>查询结果对应的表</li>
+</ul>
+</li>
+<li>视图表<ul>
+<li>由基本表或其他视图导出的表，虚表，不对应实际存储的数据</li>
+</ul>
+</li>
+</ol>
+<h5><span id="8-基本关系的性质">8 基本关系的性质</span></h5><ol>
+<li>列是同质的：列中分量来自同一域</li>
+<li>不同的列可出自同一个域</li>
+<li>列的顺序无所谓，列的次序可以任意交换</li>
+<li>任意两个元组的候选码不能相同，元组相同指的是两个元组的每个分量都相同</li>
+<li>行的顺序无所谓，行的次序可以任意交换</li>
+<li>分量必须取原子值</li>
+</ol>
+<h3><span id="212-关系模式">2.1.2 关系模式</span></h3><h4><span id="1-什么是关系模式">1 什么是关系模式</span></h4><ul>
+<li>关系模式 Relation Schema 是型 Type，是结构</li>
+<li>关系是值 （二维表</li>
+<li>同一关系模式下，可以有很多关系</li>
+<li>关系模式是关系的结构，关系是关系模式在某一时刻的数据</li>
+<li>关系模式是稳定的，关系是随时间变化的</li>
+<li>关系模式是对关系的描述<ul>
+<li>元组集合的结构<ul>
+<li>属性构成</li>
+<li>属性来自的域</li>
+<li>属性与域之间的映像关系</li>
+</ul>
+</li>
+<li>完整性约束条件</li>
+</ul>
+</li>
+</ul>
+<h4><span id="2-定义关系模式">2 定义关系模式</span></h4><p>关系模式可以形式化地表示为：$R(U,D,DOM,F)$</p>
+<ul>
+<li>R - 关系名</li>
+<li>U - 组成该关系的属性名集合</li>
+<li>D - U中元素所来自的域</li>
+<li>DOM - 属性向域的映像集合</li>
+<li>F - 属性间数据的依赖关系的集合</li>
+</ul>
+<p>通常可以简记为 $R(U) \ or \ R(A_1,A_2, \cdots, A_n)$ (A是属性名)</p>
+<h4><span id="3-关系模式与关系">3 关系模式与关系</span></h4><p>关系模式</p>
+<ul>
+<li>对关系结构的描述</li>
+<li>静态的、稳定的</li>
+</ul>
+<p>关系</p>
+<ul>
+<li>关系模式在某一时刻的状态或内容</li>
+<li>动态的、随时间不断变化的</li>
+</ul>
+<p>关系模式和关系往往统称为关系</p>
+<h3><span id="213-关系数据库">2.1.3 关系数据库</span></h3><p>在一个给定应用领域中， 所有关系的集合构成一个关系数据库</p>
+<p>关系数据库的型与值：</p>
+<ul>
+<li>型：关系数据库模式，是对关系数据库结构的描述</li>
+<li>值：关系模式在某一时刻对应的关系的集合，通常称为关系数据库RDB</li>
+</ul>
+<h3><span id="214-关系模型的存储结构">2.1.4 关系模型的存储结构</span></h3><p>关系数据库的物理组织</p>
+<ul>
+<li>有的关系数据库管理系统一个表对应一个操作系统文件，将物理数据组织交给操作系统完成</li>
+<li>有的关系数据库管理系统从操作系统那里申请若干个大的文件，自己划分文件空间，组织表、索引等存储结构，并进行存储管理</li>
+</ul>
+<h2><span id="22-关系操作">2.2 关系操作</span></h2><h3><span id="221-基本的关系操作">2.2.1 基本的关系操作</span></h3><ul>
+<li>查询操作 8种 5种基本<ul>
+<li>选择、投影、链接、除、并、差、交、笛卡尔积</li>
+<li>选择、投影、并、差、笛卡尔积 5种基本操作</li>
+</ul>
+</li>
+<li>数据更新：插入、删除、修改</li>
+</ul>
+<p>关系操作的特点</p>
+<ul>
+<li>集合操作方式：操作的对象和结果都是集合，一次一集合的方式</li>
+</ul>
+<h3><span id="222-关系数据库语言的分类">2.2.2 关系数据库语言的分类</span></h3><p>关系代数语言</p>
+<ul>
+<li>用对关系的运算来表达查询要求，对关系代数表达式求值</li>
+<li>ISBL  Information System Base Language</li>
+</ul>
+<p>关系演算语言：用谓词表达查询要求（选学</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006101847955.png" alt="image-20231006101847955"></p>
+<p>具有关系代数和关系演算双重特点的语言：SQL</p>
+<h2><span id="23-关系的完整性">2.3 关系的完整性</span></h2><p>关系的三类完整性约束：</p>
+<ul>
+<li>实体完整性和参照完整性<ul>
+<li>关系模型必须满足的完整性约束条件，关系的两个不变性，应该由关系系统自动支持</li>
+</ul>
+</li>
+<li>用户定义的完整性<ul>
+<li>具体领域中的语义约束</li>
+</ul>
+</li>
+</ul>
+<h3><span id="231-实体完整性">2.3.1 实体完整性</span></h3><h4><span id="规则21-实体完整性规则-entity-integrity">规则2.1 实体完整性规则 Entity Integrity</span></h4><ul>
+<li>若属性A是基本关系R的主属性，则A不能取空值</li>
+<li>NULL：不知道、不存在、无意义的值<ul>
+<li>有空值的时候需要特殊处理</li>
+<li>不能参与算数、比较、逻辑运算</li>
+</ul>
+</li>
+</ul>
+<p>规则说明：</p>
+<ul>
+<li>实体完整性规则是针对基本关系而言的。一个基本表通常对应现实世界的一个实体集。</li>
+<li>现实世界中的实体是可区分的，具有某种唯一性标识</li>
+<li>关系模型中以主键作为唯一性标识</li>
+<li>诸属性不能取空值</li>
+</ul>
+<h3><span id="232-参照完整性">2.3.2 参照完整性</span></h3><h4><span id="1-关系间的引用">1 关系间的引用</span></h4><h4><span id="2-外键码">2 外键/码</span></h4><p>设F是基本关系R的一个或一组属性，但不是关系R的码。如果F与基本关系S的主码$K_s$相对应,则称F是R的外码</p>
+<p>基本关系R称为参照关系</p>
+<p>基本关系S称为被参照关系或目标关系</p>
+<p>关系R和S 不一定是不同的关系</p>
+<p>目标关系S的主码和参照关系的外码必须定义在同一个域上</p>
+<p>外码不一定要与对应的主码同名</p>
+<h4><span id="3-参照完整性规则">3 参照完整性规则</span></h4><h5><span id="规则22-参照完整性规则">规则2.2 参照完整性规则</span></h5><p>若属性F是基本关系R的外码，F与基本关系S的主码$K_s$相对应,则对于R中的每个元组在F上的值必须为：</p>
+<ul>
+<li>或者等于S中某个元组的主码值$K_s$</li>
+<li>或者取空值</li>
+</ul>
+<p>关系数据库不支持多对多联系——数据冗余少</p>
+<h3><span id="233-用户定义的完整性">2.3.3 用户定义的完整性</span></h3><p>针对某一具体关系数据库的约束条件</p>
+<ul>
+<li>数据必须满足的语义要求</li>
+</ul>
+<p>关系模型应提供定义和检验这类完整性的机制</p>
+<h2><span id="24-关系代数">2.4 关系代数</span></h2><p>关系代数是一种抽象的查询语言，它用关系运算表达查询</p>
+<p>关系代数</p>
+<ul>
+<li>对象、结果均为关系</li>
+<li>运算符有两类：集合运算符、专门的关系运算符</li>
+</ul>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006105723229.png" alt="image-20231006105723229"></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006105744866.png" alt="image-20231006105744866"></p>
+<h3><span id="241-传统的集合运算">2.4.1 传统的集合运算</span></h3><h4><span id="并-union">并 Union</span></h4><ul>
+<li>R和S<ul>
+<li>具有相同的目n即两个关系都有n个是个也许不该</li>
+<li>相应的属性取自同一个域</li>
+</ul>
+</li>
+<li>R $\cup$ S<ul>
+<li>仍为n目关系，由属于R或属于S的元组组成</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006110424830.png" alt="image-20231006110424830"></li>
+<li>结果不允许重复</li>
+</ul>
+</li>
+</ul>
+<h4><span id="差-difference">差 Difference</span></h4><ul>
+<li>R and S<ul>
+<li>具有相同的目n</li>
+<li>相应的属性取自同一个域</li>
+</ul>
+</li>
+<li>R - S<ul>
+<li>仍为n目关系，由属于R但不属于S的元组组成</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006110608171.png" alt="image-20231006110608171"></li>
+</ul>
+</li>
+<li>语义：是…但不含…</li>
+</ul>
+<h4><span id="交-intersection">交 Intersection</span></h4><ul>
+<li>R and S<ul>
+<li>具有相同的目n</li>
+<li>相应的属性取自同一个域</li>
+</ul>
+</li>
+<li>R $\cap$ S<ul>
+<li>仍为n目关系，由属于R且属于S的元组组成</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006110737469.png" alt="image-20231006110737469"></li>
+</ul>
+</li>
+</ul>
+<h4><span id="笛卡尔积-cartesian-product">笛卡尔积 Cartesian Product</span></h4><p>元素是元组</p>
+<ul>
+<li>R：n目关系，$k_1$个元组</li>
+<li>S：m目关系，$k_2$个元组</li>
+<li>R $\times$ S<ul>
+<li>列： (n+m)列</li>
+<li>行：$k_1 \times k_2$个元组</li>
+</ul>
+</li>
+</ul>
+<h3><span id="242-专门的关系运算">2.4.2 专门的关系运算</span></h3><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111238808.png" alt="image-20231006111238808"></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111315271.png" alt="image-20231006111315271"></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111325605.png" alt="image-20231006111325605"></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111605603.png" alt="image-20231006111605603"></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006111853380.png" alt="image-20231006111853380"></p>
+<h4><span id="1-选择">1 选择</span></h4><p>又称为限制或过滤</p>
+<p>含义</p>
+<ul>
+<li>在关系R中选择满足给定条件的诸元组</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112403358.png" alt="image-20231006112403358"></li>
+<li>F ：选择条件，逻辑表达式，取值为true or false<ul>
+<li>基本形式为 X1 $\theta$ Y1</li>
+<li>$\theta$ 为比较运算符，可以为$\le ,\ge,&gt; ,&lt; ,= or &lt;&gt;$</li>
+</ul>
+</li>
+</ul>
+<p>从行的角度的运算</p>
+<p>优先次序：<img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112643180.png" alt="image-20231006112643180"></p>
+<h4><span id="2-投影">2 投影</span></h4><p>从R中选择出若干属性列组成新关系</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112723318.png" alt="image-20231006112723318"></p>
+<p>列的角度的运算</p>
+<p>投影之后不仅取消了原关系中的某些列，还可能取消某些元组</p>
+<h4><span id="3-连接">3 连接</span></h4><p>也成为$\theta$连接</p>
+<ul>
+<li>只是对单个关系进行操作，实际应用中涉及多个表的操作</li>
+</ul>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231006112845740.png" alt="image-20231006112845740"></p>
+<ul>
+<li>A和B：分别为R和S上度数相等界可比的属性组</li>
+</ul>
+<p>两种常用连接运算</p>
+<ul>
+<li>等值连接 $\theta$ 为 <code>=</code></li>
+<li>自然连接 <ul>
+<li>两个关系中进行比较的分量必须是相同的属性组</li>
+<li>在结果中把重复的属性列去掉</li>
+<li>含义<ul>
+<li>R和S具有相同的属性组</li>
+<li>U是R和S的全体属性集合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4><span id="4-除运算">4 除运算</span></h4><h2><span id="25-关系演算">2.5* 关系演算</span></h2>
     </div>
 
     
@@ -409,6 +661,9 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/" rel="tag"># 学校课程</a>
+          </div>
 
         
 
@@ -496,7 +751,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">第二章 关系数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 关系数据结构及形式化定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.1.1 关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1. 域 Domain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2. 笛卡尔积 Cartesian Product</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">3. 关系 Relation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text">1 关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.2.</span> <span class="nav-text">2 元组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.3.</span> <span class="nav-text">3 单元关系与二元关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.4.</span> <span class="nav-text">4 关系的表示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.5.</span> <span class="nav-text">5 属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.6.</span> <span class="nav-text">6 码&#x2F;键</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.1.2 关系模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.1.3 关系数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.4.</span> <span class="nav-text">2.1.4 关系模型的存储结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 关系操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">2.3 关系的完整性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">2.4 关系代数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">2.5* 关系演算</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">第二章 关系数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 关系数据结构及形式化定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.1.1 关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1. 域 Domain</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2. 笛卡尔积 Cartesian Product</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">3. 关系 Relation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text">1 关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.2.</span> <span class="nav-text">2 元组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.3.</span> <span class="nav-text">3 单元关系与二元关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.4.</span> <span class="nav-text">4 关系的表示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.5.</span> <span class="nav-text">5 属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.6.</span> <span class="nav-text">6 码&#x2F;键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.7.</span> <span class="nav-text">7 三类关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.1.1.3.8.</span> <span class="nav-text">8 基本关系的性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.1.2 关系模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1 什么是关系模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2 定义关系模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3 关系模式与关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.1.3 关系数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.4.</span> <span class="nav-text">2.1.4 关系模型的存储结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 关系操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.2.1 基本的关系操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2.2 关系数据库语言的分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">2.3 关系的完整性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.3.1 实体完整性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">规则2.1 实体完整性规则 Entity Integrity</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.3.2 参照完整性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">1 关系间的引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">2 外键&#x2F;码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">3 参照完整性规则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.3.2.3.1.</span> <span class="nav-text">规则2.2 参照完整性规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.3.</span> <span class="nav-text">2.3.3 用户定义的完整性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">2.4 关系代数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.1.</span> <span class="nav-text">2.4.1 传统的集合运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">并 Union</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">差 Difference</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">交 Intersection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">笛卡尔积 Cartesian Product</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.4.2 专门的关系运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">1 选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">2 投影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">3 连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">4 除运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">2.5* 关系演算</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -525,7 +780,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -668,6 +923,59 @@ $(document).ready(function() {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
@@ -687,5 +995,4 @@ NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
 });
 </script>
 
-</body>
-</html>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
