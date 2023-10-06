@@ -22,20 +22,27 @@
     var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Q1：hexo next 主题下博客中数学公式无法正常渲染参考教程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;yexiaohhjk&#x2F;article&#x2F;details&#x2F;82526604 Q2：hexo 下的分类和表签无法显示，怎么解决？参考教程：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;29017171 Q3： hexo 添加后台管理功能参考教程：https:&#x2F;&#x2F;blog.csd">
+  <meta name="description" content="文本挖掘——文本分类算法1 评价指标文本自动分类的定义：在给定的分类体系下，根据文本的内容自动地确定文本关联的类别。 从数学角度来看，文本分类是一个映射的过程，它将未标明类别的文本映射到已有的类别中，该映射可以是一一、一对多的映射 文本分类基本步骤：  评价指标  准确率 P precision 正确分类样本所占的比例   召回率 R recall 分母是所有真正的正类测试样本    F-Meas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="weblog">
-<meta property="og:url" content="http://www.warmfire.com/2023/09/22/weblog/index.html">
+<meta property="og:title" content="网络内容安全第五周学习日志PLUS">
+<meta property="og:url" content="http://www.warmfire.com/2023/10/05/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97PLUS/index.html">
 <meta property="og:site_name" content="WarmFire">
-<meta property="og:description" content="Q1：hexo next 主题下博客中数学公式无法正常渲染参考教程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;yexiaohhjk&#x2F;article&#x2F;details&#x2F;82526604 Q2：hexo 下的分类和表签无法显示，怎么解决？参考教程：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;29017171 Q3： hexo 添加后台管理功能参考教程：https:&#x2F;&#x2F;blog.csd">
+<meta property="og:description" content="文本挖掘——文本分类算法1 评价指标文本自动分类的定义：在给定的分类体系下，根据文本的内容自动地确定文本关联的类别。 从数学角度来看，文本分类是一个映射的过程，它将未标明类别的文本映射到已有的类别中，该映射可以是一一、一对多的映射 文本分类基本步骤：  评价指标  准确率 P precision 正确分类样本所占的比例   召回率 R recall 分母是所有真正的正类测试样本    F-Meas">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-22T00:55:00.000Z">
-<meta property="article:modified_time" content="2023-10-06T01:23:32.867Z">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005135232112.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140046034.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140842378.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140913540.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140933313.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140957431.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005211538258.png">
+<meta property="article:published_time" content="2023-10-05T04:37:02.000Z">
+<meta property="article:modified_time" content="2023-10-05T13:15:56.939Z">
 <meta property="article:author" content="Yan Zhimin">
-<meta property="article:tag" content="博客开发">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005135232112.png">
 
-<link rel="canonical" href="http://www.warmfire.com/2023/09/22/weblog/">
+<link rel="canonical" href="http://www.warmfire.com/2023/10/05/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97PLUS/">
 
 
 <script id="page-configurations">
@@ -48,7 +55,7 @@
   };
 </script>
 
-  <title>weblog | WarmFire</title>
+  <title>网络内容安全第五周学习日志PLUS | WarmFire</title>
   
 
 
@@ -197,7 +204,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/22/weblog/">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/10/05/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97PLUS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -210,7 +217,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          weblog
+          网络内容安全第五周学习日志PLUS
         </h1>
 
         <div class="post-meta">
@@ -219,16 +226,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-09-22 08:55:00" itemprop="dateCreated datePublished" datetime="2023-09-22T08:55:00+08:00">2023-09-22</time>
+              <time title="创建时间：2023-10-05 12:37:02 / 修改时间：21:15:56" itemprop="dateCreated datePublished" datetime="2023-10-05T12:37:02+08:00">2023-10-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-06 09:23:32" itemprop="dateModified" datetime="2023-10-06T09:23:32+08:00">2023-10-06</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络内容安全</span></a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -240,10 +254,6 @@
             </span>
 
           
-            <i class="fa fa-thumb-tack"></i>
-            <font color=7D26CD>置顶</font>
-            <span class="post-meta-divider">|</span>
-          
           
         </div>
       </header>
@@ -254,12 +264,65 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2><span id="q1hexo-next-主题下博客中数学公式无法正常渲染">Q1：hexo next 主题下博客中数学公式无法正常渲染</span></h2><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yexiaohhjk/article/details/82526604">https://blog.csdn.net/yexiaohhjk/article/details/82526604</a></p>
-<h2><span id="q2hexo-下的分类和表签无法显示怎么解决">Q2：hexo 下的分类和表签无法显示，怎么解决？</span></h2><p>参考教程：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29017171">https://www.zhihu.com/question/29017171</a></p>
-<h2><span id="q3-hexo-添加后台管理功能">Q3： hexo 添加后台管理功能</span></h2><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/smileyan9/article/details/86666824">https://blog.csdn.net/smileyan9/article/details/86666824</a></p>
-<h2><span id="q4解决hexo图片无法导入问题">Q4：解决hexo图片无法导入问题</span></h2><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42030522/article/details/123075824">解决Hexo无法显示图片的几种方案_hexo 图片-CSDN博客</a></p>
-<h2><span id="q5解决hexo首页博客只显示摘要部分">Q5：解决hexo首页博客只显示摘要部分</span></h2><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/yueyue200830/article/details/104470646">设置hexo首页只显示部分摘要（不显示全文）_hexo 摘要-CSDN博客</a></p>
-
+        <h1><span id="文本挖掘文本分类算法">文本挖掘——文本分类算法</span></h1><h2><span id="1-评价指标">1 评价指标</span></h2><p>文本自动分类的定义：在给定的分类体系下，根据文本的内容自动地确定文本关联的类别。</p>
+<p>从数学角度来看，文本分类是一个映射的过程，它将未标明类别的文本映射到已有的类别中，该映射可以是一一、一对多的映射</p>
+<p>文本分类基本步骤：</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005135232112.png" alt="image-20231005135232112"></p>
+<p>评价指标</p>
+<ul>
+<li>准确率 P precision<ul>
+<li>正确分类样本所占的比例</li>
+</ul>
+</li>
+<li>召回率 R recall<ul>
+<li>分母是所有真正的正类测试样本</li>
+</ul>
+</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140046034.png" alt="image-20231005140046034"></li>
+<li>F-Measure<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140842378.png" alt="image-20231005140842378"></li>
+</ul>
+</li>
+</ul>
+<p>所有类的总体评价 </p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140913540.png" alt="image-20231005140913540"></p>
+<p>宏平均 Macro</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140933313.png" alt="image-20231005140933313"></p>
+<p>微平均 Micro</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005140957431.png" alt="image-20231005140957431"></p>
+<h2><span id="2-特征选择">2 特征选择</span></h2><p>目的：</p>
+<ul>
+<li>避免过拟合 over fitting ，提高分类精确度<ul>
+<li>对训练文档适应的很好，但是对训练集之外的文档差许多，则产生了over-fitting problem</li>
+<li>希望表现对训练集和未知文档基本一致</li>
+</ul>
+</li>
+<li>通过降维，大大节省计算空间和时间</li>
+</ul>
+<p>特征提取的方法</p>
+<ul>
+<li>文档概率法 DF document frequency</li>
+<li>信息增益法 information gain</li>
+<li>互信息法 mutual information </li>
+<li>开方拟合检验 the $\chi ^ 2$ test</li>
+</ul>
+<p><strong>DF</strong></p>
+<p>基于DF的启发式要点：</p>
+<ul>
+<li>太频繁的词项没有区分度<ul>
+<li>Term的DF大于某个阈值则去掉</li>
+</ul>
+</li>
+<li>太稀有的词项独立表达的类别信息不强<ul>
+<li>稀有词项的全局影响力不大</li>
+<li>在训练集中，某些文档如果有某个稀有词项，他们通常也会有一些常见词项</li>
+</ul>
+</li>
+<li>和通常信息获取观念有些抵触：稀有的更有代表性？这个是只获取的观念是稀有的则更有代表性吗:cry:</li>
+</ul>
+<p><strong>RSJ</strong></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231005211538258.png" alt="image-20231005211538258"></p>
+<h2><span id="3-分类算法">3 分类算法</span></h2><h3><span id="31-knn分类">3.1 KNN分类</span></h3><h3><span id="32-贝叶斯分类">3.2 贝叶斯分类</span></h3><h3><span id="33-svm分类">3.3 SVM分类</span></h3>
     </div>
 
     
@@ -289,7 +352,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.warmfire.com/2023/09/22/weblog/" title="weblog">http://www.warmfire.com/2023/09/22/weblog/</a>
+    <a href="http://www.warmfire.com/2023/10/05/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97PLUS/" title="网络内容安全第五周学习日志PLUS">http://www.warmfire.com/2023/10/05/网络内容安全第五周学习日志PLUS/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -299,9 +362,6 @@
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/" rel="tag"># 博客开发</a>
-          </div>
 
         
 
@@ -309,13 +369,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/09/21/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="可证明安全第三周学习日志">
-      <i class="fa fa-chevron-left"></i> 可证明安全第三周学习日志
+    <a href="/2023/10/05/%E7%BD%91%E7%BB%9C%E5%86%85%E5%AE%B9%E5%AE%89%E5%85%A8%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="网络内容安全第五周学习日志">
+      <i class="fa fa-chevron-left"></i> 网络内容安全第五周学习日志
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/09/22/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%89%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="自然语言处理第三周学习日志">
-      自然语言处理第三周学习日志 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -389,7 +446,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Q1：hexo next 主题下博客中数学公式无法正常渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Q2：hexo 下的分类和表签无法显示，怎么解决？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Q3： hexo 添加后台管理功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Q4：解决hexo图片无法导入问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Q5：解决hexo首页博客只显示摘要部分</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">文本挖掘——文本分类算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">1 评价指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">2 特征选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">3 分类算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 KNN分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 贝叶斯分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 SVM分类</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
