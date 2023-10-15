@@ -29,11 +29,15 @@
 <meta property="og:site_name" content="WarmFire">
 <meta property="og:description" content="第三章 函数极限与连续">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231015174735098.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231015174857086.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231015201141080.png">
 <meta property="article:published_time" content="2023-10-04T13:09:30.000Z">
-<meta property="article:modified_time" content="2023-10-06T13:21:23.168Z">
+<meta property="article:modified_time" content="2023-10-15T13:53:59.120Z">
 <meta property="article:author" content="Yan Zhimin">
 <meta property="article:tag" content="学校课程">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231015174735098.png">
 
 <link rel="canonical" href="http://www.warmfire.com/2023/10/04/%E6%B7%91%E8%8A%AC%E7%AC%AC%E4%BA%94%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
@@ -227,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-06 21:21:23" itemprop="dateModified" datetime="2023-10-06T21:21:23+08:00">2023-10-06</time>
+                <time title="修改时间：2023-10-15 21:53:59" itemprop="dateModified" datetime="2023-10-15T21:53:59+08:00">2023-10-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -264,7 +268,95 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1><span id="第三章-函数极限与连续">第三章 函数极限与连续</span></h1><h2><span id="1-函数极限的定义与基本性质">1 函数极限的定义与基本性质</span></h2><h3><span id="函数极限定义">函数极限定义</span></h3><h4><span id="函数极限存在定义">函数极限存在定义</span></h4><script type="math/tex; mode=display">
+U(x_0;\delta)=\{x| \ |x-x_0|<\delta \} \\
+U^0(x_0;\delta)=\{x| \ 0 < |x-x_0|<\delta \} \\</script><p>设$f(x)$定义在$U^0(x_0;\delta’),L$为一个实数，$\forall \epsilon&gt;0, \exists \delta(x)&lt;\delta’, 当0&lt;|x-x_0|&lt;\delta, 有|f(x)-L|&lt;\delta$</p>
+<p>称$x\rightarrow x_0$时，$f(x)$以$L$为极限，记为$\lim_{x\rightarrow x_0}f(x) = L$</p>
+<p>用符号语言表述为$\forall \epsilon&gt;0,\exists \delta(\epsilon)&gt;0,0 &lt; |x-x_0| &lt; \delta, |f(x)-L|&lt;\epsilon$</p>
+<ol>
+<li>$f(x)$在$x_0$可以无定义（毕竟是去心邻域</li>
+<li>函数极限为局部性质，仅和$x_0$附近取值有关</li>
+<li>$\delta(x)$随着$\epsilon$变化而变化</li>
+</ol>
+<h4><span id="函数极限不存在定义">函数极限不存在定义</span></h4><p>$\lim_{x\rightarrow x_0}f(x) \neq L$定义：</p>
+<ul>
+<li>$\exists \epsilon_0&gt;0,\forall \delta(\epsilon_0)&gt;0,\exists x’,0 &lt; |x’-x_0| &lt; \delta, |f(x’)-L|\geq \epsilon$</li>
+</ul>
+<p>$\lim_{x\rightarrow x_0}f(x)$不存在定义：</p>
+<ul>
+<li>$\forall L\in R,\exists \epsilon_0&gt;0,\forall \delta(\epsilon_0)&gt;0,\exists x’,0 &lt; |x’-x_0| &lt; \delta, |f(x’)-L|\geq \epsilon$</li>
+</ul>
+<h3><span id="函数极限基本性质">函数极限基本性质</span></h3><h4><span id="性质1">性质1</span></h4><p>若$\lim_{x\rightarrow x_0}f(x)$存在则极限唯一。</p>
+<h4><span id="性质2-局部有界性">性质2 局部有界性</span></h4><p>$f(x)$定义在$U^0(x_0;\delta_1)$且$\lim_{x\rightarrow x_0}f(x) = A$，则存在邻域$U^0(x_0;\delta) \subset U^0(x_0;\delta_1),s.t. f(x)$在$U^0(x_0;\delta)$内有界</p>
+<h4><span id="性质3-局部保序性">性质3 局部保序性</span></h4><p>设$\lim_{x\rightarrow x_0}f(x)=A,\lim_{x\rightarrow x_0}g(x)=B$则：</p>
+<ol>
+<li>若$A&gt;B,\exists\delta&gt;0, x\in U^0(x_0;\delta)$时$f(x)&gt;g(x)$</li>
+<li>若$\exists\delta&gt;0,x\in U^0(x_0;\delta)$时，$f(x)\geq g(x)$，则$A\geq B$</li>
+<li>$\lim_{x\rightarrow x_0}f(x) = A&gt;0$，则$\exists \delta&gt;0, x\in U^0(x_0;\delta):f(x)&gt;0 $</li>
+</ol>
+<h2><span id="2-函数极限的四则运算与夹逼定理">2 函数极限的四则运算与夹逼定理</span></h2><h3><span id="极限的四则运算性质">极限的四则运算性质</span></h3><p>设$f(x),g(x)$定义在$U^0(x_0;\delta),\lim_{x\rightarrow x_0}f(x)=A,\lim_{x\rightarrow x_0}g(x)=B$，则</p>
+<ol>
+<li>$\lim_{x\rightarrow x_0}[f(x) \pm g(x)] = A\pm B$</li>
+<li>$\lim_{x\rightarrow x_0}[f(x)\cdot g(x)] = A\cdot B$</li>
+<li>$\lim_{x\rightarrow x_0}\frac{f(x)}{g(x)} = \frac{A}{B}$，其中$B\neq 0$</li>
+</ol>
+<h3><span id="夹逼定理">夹逼定理</span></h3><p>如果当$x \in U^0(x_0;\delta)$时，满足：</p>
+<ol>
+<li>$g(x)\leq f(x)\leq h(x)$</li>
+<li>$\lim_{x\rightarrow x_0}g(x)=A,\lim_{x\rightarrow x_0}h(x)=A$</li>
+</ol>
+<p>那么$\lim_{x\rightarrow x_0}f(x)=A$</p>
+<h2><span id="3-复合函数的极限">3 复合函数的极限</span></h2><h4><span id="定理">定理</span></h4><p>设$\lim_{x\rightarrow x_0}f(x)=A,\lim_{t\rightarrow t_0}g(t)=x_0$且$U^0(t_0;\delta_1)$内$g(t)\neq x_0$，则$\lim_{t\rightarrow t_0}f(g(t))=\lim_{x\rightarrow x_0}f(x)=A$</p>
+<ul>
+<li>如果$f(x)$在$x=x_0$没有定义，$U^0(t_0;\delta_1)$内$g(t)\neq x_0$不能少，否则复合函数$f(g(t))$没有意义</li>
+</ul>
+<h3><span id="应用">应用</span></h3><p>$\lim_{x\rightarrow 0}\frac{\sin x}{x}=1$</p>
+<hr>
+<h2><span id="典型例题">典型例题</span></h2><h3><span id="1-有理函数极限">1 有理函数极限</span></h3><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231015174735098.png" alt="image-20231015174735098"></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231015174857086.png" alt="image-20231015174857086"></p>
+<hr>
+<h2><span id="4-海涅与柯西定理">4 海涅与柯西定理</span></h2><h3><span id="海涅定理">海涅定理</span></h3><p>设$f(x)$定义在$U^0(x_0;\delta_1)$，则$\lim_{x\rightarrow x_0}f(x)=A$的充分必要条件是$\forall \{x_n\}\subset U^o(x_0;\delta_1),\lim_{n\rightarrow\infty}x_n=x_0$都有$\lim_{n\rightarrow \infty}f(x_n)=A$</p>
+<p>海涅原理建立了数列极限与函数极限的关系</p>
+<p>则推出极限不存在的情况：</p>
+<ol>
+<li>挑出了两个数列的极限存在且不等</li>
+<li>挑出了一个极限不存在的数列</li>
+</ol>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231015201141080.png" alt="image-20231015201141080"></p>
+<h3><span id="柯西定理">柯西定理</span></h3><p>$f(x)$定义在$U^o(x_0;\delta^*),\lim_{x\rightarrow x_0}f(x)$存在的充要条件是：</p>
+<p>$\forall \epsilon&gt;0,\forall x_1,x_2\in U^o(x_0;\delta^*),0&lt;|x_1-x_0|&lt;\delta,0&lt;|x_2-x_0|&lt;\delta:|f(x_1)-f(x_2)|&lt;\epsilon$</p>
+<h2><span id="5-连续函数">5 连续函数</span></h2><h3><span id="51-连续函数定义">5.1 连续函数定义</span></h3><h4><span id="函数连续定义">函数连续定义</span></h4><p>设$f:(a,b)\rightarrow R$，若对$x_0 \in (a,b), \lim_{x\rightarrow x_0}f(x)=f(x_0)$则称$f(x)$在$x_0$处连续；</p>
+<p>$\forall \epsilon &gt; 0, \exists \delta &gt; 0, |x-x_0| &lt; \delta: |f(x)-f(x_0)|&lt;\epsilon$</p>
+<h4><span id="函数左右连续定义">函数左右连续定义</span></h4><p>设$f:(a,b)\rightarrow R$，若$x_0 \in (a,b), \lim_{x\rightarrow x_0^-}f(x)=f(x_0)$则称左连续；</p>
+<p>设$f:(a,b)\rightarrow R$，若$x_0 \in (a,b), \lim_{x\rightarrow x_0^+}f(x)=f(x_0)$则称右连续。</p>
+<h5><span id="推论">推论：</span></h5><p>$f(x)$在$x_0$处连续 $\Leftrightarrow$既左连续又右连续</p>
+<h4><span id="连续函数性质">连续函数性质</span></h4><p>设$f:(a,b)\rightarrow R$，若对$x_0 \in (a,b), \lim_{x\rightarrow x_0}f(x)=f(x_0)$，则有</p>
+<ol>
+<li>局部有界性：若$f(x)$在$x_0 \in (a,b)$连续，则存在$U(x_0;\delta)\subset (a,b), \ f(x)$在$U(x_0;\delta)$有界</li>
+<li>局部保号性：若$f(x_0)$为正，则$f(x)$在附近时也为正（负亦然</li>
+<li>四则运算性质：$f,g$连续，则四则运算后的也连续</li>
+<li>复合函数连续<ul>
+<li>符合函数连续性比极限少了$t_0$处取值的限制</li>
+<li>复合连续函数的极限是可以换位置的</li>
+</ul>
+</li>
+<li>反函数连续：设$f(x)$在区间$I$上单调递增的连续函数，则$f^{-1}$在$f(I)$上也严格单调递增</li>
+</ol>
+<h4><span id="区间连续定义">区间连续定义</span></h4><ol>
+<li>$f(x)$在$(a,b)$上任一点连续，则在$(a,b)$连续</li>
+<li>$f(x)$在$(a,b)$上任一点连续，且在$x=a,x=b$右左连续则在$[a,b]$连续</li>
+</ol>
+<h4><span id="初等函数的连续性">初等函数的连续性</span></h4><ol>
+<li>三角函数及反三角函数在定义域内时连续的。</li>
+<li>对数函数、幂函数、指数函数定义域内连续</li>
+</ol>
+<h3><span id="52-函数间断点分类">5.2 函数间断点分类</span></h3><h4><span id="第一类间断点">第一类间断点</span></h4><p>如果$f(x)$在点$x_0$处左右极限都存在，若</p>
+<ol>
+<li>$f(x_0 - 0) \neq f(x_0 + 0)$ 跳跃间断点</li>
+<li>$f(x_0 - 0) = f(x_0 + 0) \neq f(x_0)$ 可去间断点</li>
+</ol>
+<h4><span id="第二类间断点">第二类间断点</span></h4><p>左右极限至少有一个不存在</p>
+<h3><span id="53-利用函数连续性求极限">5.3 利用函数连续性求极限</span></h3>
     </div>
 
     
@@ -394,6 +486,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">第三章 函数极限与连续</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">1 函数极限的定义与基本性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">函数极限定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">函数极限存在定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">函数极限不存在定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">函数极限基本性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">性质1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">性质2 局部有界性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">性质3 局部保序性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">2 函数极限的四则运算与夹逼定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.1.</span> <span class="nav-text">极限的四则运算性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.2.</span> <span class="nav-text">夹逼定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">3 复合函数的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">定理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">典型例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.1.</span> <span class="nav-text">1 有理函数极限</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">4 海涅与柯西定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.5.1.</span> <span class="nav-text">海涅定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.5.2.</span> <span class="nav-text">柯西定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.6.</span> <span class="nav-text">5 连续函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.1.</span> <span class="nav-text">5.1 连续函数定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">函数连续定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">函数左右连续定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.6.1.2.1.</span> <span class="nav-text">推论：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">连续函数性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.1.4.</span> <span class="nav-text">区间连续定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.1.5.</span> <span class="nav-text">初等函数的连续性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.2.</span> <span class="nav-text">5.2 函数间断点分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">第一类间断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">第二类间断点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.3.</span> <span class="nav-text">5.3 利用函数连续性求极限</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -409,14 +502,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
