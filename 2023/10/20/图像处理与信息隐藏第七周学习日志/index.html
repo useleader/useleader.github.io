@@ -22,20 +22,27 @@
     var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="记录配置环境中遇到的错误">
+  <meta name="description" content="0x00 前言 图像变换">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Environment Blog">
-<meta property="og:url" content="http://www.warmfire.com/2023/10/08/Environment-Blog/index.html">
+<meta property="og:title" content="图像处理与信息隐藏第七周学习日志">
+<meta property="og:url" content="http://www.warmfire.com/2023/10/20/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/index.html">
 <meta property="og:site_name" content="WarmFire">
-<meta property="og:description" content="记录配置环境中遇到的错误">
+<meta property="og:description" content="0x00 前言 图像变换">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-08T01:40:19.000Z">
-<meta property="article:modified_time" content="2023-10-08T02:01:56.482Z">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100105232.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100047732.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100251251.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100301552.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100323400.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100406357.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100419775.png">
+<meta property="article:published_time" content="2023-10-19T22:38:36.000Z">
+<meta property="article:modified_time" content="2023-10-20T11:08:32.878Z">
 <meta property="article:author" content="Yan Zhimin">
-<meta property="article:tag" content="环境开发">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100105232.png">
 
-<link rel="canonical" href="http://www.warmfire.com/2023/10/08/Environment-Blog/">
+<link rel="canonical" href="http://www.warmfire.com/2023/10/20/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
 
 <script id="page-configurations">
@@ -48,7 +55,7 @@
   };
 </script>
 
-  <title>Environment Blog | WarmFire</title>
+  <title>图像处理与信息隐藏第七周学习日志 | WarmFire</title>
   
 
 
@@ -197,7 +204,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/10/08/Environment-Blog/">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/10/20/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -210,7 +217,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Environment Blog
+          图像处理与信息隐藏第七周学习日志
         </h1>
 
         <div class="post-meta">
@@ -221,20 +228,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-10-08 09:40:19 / 修改时间：10:01:56" itemprop="dateCreated datePublished" datetime="2023-10-08T09:40:19+08:00">2023-10-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E8%B7%B5%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">实践知识</span></a>
-                </span>
+              <time title="创建时间：2023-10-20 06:38:36 / 修改时间：19:08:32" itemprop="dateCreated datePublished" datetime="2023-10-20T06:38:36+08:00">2023-10-20</time>
             </span>
 
           
@@ -245,12 +239,7 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-            <div class="post-description">记录配置环境中遇到的错误</div>
 
-          
-            <i class="fa fa-thumb-tack"></i>
-            <font color=7D26CD>置顶</font>
-            <span class="post-meta-divider">|</span>
           
           
         </div>
@@ -262,10 +251,122 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2><span id="q1e-release-file-for-httpsmirrorstunatsinghuaeducnubuntudistsbionic-updatesinrelease-is-not-valid-yet-invalid-for-another-6h-46min-10s-updates-for-this-repository-will-not-be-applied">Q1：E: Release file for  is not valid yet (invalid for another 6h 46min 10s). Updates for this repository will not be applied.</span></h2><p>参考教程：<a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1096930/sudo-apt-update-error-release-file-is-not-yet-valid">sudo apt 更新错误：“发布文件尚未生效” - 询问 Ubuntu (askubuntu.com)</a></p>
-<h2><span id="q2e-unable-to-correct-problems-you-have-held-broken-packages">Q2：E: Unable to correct problems, you have held broken packages.</span></h2><p>当apt破损时，可能的一个原因是由于 <code>/etc/apt/source.list</code>的源不是ubuntu 20.04的</p>
+        <p>0x00 前言</p>
+<p>图像变换</p>
 <span id="more"></span>
-<h2><span id="0x01">0x01</span></h2><h2><span id="0x02">0x02</span></h2><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>
+<h2><span id="0x01-概述">0x01 概述</span></h2><p>图像变换的目的：</p>
+<ul>
+<li>高效、快速地对图像进行处理和分析</li>
+<li>为顶层应用提供特征</li>
+</ul>
+<p>图像变换用二位线性系统描述</p>
+<p>待处理图像$f(x,y)$，处理后图像$g(x,y)$，输入和输出的关系表示为$g(x,y)=\psi[f(x,y)]$</p>
+<p>对于一维实际系统，变量为时间，输出是过去和现在的函数，因果系统；</p>
+<p>图像处理的二维系统为非因果系统。</p>
+<p>数字图像处理的算法一般都为线性的，为了高效、快速地对图像进行处理和分析，需要将原有的图像空间以某种形式转换到另外一些空间，并利用这些性质进行一定的加工。</p>
+<h2><span id="0x02-图像的线性运算">0x02 图像的线性运算</span></h2><h3><span id="21-二维连续线性系统">2.1 二维连续线性系统</span></h3><p>系统连续：其冲激响应为$(x,y)$的连续函数；</p>
+<p>叠加原理：$\psi[af_1(x,y)+bf_2(x,y)]=a\psi[f_1(x,y)]+b\psi[f_2(x,y)]=ag_1(x,y)+bg_2(x,y)$</p>
+<h4><span id="二维狄拉克冲激函数">二维狄拉克冲激函数</span></h4><script type="math/tex; mode=display">
+\delta(x,y)= 
+\begin{cases} 
+        \infty \  \ x=0,y=0 \\
+        0 \ \ \ \ else
+\end{cases}</script><p>性质：</p>
+<script type="math/tex; mode=display">
+\iint_{-\infty,-\infty}^{\infty,\infty} \delta(x,y)dxdy=1  （筛选性）\\
+\delta(x-\alpha,y-\beta)= 
+\begin{cases} 
+        \infty \  \ x=\alpha,y=\beta \\ 
+        0 \ \ \ \ else
+\end{cases} （可分离性）</script><h4><span id="二位冲激响应函数">二位冲激响应函数</span></h4><p>以二位狄拉克冲激函数作为输入时系统的输出响应函数</p>
+<script type="math/tex; mode=display">
+h(x,y;\alpha,\beta) = \psi[\delta(x-\alpha,y-\beta)]</script><p>在光学系统里，此冲激响应一般称为点扩散函数 PSF Point Spread Function</p>
+<h4><span id="空间不变系统-位移不变系统">空间不变系统 位移不变系统</span></h4><script type="math/tex; mode=display">
+h(x,y;\alpha,\beta) = h(x-\alpha,y-\beta)</script><h4><span id="卷积">卷积</span></h4><ul>
+<li><p>连续情况</p>
+<ul>
+<li><script type="math/tex; mode=display">
+s(t) = \int x(a)w(t-a)da
+\\ \Downarrow \\
+s(t) = (x*w)(t)</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>离散情况</p>
+<ul>
+<li><script type="math/tex; mode=display">
+s[t]=(x*w)(t) = \sum_{a=-\infty}^{\infty}x[a]w[t-a]</script></li>
+</ul>
+</li>
+<li><script type="math/tex; mode=display">
+g(x,y)=f(x,y)*h(x,y)</script></li>
+</ul>
+<h4><span id="相关">相关</span></h4><p><strong>自相关</strong></p>
+<script type="math/tex; mode=display">
+\begin{align}
+R_{ff}(x,y)
+& =f(x,y)\circ f(x,y)\\
+& =f(x,y)*f(-x,-y) \\
+& = \iint f(\alpha,\beta)f(x+\alpha,y+\beta)d\alpha d\beta
+\end{align}</script><p><strong>互相关</strong></p>
+<script type="math/tex; mode=display">
+\begin{align}
+R_{fg}(x,y)
+& =f(x,y)\circ g(x,y)\\
+& =f(x,y)*g(-x,-y) \\
+& = \iint f(\alpha,\beta)g(x+\alpha,y+\beta)d\alpha d\beta
+\end{align}</script><h4><span id="图像的卷积二维离散卷积">图像的卷积：二维离散卷积</span></h4><p>根据图像处理的顺序，采用互相关</p>
+<h3><span id="22-二维连续傅里叶变换">2.2 二维连续傅里叶变换</span></h3><h4><span id="一维情况">一维情况</span></h4><p>若实变量函数$f(x)$是连续可积的，即：$\int_{-\infty}^{\infty}|f(x)|dx&lt;\infty$且$F(u)$是可积的，则傅里叶变换对一定存在</p>
+<script type="math/tex; mode=display">
+\mathcal{F\{f(x)\}} = F(u) = \int_\infty^\infty f(x)e^{-j2\pi ux}dx \\
+\mathcal{F^{-1}\{F(x)\}} = f(x) = \int_\infty^\infty F(u)e^{j2\pi ux}du</script><p>如果f(x)考虑为实函数，它的傅里叶变换通常是复数形式，$F(u)=R(u)+jI(u)$，也可以表示为$F(u)=|F(u)|e^{j\phi(u)}$</p>
+<p>$|F(u)|=\sqrt{R^2(u)+I^2(u)}$称为傅里叶谱，或频谱；</p>
+<p>$\phi(u)=arctg[\frac{I(u)}{R(u)}]$称为$f(x)$的相角</p>
+<h4><span id="二维情况">二维情况</span></h4><p>若实变量函数$f(x,y)$是连续可积的，即：$\int_{-\infty}^{\infty}|f(x,y)|dxdy&lt;\infty$且$F(u,v)$是可积的，则傅里叶变换对一定存在</p>
+<script type="math/tex; mode=display">
+\mathcal{F\{f(x,y)\}} = F(u,v) = \int_\infty^\infty f(x,y)e^{-j2\pi(ux+vy) }dxdy \\
+\mathcal{F^{-1}\{F(u,v)\}} = f(x,y) = \int_\infty^\infty F(u,v)e^{j2\pi(ux+vy)}dudv</script><p>$|F(u,v)|=\sqrt{R^2(u,v)+I^2(u,v)}$称为傅里叶谱，或频谱；</p>
+<p>$\phi(u,v)=arctg[\frac{I(u,v)}{R(u,v)}]$称为$f(x,y)$的相位;</p>
+<p>$E(u,v)={R^2(u,v)+I^2(u,v)}$ 功率谱</p>
+<h2><span id="0x03-二维离散傅里叶变换及其性质">0x03 二维离散傅里叶变换及其性质</span></h2><h3><span id="1-概述">1 概述</span></h3><p>直接卷积和相关运算在时域中处理计算量大，很难实时处理</p>
+<p>Discrete Fourier Transform DFT 建立了离散时域和离散频域之间的联系，处理方便，计算量小，提高速度。</p>
+<h3><span id="2-二维离散傅里叶变换">2 二维离散傅里叶变换</span></h3><script type="math/tex; mode=display">
+F(u) = \sum_{x=0}^{N-1}f(x)e^{-j2\pi ux/N} \\
+f(x) = \frac{1}{N} \sum_{u=0}^{N-1}F(u)e^{-j2\pi ux/N}</script><p>x，u就是离散的整数值</p>
+<script type="math/tex; mode=display">
+F(u,v) = \sum_{x=0}^{M-1}\sum_{y=0}^{N-1}f(x,y)e^{-j2\pi ( ux/M + vy/N)} \\
+f(x,y) = \frac{1}{MN} \sum_{u=0}^{M-1}\sum_{v=0}^{N-1}F(u,v)e^{-j2\pi ( ux/M + vy/N)}</script><h3><span id="3-二维离散傅里叶变换的性质">3 二维离散傅里叶变换的性质</span></h3><ol>
+<li>线性：设a,b为常量</li>
+<li>可分离性：一个二维傅里叶变换可以分解为两个以为傅里叶变换1<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100105232.png" alt="image-20231020100105232"></li>
+</ul>
+</li>
+<li>平移性<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100047732.png" alt="image-20231020100047732"></li>
+</ul>
+</li>
+<li>周期性和共轭对称性<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100251251.png" alt="image-20231020100251251"></li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100301552.png" alt="image-20231020100301552"></li>
+</ul>
+</li>
+<li>旋转不变性<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100323400.png" alt="image-20231020100323400"></li>
+</ul>
+</li>
+<li>分配性和比例性<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100406357.png" alt="image-20231020100406357"></li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231020100419775.png" alt="image-20231020100419775"></li>
+</ul>
+</li>
+<li>平均值<ul>
+<li></li>
+</ul>
+</li>
+</ol>
+<h3><span id="4-应用傅里叶变换注意的问题">4 应用傅里叶变换注意的问题</span></h3><p>复数运算费时，高频衰减快</p>
+<h2><span id="0x04-图像变换的">0x04 图像变换的</span></h2><h3><span id="1-代数表达式">1 代数表达式</span></h3><h2><span id="0x05-离散沃尔什哈达玛变换">0x05 离散沃尔什——哈达玛变换</span></h2><h3><span id="1-一维离散沃尔什变换">1 一维离散沃尔什变换</span></h3><p><hr><br>版权信息</p>
 
     </div>
 
@@ -296,7 +397,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.warmfire.com/2023/10/08/Environment-Blog/" title="Environment Blog">http://www.warmfire.com/2023/10/08/Environment-Blog/</a>
+    <a href="http://www.warmfire.com/2023/10/20/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" title="图像处理与信息隐藏第七周学习日志">http://www.warmfire.com/2023/10/20/图像处理与信息隐藏第七周学习日志/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -306,9 +407,6 @@
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91/" rel="tag"># 环境开发</a>
-          </div>
 
         
 
@@ -316,12 +414,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/10/07/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="Go语言学习日志">
-      <i class="fa fa-chevron-left"></i> Go语言学习日志
+    <a href="/2023/10/18/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%AD%E6%96%87%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" rel="prev" title="贝叶斯中文文本分类">
+      <i class="fa fa-chevron-left"></i> 贝叶斯中文文本分类
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/10/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%85%AD%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="数据库第六周学习日志">
-      数据库第六周学习日志 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/10/20/%E6%B7%91%E8%8A%AC%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="淑芬第七周学习日志">
+      淑芬第七周学习日志 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -396,7 +494,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Q1：E: Release file for  is not valid yet (invalid for another 6h 46min 10s). Updates for this repository will not be applied.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Q2：E: Unable to correct problems, you have held broken packages.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">0x01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">0x02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">0x03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">0x04</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0x01 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">0x02 图像的线性运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 二维连续线性系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.1.</span> <span class="nav-text">二维狄拉克冲激函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.2.</span> <span class="nav-text">二位冲激响应函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.3.</span> <span class="nav-text">空间不变系统 位移不变系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.4.</span> <span class="nav-text">卷积</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.5.</span> <span class="nav-text">相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.6.</span> <span class="nav-text">图像的卷积：二维离散卷积</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 二维连续傅里叶变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.2.1.</span> <span class="nav-text">一维情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.2.2.</span> <span class="nav-text">二维情况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">0x03 二维离散傅里叶变换及其性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">2 二维离散傅里叶变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">3 二维离散傅里叶变换的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">4 应用傅里叶变换注意的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">0x04 图像变换的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">1 代数表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">0x05 离散沃尔什——哈达玛变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.</span> <span class="nav-text">1 一维离散沃尔什变换</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

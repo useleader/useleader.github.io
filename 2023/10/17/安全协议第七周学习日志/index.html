@@ -22,20 +22,19 @@
     var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="记录配置环境中遇到的错误">
+  <meta name="description" content="0x00 前言 安全多方计算 秘密共享">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Environment Blog">
-<meta property="og:url" content="http://www.warmfire.com/2023/10/08/Environment-Blog/index.html">
+<meta property="og:title" content="安全协议第七周学习日志">
+<meta property="og:url" content="http://www.warmfire.com/2023/10/17/%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/index.html">
 <meta property="og:site_name" content="WarmFire">
-<meta property="og:description" content="记录配置环境中遇到的错误">
+<meta property="og:description" content="0x00 前言 安全多方计算 秘密共享">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-08T01:40:19.000Z">
-<meta property="article:modified_time" content="2023-10-08T02:01:56.482Z">
+<meta property="article:published_time" content="2023-10-17T02:01:05.000Z">
+<meta property="article:modified_time" content="2023-10-19T12:50:21.358Z">
 <meta property="article:author" content="Yan Zhimin">
-<meta property="article:tag" content="环境开发">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://www.warmfire.com/2023/10/08/Environment-Blog/">
+<link rel="canonical" href="http://www.warmfire.com/2023/10/17/%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
 
 <script id="page-configurations">
@@ -48,7 +47,7 @@
   };
 </script>
 
-  <title>Environment Blog | WarmFire</title>
+  <title>安全协议第七周学习日志 | WarmFire</title>
   
 
 
@@ -197,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/10/08/Environment-Blog/">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/10/17/%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -210,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Environment Blog
+          安全协议第七周学习日志
         </h1>
 
         <div class="post-meta">
@@ -219,23 +218,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-10-08 09:40:19 / 修改时间：10:01:56" itemprop="dateCreated datePublished" datetime="2023-10-08T09:40:19+08:00">2023-10-08</time>
+              <time title="创建时间：2023-10-17 10:01:05" itemprop="dateCreated datePublished" datetime="2023-10-17T10:01:05+08:00">2023-10-17</time>
             </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-19 20:50:21" itemprop="dateModified" datetime="2023-10-19T20:50:21+08:00">2023-10-19</time>
               </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E8%B7%B5%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">实践知识</span></a>
-                </span>
-            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -245,12 +237,7 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-            <div class="post-description">记录配置环境中遇到的错误</div>
 
-          
-            <i class="fa fa-thumb-tack"></i>
-            <font color=7D26CD>置顶</font>
-            <span class="post-meta-divider">|</span>
           
           
         </div>
@@ -262,10 +249,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2><span id="q1e-release-file-for-httpsmirrorstunatsinghuaeducnubuntudistsbionic-updatesinrelease-is-not-valid-yet-invalid-for-another-6h-46min-10s-updates-for-this-repository-will-not-be-applied">Q1：E: Release file for  is not valid yet (invalid for another 6h 46min 10s). Updates for this repository will not be applied.</span></h2><p>参考教程：<a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1096930/sudo-apt-update-error-release-file-is-not-yet-valid">sudo apt 更新错误：“发布文件尚未生效” - 询问 Ubuntu (askubuntu.com)</a></p>
-<h2><span id="q2e-unable-to-correct-problems-you-have-held-broken-packages">Q2：E: Unable to correct problems, you have held broken packages.</span></h2><p>当apt破损时，可能的一个原因是由于 <code>/etc/apt/source.list</code>的源不是ubuntu 20.04的</p>
+        <p>0x00 前言</p>
+<p>安全多方计算</p>
+<p>秘密共享</p>
 <span id="more"></span>
-<h2><span id="0x01">0x01</span></h2><h2><span id="0x02">0x02</span></h2><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>
+<h1><span id="安全多方计算">安全多方计算</span></h1><h2><span id="0x01-基本概念">0x01 基本概念</span></h2><ul>
+<li>信任环境或整体安全定义通常由真实-理想模型来表达</li>
+<li>该模型下的安全性：真实环境下的敌手无法产生比理想环境下的攻击者更多的危害</li>
+<li>根据攻击者能力定义两种不同攻击者的安全模型<ul>
+<li>半诚实模型（更关注性能</li>
+<li>恶意行为模型（更关注安全</li>
+<li>大规模的安全多方计算产品，通常只考虑半诚实模型</li>
+</ul>
+</li>
+<li>方法主要分为两类：<ul>
+<li>基于噪音的安全计算方法<ul>
+<li>代表是差分隐私</li>
+</ul>
+</li>
+<li>非噪音方法<ul>
+<li>编码或加密</li>
+<li>代表性工作：混淆电路、同态加密、密钥分享</li>
+</ul>
+</li>
+<li>优点：安全性有保证</li>
+<li>缺点：计算量、通讯量大</li>
+</ul>
+</li>
+<li>安全多方计算技术是一系列技术组成的协议栈，按层次分为2层<ul>
+<li>支撑技术层<ul>
+<li>MPC基础技术实现</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><span id="0x02">0x02</span></h2><h2><span id="0x03-基础技术">0x03 基础技术</span></h2><h3><span id="秘密分享-ss-secret-sharing">秘密分享 SS Secret Sharing</span></h3><h3><span id="不经意传输-ot-oblivious-transfer">不经意传输 OT oblivious transfer</span></h3><h3><span id="混淆电路-gc-garbled-circuit">混淆电路 GC Garbled Circuit</span></h3><h3><span id="同态加密-he-homomorphic-encryption">同态加密 HE Homomorphic Encryption</span></h3><h2><span id="0x04-应用">0x04 应用</span></h2><h1><span id="秘密分享">秘密分享</span></h1><h2><span id="0x01-基本概念">0x01 基本概念</span></h2><h1><span id="认证密钥协商协议">认证密钥协商协议</span></h1><p>​    在实际应用系统中，一般使用公钥密码或其他方法来确立一个适用于对称密码的共享密钥，即会话密钥 session key。建立这种仅用于一次会话的会话密钥机制就是密钥交换协议。所谓密钥交换 key exchange也称密钥协商 key agreement 是一种协议。</p>
+<p>​    利用这种协议，通信双方在一个<strong>公开的</strong>信道上通过相互传递某些信息来<strong>共同建立</strong>一个<strong>共享的</strong>秘密密钥。</p>
+<h2><span id="1-两方dh密钥协商">1 两方DH密钥协商</span></h2><h2><span id="2-mti密钥交换">2 MTI密钥交换</span></h2><h2><span id="3-ecmqv-密钥交换">3 ECMQV 密钥交换</span></h2><h2><span id="4-基于身份的密钥协商">4 基于身份的密钥协商</span></h2><h2><span id="5-三方密钥交换协议">5 三方密钥交换协议</span></h2><h2><span id="6-多方密钥交换协议">6 多方密钥交换协议</span></h2><p><hr><br>版权信息</p>
 
     </div>
 
@@ -296,7 +317,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.warmfire.com/2023/10/08/Environment-Blog/" title="Environment Blog">http://www.warmfire.com/2023/10/08/Environment-Blog/</a>
+    <a href="http://www.warmfire.com/2023/10/17/%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E7%AC%AC%E4%B8%83%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" title="安全协议第七周学习日志">http://www.warmfire.com/2023/10/17/安全协议第七周学习日志/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -306,9 +327,6 @@
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91/" rel="tag"># 环境开发</a>
-          </div>
 
         
 
@@ -316,12 +334,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/10/07/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="Go语言学习日志">
-      <i class="fa fa-chevron-left"></i> Go语言学习日志
+    <a href="/2023/10/13/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AC%AC%E5%85%AD%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="自然语言处理第六周学习日志">
+      <i class="fa fa-chevron-left"></i> 自然语言处理第六周学习日志
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/10/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%85%AD%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="数据库第六周学习日志">
-      数据库第六周学习日志 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/10/18/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%AD%E6%96%87%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB/" rel="next" title="贝叶斯中文文本分类">
+      贝叶斯中文文本分类 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -396,7 +414,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Q1：E: Release file for  is not valid yet (invalid for another 6h 46min 10s). Updates for this repository will not be applied.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Q2：E: Unable to correct problems, you have held broken packages.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">0x01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">0x02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">0x03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">0x04</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">安全多方计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">0x01 基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">0x02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">0x03 基础技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">秘密分享 SS Secret Sharing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.2.</span> <span class="nav-text">不经意传输 OT oblivious transfer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.3.</span> <span class="nav-text">混淆电路 GC Garbled Circuit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.4.</span> <span class="nav-text">同态加密 HE Homomorphic Encryption</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">0x04 应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">秘密分享</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">0x01 基本概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">认证密钥协商协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">1 两方DH密钥协商</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">2 MTI密钥交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">3 ECMQV 密钥交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">4 基于身份的密钥协商</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.5.</span> <span class="nav-text">5 三方密钥交换协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.6.</span> <span class="nav-text">6 多方密钥交换协议</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
