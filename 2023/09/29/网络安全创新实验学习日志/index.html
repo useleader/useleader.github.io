@@ -29,11 +29,17 @@
 <meta property="og:site_name" content="WarmFire">
 <meta property="og:description" content="MD5碰撞、CA-PKI建立教程、apache服务器建立教程">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025141949122.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025142339162.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025143139941.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231026004023538.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231026004226386.png">
 <meta property="article:published_time" content="2023-09-29T14:10:40.000Z">
-<meta property="article:modified_time" content="2023-10-17T09:15:40.687Z">
+<meta property="article:modified_time" content="2023-10-30T12:34:06.000Z">
 <meta property="article:author" content="Yan Zhimin">
 <meta property="article:tag" content="学校课程">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025141949122.png">
 
 <link rel="canonical" href="http://www.warmfire.com/2023/09/29/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%9B%E6%96%B0%E5%AE%9E%E9%AA%8C%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
 
@@ -227,7 +233,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-17 17:15:40" itemprop="dateModified" datetime="2023-10-17T17:15:40+08:00">2023-10-17</time>
+                <time title="修改时间：2023-10-30 20:34:06" itemprop="dateModified" datetime="2023-10-30T20:34:06+08:00">2023-10-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -399,6 +405,118 @@
 </tbody>
 </table>
 </div>
+<h1><span id="lab-6-缓冲区溢出攻击实验">Lab-6 缓冲区溢出攻击实验</span></h1><h2><span id="三-实验原理">三、实验原理</span></h2><h3><span id="31-操作系统中的函数调用">3.1 操作系统中的函数调用</span></h3><p>冯·诺伊曼结构采用存储程序原理，将数据和代码存储在内存中。代码在内存中以数据形式存储。</p>
+<p>例如 <code>xor eax,eax</code>表示 <code>eax</code>寄存器的值与自己进行异或操作，用机器码表示为 <code>0x31 0xc0</code>其中 <code>0x31</code>是异或操作，<code>0xc0</code>是 <code>eax</code>寄存器。</p>
+<p>同时，CPU使用寄存器来暂存指令、数据和地址。以32位系统为例，常用的寄存器包括通用寄存器（<code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code>）、偏移寄存器（<code>EBP</code>、<code>ESI</code>、<code>EDI</code>、<code>ESP</code>），其中：</p>
+<ul>
+<li>通用寄存器用来操作数据，保存算术逻辑运算结果、传送数据；</li>
+<li><code>EBP</code>存放基址指针，指向系统栈最上面一个栈帧的及地址，该地址保存上一级调用者的<code>EBP</code></li>
+<li><code>ESP</code>存放栈指针，指向系统栈最上面一个栈帧的顶部；</li>
+<li><code>EIP</code>存放指令指针，指向下次将要执行的指令；</li>
+</ul>
+<p>栈是一种存储运行程序中函数调用时重要信息的数据结构，LIFO。在Intel系统中，栈从<strong>高地址往低地址堆叠</strong>。函数的每次调用会在系统站中堆叠一个栈帧 Stack Frame，该栈帧包括参数 Parameter、返回地址 Return Address、前一栈帧的指针 Previous Frame Pointer以及该函数的局部变量Local Variables。</p>
+<h3><span id="32-缓冲区溢出漏洞">3.2 缓冲区溢出漏洞</span></h3><p>Buffer Overflow，例如定义 buffer[10]，写入数据的长度大于10，造成缓冲区溢出，<strong>传入的其余数据继续向上填充</strong>，若传入的数据填充了返回地址段，返回地址被改写，指向新的内存地址。</p>
+<p>Shellcode是一段获取shell程序的代码，通常用机器语言编写，以十六进制表示。NOP No Operation指令，即 <code>0x90</code>告诉CPU不做任何操作，跳到下一条指令。缓冲区溢出攻击中通常选用Shellcode作为攻击的恶意代码。有时，攻击者并不能知道恶意代码在内存中的准确地址，会在恶意代码前加入大段NOP指令，来提高攻击成功率。</p>
+<p>风险C语言函数：</p>
+<ul>
+<li>gets()</li>
+<li>strcpy(char *Dst, char *Src)</li>
+<li>strcat(char *Dst, char *Src)</li>
+<li>sprint(char *buffer, const char *format, [argument, $\cdots$])</li>
+</ul>
+<p>防御机制：内存地址空间随机化 Address Space Layout Randomization, ASLR、 GCC编译器 StackGuard保护机制、编译声明不可执行栈、shell程序检查UID等</p>
+<h3><span id="33-gdb调试工具">3.3 GDB调试工具</span></h3><p>用来查看程序执行过程中的运行信息，如程序的地址空间结构等。</p>
+<p>调试一个程序，需要在编译该程序时加入 <code>-ggdb</code>参数，以产生调试工具GDB所必要的调试信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -o sample -ggdb sample.c</span><br><span class="line">gdb sample</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>break [function-name]</td>
+<td>设置断点</td>
+</tr>
+<tr>
+<td>info break</td>
+<td>查看断点信息</td>
+</tr>
+<tr>
+<td>delete [break-point(s)]</td>
+<td>删除断点</td>
+</tr>
+<tr>
+<td>run [program-args]</td>
+<td>运行</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>运行直至下一个断点</td>
+</tr>
+<tr>
+<td>step</td>
+<td>执行下一步</td>
+</tr>
+<tr>
+<td>next</td>
+<td>执行下一个函数</td>
+</tr>
+<tr>
+<td>info registers [reg-name]</td>
+<td>查看具体寄存器信息</td>
+</tr>
+<tr>
+<td>print [variable-name]</td>
+<td>查看变量</td>
+</tr>
+<tr>
+<td>backtrace [full]</td>
+<td>查看栈追踪</td>
+</tr>
+<tr>
+<td>x/nfu [variable-or-address]</td>
+<td>查看内存<br>n：需要显示的内存单元的个数，默认为 1<br> f：显示的格式，默认为 x，即十六进制<br>u：一个内存单元的字节数，默认为 w，即 4 字节</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><span id="四-实验步骤">四、实验步骤</span></h2><h3><span id="41-实验环境配置">4.1 实验环境配置</span></h3><p>环境所需依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gcc gdb lib32z1 libc6-dev-i386 \</span><br><span class="line">lib32ncurses5-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linux32</span><br><span class="line">/bin/bash</span><br><span class="line"><span class="built_in">cd</span> xxx</span><br></pre></td></tr></table></figure>
+<p>进入32位环境</p>
+<h3><span id="42-gdb使用练习">4.2 GDB使用练习</span></h3><p>关闭地址空间随机化：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -w kernel.randomize_va_space=0</span><br></pre></td></tr></table></figure>
+<p>编译 <code>sample.c</code>程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 -fno-stack-protector -w -g -fcf-protection=none -o sample sample.c</span><br></pre></td></tr></table></figure>
+<p>其中 <code>-m32</code>代表编译32位程序，<code>-fno-stack-protector</code>代表关闭栈保护机制，<code>-w</code>用来忽略编译过程中的部分警告，<code>-g</code>表示产生符号调试工具GDB所必要的符号信息，<code>-fcf-protection=none</code>禁用控制流传输指令的目标地址是否有效，<code>-o</code>指定编译后的可执行文件名。</p>
+<p>首先，进去gdb，设置断点并运行程序，用 <code>step</code>来单步执行程序。可以使用 <code>disassemble &lt;function_name&gt;</code>来反汇编该函数</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025141949122.png" alt="image-20231025141949122"></p>
+<p>反汇编的输出为函数的汇编代码，每一行是一条汇编指令，指令前还附带该指令的内存地址，箭头所指位置是0x56556277地址的指令，作用是调用 <code>sample_function</code>函数。当他返回时，他应该执行下一条指令，即 地址为0x5655627c的指令。</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025142339162.png" alt="image-20231025142339162"></p>
+<p><code>info reg</code> 查看寄存器信息，该命令显示了寄存器的值及解码值，本实验只用到第一个值（<font color="red">为什么？</font>），即寄存器的十六进制值。可以看到栈指针 esp指向0xffffcf10，基址指针ebp指向0xffffcf28，指令指针eip指向0x56556277，也就对应的调用 <code>sample_function()</code>这条指令，说明下一条被执行的指令就是这个。</p>
+<p>进入 <code>sample_function()</code>函数之前，反汇编该函数：</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025143139941.png" alt="image-20231025143139941"></p>
+<p>得到的汇编代码中，<code>&lt;+0&gt;</code> <code>&lt;+1&gt;</code> <code>&lt;+4&gt;</code>三条指令常见于GCC编译器为大多数函数生成的汇编代码中。它将当前基址指针保存于栈中 <code>push %ebp</code>，将基质指针指向当前栈的顶部 <code>mov %esp, %ebp</code>，然后向下移动栈指针，为局部变量分配空间 <code>sub $0x14, %esp</code></p>
+<blockquote>
+<p>汇编语言中， <code>$</code>这个符号通常用于表示立即数，用于将一个常数值直接传递给指令而不是从内存中读取。</p>
+</blockquote>
+<p><code>&lt;+3&gt;</code> <code>&lt;+7&gt;</code> <code>&lt;+12&gt;</code>这三条指令也是GCC添加的，他们将程序栈的地址记录并保存在一个独立的内存区域（Global Offset Table，GOT，全局偏移量表），使得程序在每次运行时可以被加载到不同的内存区域中并正确运行。</p>
+<p>具体细节如下：将ebx保存到栈中，调用 <code>__x86.get_pc_thunk.bx</code>的子程序，该程序通过执行汇编指令 <code>mov %esp, %ebx</code>，将当前栈顶地址加载到EBX中，下一行则将一个数字 <code>0x2e0b</code>与EBX相加，并把保存结果到EBX中。这里加的数字与GOT有关，自此，函数的起始位置与GOT相关联。</p>
+<p>接下来的代码时基于函数的C代码产生的。</p>
+<p>进入 <code>sample_function</code>函数时，首先，一个返回地址会被call指令压入栈顶，此时的ESP指向的是返回地址的位置，之后将 EBP压入栈顶，然后将EBP设为ESP的值</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231026004023538.png" alt="image-20231026004023538"></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231026004226386.png" alt="image-20231026004226386"></p>
+<h3><span id="43-缓冲溢出攻击">4.3 缓冲溢出攻击</span></h3><h1><span id="作业2">作业2</span></h1><h2><span id="缓冲区溢出攻击">缓冲区溢出攻击</span></h2><p>构造一个shellcode， 实现进入root权限，具体的shellcode代码为实验6中提供的代码。</p>
+<p>之后在适当位置插入攻击代码，初步猜测是将shellcode插入在buffer尾部; 发现不是那么简单。</p>
+<p>要开始想想了</p>
+<p>对于<code>x/32xw $esp</code>的感觉是，它展示了内存中的对应地址的数据是什么。</p>
+<p>缓冲区溢出攻击会将程序的返回地址府改为攻击代码。</p>
+<p>初步的认识是 <code>x/xw $ebp</code>返回的蓝色地址是实质上保存的地址，白色部分是该地址对应的内容</p>
+<p>所以，我猜测攻击的方式是在sprintf()之后看看esp到达哪里了，之后做个差看看应该在那个位置</p>
 
     </div>
 
@@ -529,7 +647,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Lab-2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">4.4 MD5算法碰撞实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">4.4.1 MD5碰撞工具的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">4.4.2 MD5特性探究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">4.4.3 产生相同MD5哈希值的两个可执行文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Lab-3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">4.3 PKI实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.1.</span> <span class="nav-text">4.3.1 建立CA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.2.</span> <span class="nav-text">4.3.2 利用CA签发证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.3.</span> <span class="nav-text">4.3.3 验证CA签发证书的签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.4.</span> <span class="nav-text">4.3.4 将证书用于HTTPS Web服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Homework-1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 产生两个程序行为不同的可执行文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">1.2-建立基于Apache的HTTPS网站</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Lab 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">实验原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.1.</span> <span class="nav-text">3.1 路由追踪</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 主机扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.1.</span> <span class="nav-text">3.2.1 主机扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.2.</span> <span class="nav-text">3.2.2 端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.3.</span> <span class="nav-text">3.2.3 系统扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.4.</span> <span class="nav-text">3.2.4 服务扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.5.</span> <span class="nav-text">3.2.5 网络扫描工具</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Lab-2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">4.4 MD5算法碰撞实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">4.4.1 MD5碰撞工具的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">4.4.2 MD5特性探究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">4.4.3 产生相同MD5哈希值的两个可执行文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Lab-3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">4.3 PKI实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.1.</span> <span class="nav-text">4.3.1 建立CA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.2.</span> <span class="nav-text">4.3.2 利用CA签发证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.3.</span> <span class="nav-text">4.3.3 验证CA签发证书的签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.4.</span> <span class="nav-text">4.3.4 将证书用于HTTPS Web服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Homework-1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 产生两个程序行为不同的可执行文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">1.2-建立基于Apache的HTTPS网站</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Lab 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">实验原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.1.</span> <span class="nav-text">3.1 路由追踪</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 主机扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.1.</span> <span class="nav-text">3.2.1 主机扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.2.</span> <span class="nav-text">3.2.2 端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.3.</span> <span class="nav-text">3.2.3 系统扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.4.</span> <span class="nav-text">3.2.4 服务扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.5.</span> <span class="nav-text">3.2.5 网络扫描工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Lab-6 缓冲区溢出攻击实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.1.</span> <span class="nav-text">三、实验原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.1.</span> <span class="nav-text">3.1 操作系统中的函数调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.2.</span> <span class="nav-text">3.2 缓冲区溢出漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.3.</span> <span class="nav-text">3.3 GDB调试工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.2.</span> <span class="nav-text">四、实验步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.1.</span> <span class="nav-text">4.1 实验环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.2.</span> <span class="nav-text">4.2 GDB使用练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.3.</span> <span class="nav-text">4.3 缓冲溢出攻击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">作业2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.1.</span> <span class="nav-text">缓冲区溢出攻击</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -545,7 +663,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="MD5碰撞、CA-PKI建立教程、apache服务器建立教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全创新实验学习日志">
+<meta property="og:url" content="http://www.warmfire.com/2023/09/29/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%9B%E6%96%B0%E5%AE%9E%E9%AA%8C%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:site_name" content="WarmFire">
+<meta property="og:description" content="MD5碰撞、CA-PKI建立教程、apache服务器建立教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025141949122.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025142339162.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025143139941.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231026004023538.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231026004226386.png">
+<meta property="article:published_time" content="2023-09-29T14:10:40.000Z">
+<meta property="article:modified_time" content="2023-10-30T12:34:06.349Z">
+<meta property="article:author" content="Yan Zhimin">
+<meta property="article:tag" content="学校课程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025141949122.png">
+
+<link rel="canonical" href="http://www.warmfire.com/2023/09/29/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%9B%E6%96%B0%E5%AE%9E%E9%AA%8C%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>网络安全创新实验学习日志 | WarmFire</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="WarmFire" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WarmFire</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/09/29/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%9B%E6%96%B0%E5%AE%9E%E9%AA%8C%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="不忘初心，方得始终">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络安全创新实验学习日志
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-29 22:10:40" itemprop="dateCreated datePublished" datetime="2023-09-29T22:10:40+08:00">2023-09-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-30 20:34:06" itemprop="dateModified" datetime="2023-10-30T20:34:06+08:00">2023-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E8%B7%B5%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">实践知识</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">MD5碰撞、CA-PKI建立教程、apache服务器建立教程</div>
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>目前来看网络安全创新实验中给出的例子还是很不错的，既能够初步明白怎么用，还能在具体的应用环境中实现。-20230929</p>
+</blockquote>
+<h1><span id="lab-2">Lab-2</span></h1><h2><span id="44-md5算法碰撞实验">4.4 MD5算法碰撞实验</span></h2><h3><span id="441-md5碰撞工具的使用">4.4.1 MD5碰撞工具的使用</span></h3><p>快速MD5碰撞生成工具来生成两个拥有相同MD5值的不同文件。这两个文件的开始部分是相同的。因此需要指定前缀：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Lab2/hashclash/ipc_workdir/</span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;prefix&quot;</span> &gt; [prefix_file]</span><br><span class="line">../scripts/poc_no.sh [prefix_file]</span><br></pre></td></tr></table></figure>
+<p>可以通过一下命令来验证文件是否内容不同而MD5值相同。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 比较两个文件是否相同</span><br><span class="line">diff -q collision1.bin collision2.bin</span><br><span class="line">ghex -C collision1.bin</span><br><span class="line"><span class="built_in">md5sum</span> collision1.bin collision2.bin</span><br></pre></td></tr></table></figure>
+<p>如果是64字节的倍数，则会正常处理；如果不是64的倍数，则会去除多余的部分。</p>
+<h2><span id="442-md5特性探究">4.4.2 MD5特性探究</span></h2><p>两个相同MD5值的文件加上相同的后缀T会生成两个具有相同哈希值的文件。</p>
+<blockquote>
+<p>cat file1 file2 &gt; file3</p>
+</blockquote>
+<p>将两个文件合并到另一个文件</p>
+<h2><span id="443-产生相同md5哈希值的两个可执行文件">4.4.3 产生相同MD5哈希值的两个可执行文件</span></h2><p>利用gcc编译文件的命令如下：</p>
+<blockquote>
+<p>gcc [input_file] -o [output_file]</p>
+</blockquote>
+<p>编译后的文件可以直接运行</p>
+<blockquote>
+<p>./program.out</p>
+</blockquote>
+<p>赋予执行权限</p>
+<blockquote>
+<p>chmod +x [file_name]</p>
+</blockquote>
+<p>验证是否满足要求：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">md5sum</span> program_col1.bin program_col2.bin</span><br><span class="line"><span class="built_in">echo</span> $(./program_col1.bin) | <span class="built_in">md5sum</span></span><br><span class="line"><span class="built_in">echo</span> $(./program_col2.bin) | <span class="built_in">md5sum</span></span><br></pre></td></tr></table></figure>
+<p>接下来用head/tail命令来分割文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 将a.out前3200byte输入到prefix文件中</span><br><span class="line"><span class="built_in">head</span> -c 3200 a.out &gt; prefix</span><br><span class="line">// a.out 后 100字节输入到suffix</span><br><span class="line"><span class="built_in">tail</span> -c 100 a.out &gt; suffix</span><br><span class="line">// a.out 从第3300字节开始至结尾的内容输入到suffix文件中</span><br><span class="line"><span class="built_in">tail</span> -c +3300 a.out &gt; suffix</span><br></pre></td></tr></table></figure>
+<h1><span id="lab-3">Lab-3</span></h1><h2><span id="43-pki实验">4.3 PKI实验</span></h2><p>PKI利用CA将用户身份与公钥结合，解决公钥可信性问题。</p>
+<p>CA是一个签发电子证书的可信实体。</p>
+<h3><span id="431-建立ca">4.3.1 建立CA</span></h3><p>将<code>openssl</code>提供的配置文件<code>/usr/lib/ssl/openssl.cnf</code>拷贝进入目录，并且根据配置文件中的要求（[CA_default]）创建以下文件夹或文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dir 			=./demoCA	# dir, store all files</span><br><span class="line">certs			=$dir/certs	    # dir, store all certs</span><br><span class="line">crl_dir 		   =$dir/crl 	   # dir, store the list of revocation key list</span><br><span class="line">new_certs_dir 	   =$dir/newcerts #dir, store new certs</span><br><span class="line">database 		=$dir/index.txt  #file, the index file of database</span><br><span class="line">serial 			  =$dir/serial	   #file, store relevant serial number</span><br></pre></td></tr></table></figure>
+<p>其中，<code>index.txt</code>仅需创建一个空文件，<code>serial</code>文件创建后需要输入偶数位的16进制数字</p>
+<p>之后CA先生成自签名证书，该证书证明CA是可信的，并称为根证书：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openssl req生成自签名证书</span></span><br><span class="line">openssl req -new -x509 -keyout ca.key -out ca.crt -config openssl.cnf</span><br><span class="line"><span class="comment"># -new 		创建一个证书请求文件，若之后指定了-x509，代表创建自签名证书文件</span></span><br><span class="line"><span class="comment"># -keyout [file]  指定自动创建私钥时私钥的输出文件</span></span><br><span class="line"><span class="comment"># -out [file] 	指定证书请求或自签名证书的输出文件</span></span><br><span class="line"><span class="comment"># config [file]  指定req命令的配置文件</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>自签名 SSL 证书是一种数字证书，未经公开信任的证书颁发机构 (CA) 签名。自签名证书被认为不同于传统的 CA 签名证书，因为它们是由负责与证书关联的网站或软件的公司或开发人员创建、颁发和签名的，而不是 CA。</p>
+<p>在高层次上，这些自签名证书基于与 X.509 证书中使用的相同的加密私钥和公钥对体系结构。但是，这些数字证书没有受信任的第三方 CA 的验证。发行过程中缺乏独立验证会产生额外的风险，这就是自签名证书的问题。对于面向公众的网站和应用程序，它们被认为是不安全的。</p>
+</blockquote>
+<p>可以用 <code>openssl x509 -noout -text -in ca.crt</code>来查看证书信息</p>
+<h3><span id="432-利用ca签发证书">4.3.2 利用CA签发证书</span></h3><p>网站PKILab.com，需要从CA处取得电子证书：</p>
+<p>首先，生成自己的公私钥对 <code>openssl genrsa -aes128 -out server.key 2048</code></p>
+<p>生成公私钥对后，同时将私钥用AES128加密存储在<code>server.key</code>文件中。</p>
+<p>通过 <code>openssl rsa -in server.key -text</code>查看密钥信息</p>
+<p>其次，PKILab.com需要生成证书请求文件（CSR）。该文件包含了PKILab.com的公钥，并被发送给CA，请求CA对公钥进行签名：</p>
+<p><code>openssl req -new -key server.key -out server.csr -config openssl.cnf</code></p>
+<p>CA收到csr请求文件后，利用自己的私钥ca.key与证书ca.crt，签名并生成server.crt:</p>
+<p><code>openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key -config openssl.cnf</code></p>
+<h3><span id="433-验证ca签发证书的签名">4.3.3 验证CA签发证书的签名</span></h3><p>证书文件分为三部分，Data域、Signature Algorithm域、Signature Value域，Date域为证书的基本信息部分，也称作TBSCertificate（To-Be-Signed Certificate）。</p>
+<p>寻找TBSCertificate位置的指令：<code>openssl x509 -in server.crt -inform pem -outform pem -out server.pem</code></p>
+<p>以ASN.1格式解析PEM文件：<code>openssl asn1parse -i -in server.pem</code></p>
+<p>根据解析信息提取TBSCertificate，保存为<code>server.tbs</code>文件：<code>openssl asn1parse -in server.pem -strparse 5 -out server.tbs</code></p>
+<h3><span id="434-将证书用于https-web服务器">4.3.4 将证书用于HTTPS Web服务器</span></h3><p>首先，配置DNS服务。为了让虚拟机能够解析该域名，需要将<code>127.0.0.1 PKILab.com</code>填入虚拟机<code>/etc/hosts</code>文件中。</p>
+<p>然后，基于之前生成的证书，使用指令建立一个Web简单服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 将密钥与证书合成为一个文件</span><br><span class="line"><span class="built_in">cp</span> server.key server.pem</span><br><span class="line"><span class="built_in">cat</span> server.crt &gt;&gt; server.pem</span><br><span class="line">//直接将crt拼接到pem后面</span><br><span class="line">// 利用 server.pem 建立一个Web服务器</span><br><span class="line">openssl s_server -cert server.pem -www</span><br></pre></td></tr></table></figure>
+<h1><span id="homework-1">Homework-1</span></h1><h2><span id="11-产生两个程序行为不同的可执行文件">1.1 产生两个程序行为不同的可执行文件</span></h2><h2><span id="12-建立基于apache的https网站">1.2-建立基于Apache的HTTPS网站</span></h2><p>首先需要修改Apache配置文件，<strong>指定网站文件以及网站密钥与证书的存储位置。</strong></p>
+<p>举个栗子~</p>
+<p>要建立一个<code>example.com</code>的网站，需要在<code>/var/www</code>文件夹中新建一个名为<code>example</code>的文件夹，并在其中新建一个<code>index_https.html</code>。</p>
+<p>之后就到了<strong>修改配置文件</strong><code>/etc/apache2/sites-available/&lt;your web&gt;.conf</code>的时候了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:<span class="number">443</span>&gt;</span><br><span class="line"># *表示该配置适用与所有IP与<span class="number">443</span>端口的请求</span><br><span class="line"> ServerName example.com   </span><br><span class="line"> DocumentRoot /var/www/example</span><br><span class="line"> DirectoryIndex index_https.html</span><br><span class="line"></span><br><span class="line"> SSLEngine on</span><br><span class="line"> SSLCertificateFile   <span class="meta"># input the absolute path of the cert of your website </span></span><br><span class="line"> SSLCertificateKeyFile  <span class="meta"># input the absolute path of the key of your website</span></span><br><span class="line"></span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">SSLCipherSuite AES256-SHA # 指定加密组件</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 至于网站证书应该如何生成以及密钥文件应该如何生成，请看Lab-3</p>
+<p>AH00558: apache2: Could not reliably determine the server’s fully qualified domain name, using 127.0.1.1. Set the ‘ServerName’ directive globally to suppress this message<br>解决方案：</p>
+<p>在/etc/apache2/apache2.cnf中添加</p>
+<p>ServerName  your_server_name</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apachectl configtest</span><br><span class="line">sudo a2enmod ssl</span><br><span class="line">sudo a2ensite default-ssl</span><br><span class="line">sudo service apache2 start 或者 sudo service apache2 restart</span><br></pre></td></tr></table></figure>
+<h1><span id="lab-5">Lab 5</span></h1><h2><span id="实验原理">实验原理</span></h2><h3><span id="31-路由追踪">3.1 路由追踪</span></h3><p>用于获取一个网络数据包从源地址到目的地址的路径信息。</p>
+<blockquote>
+<p>类Unix（Linux、Mac OS）： traceroute;</p>
+<p>Windows：tracert</p>
+</blockquote>
+<p>依赖于数据包的存活时间TTL字段，路由器在路由时会将TTL的值-1，丢弃值为0的包，并返回ICMP超时错误消息；</p>
+<p>路由追踪工具发送TTL值逐渐增加的数据包，初始值为1，同时TTL值相同的包会发送3次。</p>
+<p>基于路由跟踪工具实现方式的不同，数据包到达目的地址时返回的ICMP信息类型也不同；</p>
+<p><code>traceroute</code>默认基于UDP实现，使用一个大于<code>30000</code>的端口号，然而大多数主机关闭了UDP服务，主机会将数据包丢弃而不返回任何信息，因此可以使用基于ICMP的实现，<code>tracert</code>指令通过该方式实现；</p>
+<p>也可以使用<code>traceroute</code>命令添加特定参数指定实现方式，该方式源地址发送的时是ICMP echo request，目的地发送一个ICMP echo reply</p>
+<p><del>话说，计网应该学过这个</del></p>
+<h2><span id="32-主机扫描">3.2 主机扫描</span></h2><h3><span id="321-主机扫描">3.2.1 主机扫描</span></h3><p>​    主机扫描是网络扫描的基础。攻击者利用主机扫描获得网络中活动的主机，然后以他们为目标进行后续的攻击。主机扫描的思想是向目标主机发送特定的数据包，若目标主机有回应，则认为该主机是活动的。常见的主机扫描技术包括Ping扫描以及对局域网的ARP扫描等。</p>
+<p>​    最简单的ping扫描技术是ICMP echo request 发送至多个主机，现在很多防火墙光率ICMP报文，以避免来自外部的对站点或主机的嗅探。</p>
+<p>​    TCP SYN报文也可被用来进行主机发现与扫描，发送SYN报文，根据SYN、ACK标志数据包确认远程主机处于活动状态。</p>
+<p>​    ARP是根据IP地址获取物理地址的TCP/IP协议，发送ARP请求报文，如果该IP地址成功接收该报文且为活动状态，即会响应并发回自身MAC地址。只适用于局域网内的主机扫描。</p>
+<h3><span id="322-端口扫描">3.2.2 端口扫描</span></h3><p>​    经过主机扫描获取活动主机的相关信息后，需对目标主机进行端口扫描，获取其开放端口信息。</p>
+<p>​    TCP Connect扫描时最简单的端口扫描技术，基于TCP三次握手发现活动端口，扫描方式不隐蔽，大量的连接请求会被记录到系统服务日志中，容易被屏蔽。 技术有TCP SYN扫描、TCP ACK扫描、TCP FIN扫描、X-mas扫描、Null扫描等。</p>
+<ul>
+<li>TCP SYN扫描是最受欢迎的扫描，执行的很快。</li>
+<li>TCP ACK扫描不能确定端口的开放状态，目标若为配置防火墙规则对ACK数据包进行过滤，无论其状态是否开放都将返回RST数据包相应。然而 ack扫描可以通过探测端口的连接是否被过滤来探测防火墙规则与配置；</li>
+<li>这两类扫描过程未建立完整的tcp连接，被称为半开放扫描。速度快，不容易被记录进日志。</li>
+</ul>
+<h3><span id="323-系统扫描">3.2.3 系统扫描</span></h3><p>​    得到开放端口后，需要确定使用的操作系统，决定了攻击者后续采取的攻击方式。常用的OS扫描技术实际上是基于TCP/IP协议栈的指纹识别。扫描程序将一系列TCP和UDP数据包发送给目标主机，并将说到的回应数据包与数据库内已知OS指纹比对，匹配出目标主机的OS。</p>
+<h3><span id="324-服务扫描">3.2.4 服务扫描</span></h3><p>​    得到开放端口后，还需要确定该端口提供的服务。因为目标主机可能将常见服务部署在非标准的端口上，利用服务扫描技术可以正确识别这些端口上的服务。</p>
+<p>​    服务扫描程序根据不同服务的特点发送特定的数据包，也可以利用常见的服务于端口号的映射表来基于端口扫描的结果报告主机上运行的服务。这种方式不一定是准确的，因为远程主机可能对服务指定非默认端口。</p>
+<h3><span id="325-网络扫描工具">3.2.5 网络扫描工具</span></h3><p>​    网络映射器 Network Mapper, Nmap 是一个强大的网络扫描工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nmap [scan <span class="built_in">type</span>(s)] [options] [target]</span><br><span class="line"><span class="comment"># target表示要扫描的对象，IP地址、网段、主机号等</span></span><br><span class="line"><span class="comment"># 支持自定义扫描模式、参数，部分参数需要sudo权限</span></span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-sN</td>
+<td>ping 扫描，主机发现</td>
+</tr>
+<tr>
+<td>-sT</td>
+<td>TCP 连接扫描</td>
+</tr>
+<tr>
+<td>-sS</td>
+<td>TCP SYN 扫描</td>
+</tr>
+<tr>
+<td>-sA</td>
+<td>TCP ACK 扫描</td>
+</tr>
+<tr>
+<td>-sU</td>
+<td>UDP 连接扫描</td>
+</tr>
+<tr>
+<td>-O</td>
+<td>操作系统扫描</td>
+</tr>
+<tr>
+<td>-sV</td>
+<td>开放端口的系统服务以及版本扫描</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1><span id="lab-6-缓冲区溢出攻击实验">Lab-6 缓冲区溢出攻击实验</span></h1><h2><span id="三-实验原理">三、实验原理</span></h2><h3><span id="31-操作系统中的函数调用">3.1 操作系统中的函数调用</span></h3><p>冯·诺伊曼结构采用存储程序原理，将数据和代码存储在内存中。代码在内存中以数据形式存储。</p>
+<p>例如 <code>xor eax,eax</code>表示 <code>eax</code>寄存器的值与自己进行异或操作，用机器码表示为 <code>0x31 0xc0</code>其中 <code>0x31</code>是异或操作，<code>0xc0</code>是 <code>eax</code>寄存器。</p>
+<p>同时，CPU使用寄存器来暂存指令、数据和地址。以32位系统为例，常用的寄存器包括通用寄存器（<code>EAX</code>、<code>EBX</code>、<code>ECX</code>、<code>EDX</code>）、偏移寄存器（<code>EBP</code>、<code>ESI</code>、<code>EDI</code>、<code>ESP</code>），其中：</p>
+<ul>
+<li>通用寄存器用来操作数据，保存算术逻辑运算结果、传送数据；</li>
+<li><code>EBP</code>存放基址指针，指向系统栈最上面一个栈帧的及地址，该地址保存上一级调用者的<code>EBP</code></li>
+<li><code>ESP</code>存放栈指针，指向系统栈最上面一个栈帧的顶部；</li>
+<li><code>EIP</code>存放指令指针，指向下次将要执行的指令；</li>
+</ul>
+<p>栈是一种存储运行程序中函数调用时重要信息的数据结构，LIFO。在Intel系统中，栈从<strong>高地址往低地址堆叠</strong>。函数的每次调用会在系统站中堆叠一个栈帧 Stack Frame，该栈帧包括参数 Parameter、返回地址 Return Address、前一栈帧的指针 Previous Frame Pointer以及该函数的局部变量Local Variables。</p>
+<h3><span id="32-缓冲区溢出漏洞">3.2 缓冲区溢出漏洞</span></h3><p>Buffer Overflow，例如定义 buffer[10]，写入数据的长度大于10，造成缓冲区溢出，<strong>传入的其余数据继续向上填充</strong>，若传入的数据填充了返回地址段，返回地址被改写，指向新的内存地址。</p>
+<p>Shellcode是一段获取shell程序的代码，通常用机器语言编写，以十六进制表示。NOP No Operation指令，即 <code>0x90</code>告诉CPU不做任何操作，跳到下一条指令。缓冲区溢出攻击中通常选用Shellcode作为攻击的恶意代码。有时，攻击者并不能知道恶意代码在内存中的准确地址，会在恶意代码前加入大段NOP指令，来提高攻击成功率。</p>
+<p>风险C语言函数：</p>
+<ul>
+<li>gets()</li>
+<li>strcpy(char *Dst, char *Src)</li>
+<li>strcat(char *Dst, char *Src)</li>
+<li>sprint(char *buffer, const char *format, [argument, $\cdots$])</li>
+</ul>
+<p>防御机制：内存地址空间随机化 Address Space Layout Randomization, ASLR、 GCC编译器 StackGuard保护机制、编译声明不可执行栈、shell程序检查UID等</p>
+<h3><span id="33-gdb调试工具">3.3 GDB调试工具</span></h3><p>用来查看程序执行过程中的运行信息，如程序的地址空间结构等。</p>
+<p>调试一个程序，需要在编译该程序时加入 <code>-ggdb</code>参数，以产生调试工具GDB所必要的调试信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -o sample -ggdb sample.c</span><br><span class="line">gdb sample</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>break [function-name]</td>
+<td>设置断点</td>
+</tr>
+<tr>
+<td>info break</td>
+<td>查看断点信息</td>
+</tr>
+<tr>
+<td>delete [break-point(s)]</td>
+<td>删除断点</td>
+</tr>
+<tr>
+<td>run [program-args]</td>
+<td>运行</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>运行直至下一个断点</td>
+</tr>
+<tr>
+<td>step</td>
+<td>执行下一步</td>
+</tr>
+<tr>
+<td>next</td>
+<td>执行下一个函数</td>
+</tr>
+<tr>
+<td>info registers [reg-name]</td>
+<td>查看具体寄存器信息</td>
+</tr>
+<tr>
+<td>print [variable-name]</td>
+<td>查看变量</td>
+</tr>
+<tr>
+<td>backtrace [full]</td>
+<td>查看栈追踪</td>
+</tr>
+<tr>
+<td>x/nfu [variable-or-address]</td>
+<td>查看内存<br>n：需要显示的内存单元的个数，默认为 1<br> f：显示的格式，默认为 x，即十六进制<br>u：一个内存单元的字节数，默认为 w，即 4 字节</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><span id="四-实验步骤">四、实验步骤</span></h2><h3><span id="41-实验环境配置">4.1 实验环境配置</span></h3><p>环境所需依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gcc gdb lib32z1 libc6-dev-i386 \</span><br><span class="line">lib32ncurses5-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linux32</span><br><span class="line">/bin/bash</span><br><span class="line"><span class="built_in">cd</span> xxx</span><br></pre></td></tr></table></figure>
+<p>进入32位环境</p>
+<h3><span id="42-gdb使用练习">4.2 GDB使用练习</span></h3><p>关闭地址空间随机化：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -w kernel.randomize_va_space=0</span><br></pre></td></tr></table></figure>
+<p>编译 <code>sample.c</code>程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 -fno-stack-protector -w -g -fcf-protection=none -o sample sample.c</span><br></pre></td></tr></table></figure>
+<p>其中 <code>-m32</code>代表编译32位程序，<code>-fno-stack-protector</code>代表关闭栈保护机制，<code>-w</code>用来忽略编译过程中的部分警告，<code>-g</code>表示产生符号调试工具GDB所必要的符号信息，<code>-fcf-protection=none</code>禁用控制流传输指令的目标地址是否有效，<code>-o</code>指定编译后的可执行文件名。</p>
+<p>首先，进去gdb，设置断点并运行程序，用 <code>step</code>来单步执行程序。可以使用 <code>disassemble &lt;function_name&gt;</code>来反汇编该函数</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025141949122.png" alt="image-20231025141949122"></p>
+<p>反汇编的输出为函数的汇编代码，每一行是一条汇编指令，指令前还附带该指令的内存地址，箭头所指位置是0x56556277地址的指令，作用是调用 <code>sample_function</code>函数。当他返回时，他应该执行下一条指令，即 地址为0x5655627c的指令。</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025142339162.png" alt="image-20231025142339162"></p>
+<p><code>info reg</code> 查看寄存器信息，该命令显示了寄存器的值及解码值，本实验只用到第一个值（<font color="red">为什么？</font>），即寄存器的十六进制值。可以看到栈指针 esp指向0xffffcf10，基址指针ebp指向0xffffcf28，指令指针eip指向0x56556277，也就对应的调用 <code>sample_function()</code>这条指令，说明下一条被执行的指令就是这个。</p>
+<p>进入 <code>sample_function()</code>函数之前，反汇编该函数：</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231025143139941.png" alt="image-20231025143139941"></p>
+<p>得到的汇编代码中，<code>&lt;+0&gt;</code> <code>&lt;+1&gt;</code> <code>&lt;+4&gt;</code>三条指令常见于GCC编译器为大多数函数生成的汇编代码中。它将当前基址指针保存于栈中 <code>push %ebp</code>，将基质指针指向当前栈的顶部 <code>mov %esp, %ebp</code>，然后向下移动栈指针，为局部变量分配空间 <code>sub $0x14, %esp</code></p>
+<blockquote>
+<p>汇编语言中， <code>$</code>这个符号通常用于表示立即数，用于将一个常数值直接传递给指令而不是从内存中读取。</p>
+</blockquote>
+<p><code>&lt;+3&gt;</code> <code>&lt;+7&gt;</code> <code>&lt;+12&gt;</code>这三条指令也是GCC添加的，他们将程序栈的地址记录并保存在一个独立的内存区域（Global Offset Table，GOT，全局偏移量表），使得程序在每次运行时可以被加载到不同的内存区域中并正确运行。</p>
+<p>具体细节如下：将ebx保存到栈中，调用 <code>__x86.get_pc_thunk.bx</code>的子程序，该程序通过执行汇编指令 <code>mov %esp, %ebx</code>，将当前栈顶地址加载到EBX中，下一行则将一个数字 <code>0x2e0b</code>与EBX相加，并把保存结果到EBX中。这里加的数字与GOT有关，自此，函数的起始位置与GOT相关联。</p>
+<p>接下来的代码时基于函数的C代码产生的。</p>
+<p>进入 <code>sample_function</code>函数时，首先，一个返回地址会被call指令压入栈顶，此时的ESP指向的是返回地址的位置，之后将 EBP压入栈顶，然后将EBP设为ESP的值</p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231026004023538.png" alt="image-20231026004023538"></p>
+<p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231026004226386.png" alt="image-20231026004226386"></p>
+<h3><span id="43-缓冲溢出攻击">4.3 缓冲溢出攻击</span></h3><h1><span id="作业2">作业2</span></h1><h2><span id="缓冲区溢出攻击">缓冲区溢出攻击</span></h2><p>构造一个shellcode， 实现进入root权限，具体的shellcode代码为实验6中提供的代码。</p>
+<p>之后在适当位置插入攻击代码，初步猜测是将shellcode插入在buffer尾部; 发现不是那么简单。</p>
+<p>要开始想想了</p>
+<p>对于<code>x/32xw $esp</code>的感觉是，它展示了内存中的对应地址的数据是什么。</p>
+<p>缓冲区溢出攻击会将程序的返回地址府改为攻击代码。</p>
+<p>初步的认识是 <code>x/xw $ebp</code>返回的蓝色地址是实质上保存的地址，白色部分是该地址对应的内容</p>
+<p>所以，我猜测攻击的方式是在sprintf()之后看看esp到达哪里了，之后做个差看看应该在那个位置</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Yan Zhimin 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Yan Zhimin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.warmfire.com/2023/09/29/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%9B%E6%96%B0%E5%AE%9E%E9%AA%8C%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" title="网络安全创新实验学习日志">http://www.warmfire.com/2023/09/29/网络安全创新实验学习日志/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/" rel="tag"># 学校课程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/09/27/%E5%8F%AF%E8%AF%81%E6%98%8E%E5%AE%89%E5%85%A8%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="可证明安全第四周学习日志">
+      <i class="fa fa-chevron-left"></i> 可证明安全第四周学习日志
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/09/30/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="数据库第四周学习日志">
+      数据库第四周学习日志 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  
+  <div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  </div>
+ 
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTAxMy8zNTQ3NQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Lab-2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">4.4 MD5算法碰撞实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.1.</span> <span class="nav-text">4.4.1 MD5碰撞工具的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">4.4.2 MD5特性探究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">4.4.3 产生相同MD5哈希值的两个可执行文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Lab-3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">4.3 PKI实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.1.</span> <span class="nav-text">4.3.1 建立CA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.2.</span> <span class="nav-text">4.3.2 利用CA签发证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.3.</span> <span class="nav-text">4.3.3 验证CA签发证书的签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.4.</span> <span class="nav-text">4.3.4 将证书用于HTTPS Web服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Homework-1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">1.1 产生两个程序行为不同的可执行文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">1.2-建立基于Apache的HTTPS网站</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Lab 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">实验原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.1.</span> <span class="nav-text">3.1 路由追踪</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 主机扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.1.</span> <span class="nav-text">3.2.1 主机扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.2.</span> <span class="nav-text">3.2.2 端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.3.</span> <span class="nav-text">3.2.3 系统扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.4.</span> <span class="nav-text">3.2.4 服务扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.5.</span> <span class="nav-text">3.2.5 网络扫描工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Lab-6 缓冲区溢出攻击实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.1.</span> <span class="nav-text">三、实验原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.1.</span> <span class="nav-text">3.1 操作系统中的函数调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.2.</span> <span class="nav-text">3.2 缓冲区溢出漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.3.</span> <span class="nav-text">3.3 GDB调试工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.2.</span> <span class="nav-text">四、实验步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.1.</span> <span class="nav-text">4.1 实验环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.2.</span> <span class="nav-text">4.2 GDB使用练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.2.3.</span> <span class="nav-text">4.3 缓冲溢出攻击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">作业2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.1.</span> <span class="nav-text">缓冲区溢出攻击</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yan Zhimin"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yan Zhimin</p>
+  <div class="site-description" itemprop="description">不忘初心，方得始终</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-09 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Zhimin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

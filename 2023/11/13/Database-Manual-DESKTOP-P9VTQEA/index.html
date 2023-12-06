@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="0x00 前言 记录数据库知识手册，涉及到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database Manual">
+<meta property="og:url" content="http://www.warmfire.com/2023/11/13/Database-Manual-DESKTOP-P9VTQEA/index.html">
+<meta property="og:site_name" content="WarmFire">
+<meta property="og:description" content="0x00 前言 记录数据库知识手册，涉及到">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113113200209.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113112439396.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113112802826.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113114048546.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231114110539378.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231114111315459.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231114111320318.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231114111330664.png">
+<meta property="article:published_time" content="2023-11-13T01:34:40.000Z">
+<meta property="article:modified_time" content="2023-11-19T06:34:37.000Z">
+<meta property="article:author" content="Yan Zhimin">
+<meta property="article:tag" content="编程语言">
+<meta property="article:tag" content="学校课程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113113200209.png">
+
+<link rel="canonical" href="http://www.warmfire.com/2023/11/13/Database-Manual-DESKTOP-P9VTQEA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Database Manual | WarmFire</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="WarmFire" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WarmFire</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/11/13/Database-Manual-DESKTOP-P9VTQEA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="不忘初心，方得始终">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Database Manual
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-11-13 09:34:40" itemprop="dateCreated datePublished" datetime="2023-11-13T09:34:40+08:00">2023-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-19 14:34:37" itemprop="dateModified" datetime="2023-11-19T14:34:37+08:00">2023-11-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>0x00 前言</p>
+<p>记录数据库知识手册，涉及到</p>
+<span id="more"></span>
+<h2><span id="0x01-关系数据库理论">0x01  关系数据库理论</span></h2><h3><span id="1-关系数据结构及形式化定义">1 关系数据结构及形式化定义</span></h3><ol>
+<li>关系<ul>
+<li>组成：同一类实体型的实例集合；</li>
+<li>联系：实体之间，实体属性之间存在某种关联关系</li>
+<li>域：相同数据类型的值的集合（有限且不重复）</li>
+<li>笛卡尔积：允许某些域是相同的<ul>
+<li>笛卡尔积中每个元素是一个n元组</li>
+<li>元组中每个值叫做一个分量</li>
+<li>基数：集合中包含元素的个数</li>
+</ul>
+</li>
+<li>关系：笛卡尔积的子集叫做在域 $D_1,D_2,\cdots,D_n$上的关系，表示为 $R(D_1,D_2,\cdots,D_n)$<ul>
+<li>n也称目或度，R为关系名</li>
+<li>n=1：单元关系，n=2：二元关系</li>
+<li>超键：属性集合能够在关系中唯一标识元组<ul>
+<li>候选键/码 Candidate key：某一属性组的值能唯一标识一个元组<ul>
+<li>属性组是几个属性的集合</li>
+<li>最小超键</li>
+<li>主码/主键：一个关系中有多个候选码，选定其中一个为主码<ul>
+<li>外键：一个实体的主键被另外一个实体使用，以表达不同实体元组之间的关系（这里面的实体可以理解为一个关系）</li>
+<li>二者区别：</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113113200209.png" alt="image-20231113113200209"></li>
+<li>实体之间的关系依赖主键-外键关联实现<ul>
+<li>1对1，1对多</li>
+<li>多对多可能存在数据冗余以及追溯父节点的难以区分</li>
+<li>ER图的学习：<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113112439396.png" alt="image-20231113112439396"></li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113112802826.png" alt="image-20231113112802826"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>主属性：候选码中的所有属性，其余的属性称为非主属性</li>
+</ul>
+</li>
+<li>全码/键 All-key：关系模式的所有属性组是这个关系模式的候选码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>三类关系<ol>
+<li>基本关系 （基本表或基表）</li>
+<li>查询表</li>
+<li>视图表</li>
+</ol>
+</li>
+<li>基本关系的性质<ol>
+<li>列同质：分量来自同一域</li>
+<li>不同列可以出自同一域</li>
+<li>行、列次序可交换</li>
+<li>任意两个元组候选码不能相同</li>
+<li>分量必须是原子值<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113114048546.png" alt="image-20231113114048546"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>关系模式<ul>
+<li>型 Type，结构</li>
+<li>R(U, D, DOM, F) 可以简记为 R(U)<ul>
+<li>R        关系名</li>
+<li>U        组成该关系的属性名集合</li>
+<li>D        U中属性所来自的域</li>
+<li>DOM   属性向域的映象集合</li>
+<li>F        属性间数据的依赖关系的集合</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>关系数据库<ul>
+<li>所有关系的集合构成一个关系数据库</li>
+<li>型：关系数据库模式 schema</li>
+<li>值：关系集合</li>
+</ul>
+</li>
+<li>关系模型的存储结构</li>
+</ol>
+<h3><span id="2-关系操作">2 关系操作</span></h3><blockquote>
+<p>引入记号：</p>
+<p>设关系为 $R(A_1,A_2,\cdots,A_n)$，$t\in R$，</p>
+<ol>
+<li>$t[A_i]$表示元组 $t$中对应属性 $A_i$的一个分量</li>
+<li>若 $A=\{A_{i_1},\cdots,A_{i_k}\}$，则 $t[A]$表示元组t相应分量的集合，$\bar{A}$表示除去A中属性后剩余的属性组</li>
+<li>$\overset{\frown}{t_rt_s}$ 元组连接，列数变为m+n列，前n个分量为R中的一个n元组，后m个分量为S中的一个m元组。</li>
+</ol>
+<p>设关系为 $R(X,Z)$</p>
+<ol>
+<li>象集 $Z_x=\{t[Z]|t\in R, t[X]=x\}$</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>查询操作：</p>
+<ol>
+<li>选择 $\sigma$<ul>
+<li>$\sigma_F(R)=\{t|t\in R \and F(t)=True\}$</li>
+<li>$F:X_1\theta X_2$， $\theta$可以是比较运算符</li>
+<li>行的角度进行</li>
+<li>优先级：$\{(),\theta,\neg,\and,\or\}$</li>
+</ul>
+</li>
+<li>投影 $\pi$<ul>
+<li>$\pi_A(R)=\{t[A]|t\in R\}$</li>
+<li>列的角度进行，会避免重复行</li>
+</ul>
+</li>
+<li>连接 $\bowtie$<ul>
+<li>$R\underset{A\theta B}{\bowtie} S= \{\overset{\frown}{t_rt_s}|t_r\in R \and t_s\in S \and t_r[A] \theta t_s[B] \}$</li>
+<li>常用连接运算：<ul>
+<li>等值连接 $A\theta B:A=B$</li>
+<li>自然连接 Natural join $R\bowtie S=\{\overset{\frown}{t_rt_s}[U-B]|t_r\in R \and t_s\in S \and t_r[B]=t_s[B]\}$ <ul>
+<li>U是全体属性集合，B是R和S具有的相同的属性组</li>
+<li>行列角度进行运算，取消重复列</li>
+<li>悬浮元组：做自然连接时，关系R中某些元组可能在S中不存在公共属性上值相等的元组</li>
+<li>外连接：将悬浮元组保存在结果关系中，其他属性上填空值<ul>
+<li>左外连接：保留左边关系</li>
+<li>右外连接：保留右边关系</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>除 $\div$<ul>
+<li>$R\div S=\{t_r[X]|t_r\in R \and \pi_Y(S)\subset Y_x  \},x=t_r[X]$</li>
+<li>一般的 $\pi_y(S)\subset \pi_y(R)$成立</li>
+<li>行列进行操作</li>
+<li><code>查询...至少/全部的/所有的...</code>问题</li>
+<li>$R\div S=\pi_X(R)-\pi_X(\pi_X(R)\times\pi_y(S)-R)$</li>
+</ul>
+</li>
+<li>并 $\cup$<ul>
+<li>具有相同的目，相应的属性取自同一域</li>
+<li>结果不允许重复</li>
+</ul>
+</li>
+<li>差 $-$<ul>
+<li>具有相同的目，相应的属性取自同一域</li>
+<li>$R-S$结果为属于R但不属于S的元组构成</li>
+</ul>
+</li>
+<li>交 $\cap$<ul>
+<li>具有相同的目，相应的属性取自同一域</li>
+</ul>
+</li>
+<li>笛卡尔积 $\times$<ul>
+<li>$R \times S$<ul>
+<li>$R$：n目关系，$k_1$个元组</li>
+<li>$S$：m目关系，$k_2$个元组</li>
+<li>结果为 $m+n$列，$k_1\times k_2$行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>并、差、笛卡尔积、投影、选择为五种基本运算</li>
+</ul>
+</li>
+<li><p>数据更新</p>
+<ol>
+<li>插入</li>
+<li>删除</li>
+<li>修改</li>
+</ol>
+</li>
+<li><p>关系操作的对象和结果均是集合</p>
+</li>
+<li><p>关系数据库语言有两类</p>
+<ol>
+<li>关系代数语言：关系运算来表达查询要求，对关系代数表达式求值</li>
+<li>关系演算语言：用为此来表达查询要求</li>
+</ol>
+<ul>
+<li>SQL具有关系代数和关系演算的双重特点</li>
+</ul>
+</li>
+</ul>
+<h3><span id="3-关系的完整性">3 关系的完整性</span></h3><ul>
+<li><p>三类完整性约束</p>
+<ol>
+<li>实体完整性<ul>
+<li>主属性不能取空值</li>
+<li>NULL是不知道或不存在或无意义或不适用的值<ul>
+<li>NULL不能参与算数、比较或逻辑运算</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>参照完整性<ul>
+<li>引用其他关系的主键作为外键F的关系R称为参照关系，被引用主键对应的关系S称为被参照关系或目标关系</li>
+<li>R与S不一定是不同的关系</li>
+<li>主码外码必须在同一个域上，但不一定要同名</li>
+<li>参照关系中的外码值要么等于被参照关系的主码值，要么为空值（F的每个属性值均为空值）</li>
+<li>关系数据库不支持m:n联系，因为会造成大量的数据冗余，不符合数据库设计的基本要求</li>
+</ul>
+</li>
+<li>用户定义的完整性<ul>
+<li>满足具体的语义要求</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>1，2合称关系的两个不变性</li>
+</ul>
+</li>
+</ul>
+<h3><span id="4-关系代数">4 关系代数</span></h3><ul>
+<li><p>抽象的查询语言，关系代数的运算符有两类</p>
+<ol>
+<li>集合运算符</li>
+<li>专门的关系运算符</li>
+</ol>
+<ul>
+<li>集合运算符涉及到关系的行，专门的关系运算涉及到行与列</li>
+</ul>
+</li>
+</ul>
+<h2><span id="0x02-关系数据库语言-sql">0x02 关系数据库语言 SQL</span></h2><ul>
+<li><p>特点</p>
+<ol>
+<li><p>综合统一</p>
+<ul>
+<li><p>数据定义语言 DDL    Create/Alter/Drop</p>
+<ul>
+<li><p>模式定义/删除 <code>CREATE SCHEMA</code> <code>DROP SCHEMA</code></p>
+<ul>
+<li>定义结构和命名空间</li>
+<li>RDBMS提供了一个层次化的数据库对象命名机制<ul>
+<li>一个RDBMS的实例 Instance 中可以建立多个数据库</li>
+<li>一个数据库中可以建立多个模式</li>
+<li>一个模式下通常包括多个表、视图和索引等数据库对象</li>
+</ul>
+</li>
+<li><code>CREATE SCHEMA &lt;SCHEMA_NAME&gt; AUTHORIZATION &lt;USER&gt;</code></li>
+<li><code>DROP SCHEMA &lt;SCHEMA_NAME&gt; &lt;CASCADE|RESTRICT&gt;</code><ul>
+<li><code>CASCADE</code> 级联，删除模式中所有数据库对象</li>
+<li><code>RESTRICT</code> 限制，如果模式中定义了下属的数据库对象，则拒绝该删除语句的执行</li>
+</ul>
+</li>
+<li>在Mysql中，Schema与Database是等价的概念。</li>
+<li>在Oracle中，Database和Instance是一对一关系。Database值服务器上所有数据文件、日志文件的综合，Instance值运行在服务器的一组后台进程。Schema是指某个User名下所有数据库对象的综合，而不是一个独立存在的实体，相当于数据库对象的命名空间，与UserName等价。</li>
+</ul>
+</li>
+<li><p>表定义/删除/修改 <code>CREATE TABLE</code> <code>DROP TABLE</code> <code>ALTER TABLE</code></p>
+<ul>
+<li><p>CREATE TABLE &lt;表名&gt;</p>
+<p>   (&lt;列名&gt; &lt;数据类型&gt;[ &lt;列级完整性约束条件&gt; ]</p>
+<p>   [,&lt;列名&gt; &lt;数据类型&gt;[ &lt;列级完整性约束条件&gt;] ] </p>
+<p>   …</p>
+<pre><code>[,&lt;表级完整性约束条件&gt; ] );
+</code></pre></li>
+<li><p>外键设置： <code>FOREIGN KEY(XXX) REFEREENCES TABLE_XXX(XXX)</code></p>
+</li>
+<li><p>主键设置：<code>PRIMARY KEY</code></p>
+</li>
+<li><p>唯一值约束：<code>UNIQUE</code></p>
+</li>
+<li></li>
+<li><p>| <strong>数据类型</strong>                      | <strong>含 义</strong>                                                    |<br>| ————————————————- | —————————————————————————————— |<br>| CHAR(<em>n</em>),CHARACTER(<em>n</em>)          | 长度为n的定长字符串  （字节计数，自动补齐空格）              |<br>| VARCHAR(<em>n</em>)                      | 最大长度为n的变长字符串  （字节计数）                        |<br>| CLOB                              | 字符串大对象  (character  large object)                      |<br>| BLOB                              | 二进制大对象(binary  large object)                           |<br>| INT，INTEGER                      | 整数（4字节）                                                |<br>| SMALLINT                          | 短整数（2字节）                                              |<br>| BIGINT                            | 长整数（8字节）                                              |<br>| NUMERIC(<em>p</em>，<em>d</em>)                 | 定点数，由<em>p</em>位数字（不包括符号、小数点）组成，小数后面有<em>d</em>位数字  —看起来p是小数点前，d是小数点后 |<br>| DECIMAL(<em>p</em>, <em>d</em>),  DEC(<em>p</em>, <em>d</em>) | 同NUMERIC                                                    |<br>| REAL                              | 取决于机器精度的单精度浮点数                                 |<br>| DOUBLE PRECISION                  | 取决于机器精度的双精度浮点数                                 |<br>| FLOAT(<em>n</em>)                        | 可选精度的浮点数，精度至少为<em>n</em>位数字                        |<br>| BOOLEAN                           | 逻辑布尔量                                                   |<br>| DATE                              | 日期，包含年、月、日，格式为YYYY-MM-DD                       |<br>| TIME                              | 时间，包含一日的时、分、秒，格式为HH:MM:SS                   |<br>| TIMESTAMP                         | 时间戳类型                                                   |<br>| INTERVAL                          | 时间间隔类型                                                 |</p>
+</li>
+<li><p><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231114110539378.png" alt="image-20231114110539378"></p>
+</li>
+<li><p>字符号常量的界定标识</p>
+<ul>
+<li>标准sql使用单引号标识字符串常量</li>
+<li>字符串中间的2个连续单引号转义为一个单引号</li>
+<li>双引号通常用来表示关键字，对象名，字段名</li>
+</ul>
+</li>
+<li><p>数据库字符串编码与排序</p>
+</li>
+<li><p>模式与表</p>
+<ul>
+<li>每一个基本表属于某一个模式</li>
+<li>一个模式包含多个基本表</li>
+<li>dba可以设置搜索路径，然后定义基本表 <code>SET search_path TO &quot;xxx&quot;,PUBLC;</code><ul>
+<li>此时建立的基本表为xxx模式下的基本表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改基本表</p>
+</li>
+<li><p>ALTER TABLE &lt;表名&gt;</p>
+<p>   [ ADD[COLUMN] &lt;新列名&gt; &lt;数据类型&gt; [ 完整性约束 ] ]</p>
+<p>   [ ADD &lt;表级完整性约束&gt;] </p>
+<p>   [ DROP [ COLUMN ] &lt;列名&gt; [CASCADE| RESTRICT] ]</p>
+<p>   [ DROP CONSTRAINT&lt;完整性约束名&gt;[ RESTRICT | CASCADE ] ]</p>
+<p>   [ALTER COLUMN &lt;列名&gt;&lt;数据类型&gt; ] ;</p>
+</li>
+<li><p>ADD子句：用于增加新列、新的列级完整性约束条件和新的表级约束完整性条件</p>
+</li>
+<li>DROP COLUMN：删除表中的列</li>
+<li>DROP CONSTRAINT：删除指定的完整性约束条件</li>
+<li>ALTER COLUMN：修改原有的列定义，包括修改列名和数据类型</li>
+<li>新增一列后：不管原来的表中是否已有数据，新增的列一律为空值</li>
+<li>采用缺省值DEFAULT来避免新增的字段取NULL，包括原来已有的数据也会被赋缺省值</li>
+<li>删除基本表</li>
+<li>DROP TABLE &lt;表名&gt; [RESTRICT | CASCADE];</li>
+</ul>
+</li>
+<li><p>视图定义/删除 <code>CREATE VIEW</code> <code>DROP VIEW</code></p>
+</li>
+<li><p>索引定义/删除/修改 <code>CREATE INDEX</code> <code>DROP INDEX</code> <code>ALTER INDEX</code></p>
+<ul>
+<li><p>建立索引目的：加快查询速度</p>
+</li>
+<li><p>常见索引：顺序文件上的索引、B+树索引、散列（hash）索引、位图（bitmap）索引</p>
+</li>
+<li><p>dba\表的属主建立索引</p>
+</li>
+<li><p>关系数据库管理系统自动选择合适的索引作为存取路径，不必也不能选择索引</p>
+</li>
+<li><p>CREATE [UNIQUE] [CLUSTER] INDEX &lt;索引名&gt;</p>
+<p>ON &lt;表名&gt;(&lt;列名&gt;[次序][,&lt;列名&gt;[&lt;次序&gt;] ]…);</p>
+<ul>
+<li>&lt;表名&gt;：要建索引的基本表的名字</li>
+<li>索引：可以建立在该表的一列或多列上，各列名之间用逗号分隔</li>
+<li>&lt;次序&gt;：指定索引值的排列次序，升序：ASC，降序：DESC。缺省值：ASC</li>
+<li>UNIQUE：此索引的每一个索引值只对应唯一的数据记录</li>
+<li>CLUSTER：表示要建立的索引是聚簇索引（SQL Server语法）</li>
+</ul>
+</li>
+<li><p>ALTER INDEX <old_name> RENAME TO <new_name></new_name></old_name></p>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据操纵语言 DML   Insert/ Select/Update/Delete</p>
+<ul>
+<li><p>数据查询</p>
+<ul>
+<li><p>SELECT [ALL|DISTINCT] &lt;目标列表达式&gt;[,目标列表达式&gt;]…</p>
+<p>FROM &lt;表名或视图名&gt;[,表名或视图名&gt; ]…| (SELECT 语句)  [AS]&lt;别名&gt;</p>
+<p>[ WHERE &lt;条件表达式&gt; ]</p>
+<p>[ GROUP BY &lt;列名1&gt; [ HAVING &lt;条件表达式&gt; ] ]</p>
+<p>[ ORDER BY &lt;列名2&gt; [ ASC|DESC ] ];</p>
+<ul>
+<li>lGROUP BY子句：对查询结果按指定列的值分组，该属性列值相等的元组为一个组。通常会在每组中作用聚集函数。</li>
+<li>HAVING短语：只有满足指定条件的分组才予以输出</li>
+<li>ORDER BY子句：对查询结果表按指定列值的升序或降序排序 </li>
+</ul>
+</li>
+<li><p><strong>单表查询</strong></p>
+<ul>
+<li><p>选择表中若干列</p>
+<ul>
+<li>查询指定列：在目标列表达式里面直接写</li>
+<li>查询全部列：目标列表达式为*</li>
+<li>查询经过计算的值：目标列表达式可以为表达式<ul>
+<li>列别名直接在列后面加上就可以</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>选择表中若干元组</p>
+<ul>
+<li><p>消除取值重复的行：DISTINCT</p>
+</li>
+<li><p>查询满足条件的元组</p>
+</li>
+<li></li>
+<li><p>| 查 询 条 件          | 谓    词                                              |<br>| —————————— | ——————————————————————————- |<br>| 比  较               | =, &gt;,  &lt;, &gt;=, &lt;=, !=, &lt;&gt;,  !&gt;, !&lt;; NOT+上述比较运算符 |<br>| 确定范围             | BETWEEN AND, NOT  BETWEEN AND                         |<br>| 确定集合             | IN, NOT IN                                            |<br>| 字符匹配             | LIKE, NOT  LIKE                                       |<br>| 空  值               | IS NULL, IS NOT NULL                                  |<br>| 多重条件（逻辑运算） | AND,  OR,  NOT                                        |</p>
+<ul>
+<li>%代表任意长度（长度可为0）的字符串</li>
+<li>_ 代表任意单个字符</li>
+<li>精准匹配 <code>=</code></li>
+<li>涉及空值的is不能用=代替</li>
+<li>null参与数学运算时，结果为null</li>
+<li>and or连接多个查询条件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>order by子句</p>
+<ul>
+<li>可以按一个或多个属性列排序</li>
+<li>缺省升序 ASC，降序DESC</li>
+</ul>
+</li>
+<li><p>聚集函数</p>
+<ul>
+<li>统计元组个数   COUNT(*)</li>
+<li>统计一列中值的个数   COUNT([DISTINCT|ALL] &lt;列名&gt;)</li>
+<li>计算一列值的总和（此列必须为数值型）SUM([DISTINCT|ALL] &lt;列名&gt;) </li>
+<li>计算一列值的平均值（此列必须为数值型）AVG([DISTINCT|ALL] &lt;列名&gt;)</li>
+<li>求一列中的最大值和最小值   MAX([DISTINCT|ALL] &lt;列名&gt;) MIN([DISTINCT|ALL] &lt;列名&gt;)</li>
+</ul>
+</li>
+<li><p>group by子句</p>
+<ul>
+<li>细化聚集函数的作用对象</li>
+<li>分组后，聚集函数将分别作用于每个组</li>
+<li>按指定的一列或多列值分组，值相等的为1组</li>
+<li>having作为聚集函数的条件表达式，作用于组</li>
+<li>若值含有null，则将null所有行分为单独1组</li>
+<li>count(*)会统计null记录数量，其余均忽略</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>连接查询</strong></p>
+<ul>
+<li>select * from table1,table2 where …</li>
+<li>连接条件：一般格式为 <code>[&lt;表名1&gt;.]&lt;列名1&gt; &lt;比较运算符&gt; [&lt;表名2&gt;.]&lt;列名2&gt;</code></li>
+<li>连接字段名称不必相同，但必须可比</li>
+<li>等值于非等值连接查询：<ul>
+<li>=</li>
+<li>执行过程：<ol>
+<li>嵌套循环法：在表1中找到每个元组一次在表2中遍历</li>
+<li>排序合并法</li>
+<li>索引链接</li>
+</ol>
+</li>
+<li>用自然连接完成，两个连接关系的元组在公共属性上去值相等，且公共属性只出现一次</li>
+</ul>
+</li>
+<li>自身连接：<ul>
+<li>必须得起别名</li>
+</ul>
+</li>
+<li>外连接：<ul>
+<li>LEFT OUTER JOIN</li>
+</ul>
+</li>
+<li>多表连接</li>
+<li>等值连接类型：INNER JOIN XXX ON XXX</li>
+<li>join连接<ul>
+<li>使用natural，出现在结果关系中的两个连接关系的元组在公共属性上取值相等，且公共属性<strong>只出现一次</strong></li>
+<li>使用 on &lt;连接条件&gt;，出现在结果关系中的两个连接关系的元组取值满足连接条件，且公共属性出现两次</li>
+<li>使用using (col1,col2,..,coln)，(col1,col2,..,coln)是两个连接关系的公共属性的子集，元组在(col1,col2,..,coln)上取值相等，且(col1,col2,..,coln)只出现一次，属性集去重</li>
+<li>MySQL会自动查找两个表中具有相同名称和数据类型的列</li>
+<li>inner join：用 on 来加条件</li>
+<li>cross join：如果没有where条件，返回所有表连接的笛卡尔积</li>
+<li>建议 on 与 where 条件区分开，便于检查</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>嵌套查询</p>
+<ul>
+<li>一个SELECT-FROM-WHERE语句称为一个查询块</li>
+<li>一个查询块嵌套在另一个查询块的where或having子句的条件中</li>
+<li>子查询不能使用order by子句</li>
+<li>不相关子查询：子查询的查询条件不依赖于父查询，每个子查询在上一级查询处理之前求解，子查询结果用于建立父查询的查询条件</li>
+<li>相关子查询：子查询的查询条件依赖于父查询</li>
+<li>带有IN谓词的子查询</li>
+<li>带有比较运算符的子查询</li>
+<li>带有ANY（SOME）或ALL谓词的子查询<ul>
+<li><code>&lt;&gt; ANY</code> 或者 <code>!= ANY</code> 不等于子查询结果中的某个值，结果用为True</li>
+<li><code>&lt;&gt; ALL</code> 或者 <code>!= ALL</code> 不等于子查询结果中的任何一个值</li>
+<li>NOT IN与 <code>!=ALL</code>等价</li>
+<li>如果比较值列表中包含NULL，且没有找到的时候会返回 <code>NULL</code></li>
+</ul>
+</li>
+<li>带有EXISTS谓词的子查询<ul>
+<li>在列表中没有NULL时，not in 与 not exists等价</li>
+<li>在列表中有NULL时，not in 返回空集 not exists返回结果</li>
+<li>全称量词也是通过exists来实现的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>集合查询</p>
+<ul>
+<li>并操作<ul>
+<li>UNION：将多个查询结果合并起来，自动去掉重复元组</li>
+<li>UNION ALL：将多个查询结果合并起来，保留重复元组</li>
+</ul>
+</li>
+<li>交操作 INTERSECT</li>
+<li>差操作 EXCEPT</li>
+</ul>
+</li>
+<li><p>基于派生表的查询</p>
+<ul>
+<li>子查询可以出现在FROM子句中</li>
+<li>如果子查询中没有聚集函数，派生表可以不指定属性列</li>
+</ul>
+</li>
+<li><p>CASE WHEN：条件返回</p>
+<ul>
+<li><p>CASE</p>
+<p>​    WHEN condition1 THEN result1</p>
+<p>​    WHEN condition2 THEN result2</p>
+<p>​    ELSE result</p>
+<p>END;</p>
+</li>
+</ul>
+</li>
+<li><p>WITH AS</p>
+<ul>
+<li>定义一个临时作用域，便于随后的查询引用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>数据更新</strong></p>
+<ul>
+<li><p>插入数据</p>
+</li>
+<li><p>INSERT</p>
+<p> INTO &lt;表名&gt; [(&lt;属性列1&gt;[,&lt;属性列2 &gt;…)]</p>
+<p> VALUES (&lt;常量1&gt; [,&lt;常量2&gt;]… );</p>
+</li>
+<li><p>INTO</p>
+<ul>
+<li>属性列的顺序可与表定义中的顺序不一致</li>
+<li>没有指定属性列：表示要插入的是一条完整的元组，且属性列属性与表定义中的顺序一致</li>
+<li>指定部分属性列：插入的元组在其他属性列上取空值，如果有缺省取缺省</li>
+</ul>
+</li>
+<li><p>VALUES</p>
+<ul>
+<li>与INTO相匹配</li>
+</ul>
+</li>
+<li><p>INSERT<br>INTO &lt;表名&gt; [(&lt;属性列1&gt;)[,&lt;属性列2&gt;…]]<br>子查询;</p>
+</li>
+<li><p>修改数据</p>
+</li>
+<li><p>UPDATE &lt;表名&gt;<br>SET &lt;列名&gt;=&lt;表达式&gt;[,&lt;列名&gt;=&lt;表达式&gt;]…<br>[WHERE &lt;条件&gt;]</p>
+</li>
+<li><p>删除数据</p>
+</li>
+<li><p>DELETE<br>FROM &lt;表名&gt;<br>[WHERE &lt;条件&gt;];</p>
+</li>
+</ul>
+</li>
+<li><p><strong>视图</strong></p>
+<ul>
+<li>定义视图</li>
+<li>CREATE VIEW<br>&lt;视图名&gt; [(&lt;列名&gt;[,&lt;列名&gt;])]<br>AS &lt;子查询&gt;<br>[WITH CHECK OPTION]</li>
+<li>with check option 去报数据实时更新</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code> - 数据控制语言 DCL     Grant/Revoke
+
+ - 事务控制语言 TCL     Begin Transaction/Commit/Rollback
+</code></pre><ol>
+<li><p>高度非过程化</p>
+</li>
+<li><p>面向集合的操作方式</p>
+</li>
+<li><p>以同一种语法结构提供多种使用方式</p>
+<ul>
+<li>独立语言</li>
+<li>嵌入式语言</li>
+<li>驱动程序API</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>基本概念</p>
+<ul>
+<li>三级模式结构<ol>
+<li>外模式：视图</li>
+<li>模式：基本表</li>
+<li>内模式：存储文件</li>
+</ol>
+</li>
+<li>基本表<ul>
+<li>一个关系对应一个基本表</li>
+<li>一个基本表对应一个存储文件</li>
+<li>一个表可以有若干索引</li>
+</ul>
+</li>
+<li>存储文件<ul>
+<li>逻辑结构 schema 组成了关系数据库的模式，由用户定义</li>
+<li>物理结构 （内模式）对用户时隐蔽的、透明的</li>
+<li>文件路径和文件名可由用户配置或指定</li>
+<li>由DBMS进行管理，实现各异</li>
+<li>用户修改模式，DBMS实现模式到内模式的自动映射与管理</li>
+</ul>
+</li>
+<li>视图<ul>
+<li>查询导出的表</li>
+<li>虚表</li>
+<li>数据库只存放使徒的定义，不存放视图对应的数据</li>
+<li>用户可以在视图上再定义视图</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><span id="0x03-oracle-mysql工程实践">0x03 Oracle, Mysql工程实践</span></h2><ul>
+<li><p><strong>Mysql</strong></p>
+<ul>
+<li><p>Schema与Database是等价的概念。</p>
+</li>
+<li><p>创建一个数据库用户 <code>CREATE USER &#39;USER_NAME&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;passwd&#39; --仅从本机登录</code></p>
+</li>
+<li><p>创建一个目标数据库/SCHEMA <code>CREATE DATABASE &lt;DB_NAME&gt; CHARACTER SET &#39;GBK&#39;/&#39;UTF8&#39;</code> </p>
+</li>
+<li><p>用户授权 <code>GRANT ALL ON *[DATABASE].*[TABLES,ETC] TO &#39;USER&#39;@&#39;LOACLHOST&#39; WITH GRANT OPTION;</code> <code>FLUSH PRIVILEGES --用于是内存中的权限于数据库中保持一致</code></p>
+</li>
+<li><p>数据类型</p>
+<ul>
+<li>CHAR，VARCHAR在Mysql&gt;5.6后是字符个数，不是字节数</li>
+<li>NCHAR，NVARCHAR：国家字符集，定义的是字符的个数，通常是UTF-8字符集，1汉字=3字节</li>
+<li>DATE：仅有日期部分，没有时间 ‘YYYY-MM-DD’</li>
+<li>DATETIME：日期和时间两部分 ‘YYYY-MM-DD hh:mm:ss’</li>
+<li>TIEMSTAMP：日期和时间两部分，范围是’1970-01-01 00:00:01’UTC to ‘2038-01-19 03:14:07’</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231114111315459.png" alt="image-20231114111315459"></li>
+<li>字符串拼接：使用空格拼接</li>
+<li>windows不区分大小写，linux区分</li>
+<li>反引号 用来标记表名和列名</li>
+</ul>
+</li>
+<li><p>数据库编码与排序规则</p>
+<ul>
+<li>SHOW CHARACTER SET;</li>
+<li>SHOW CHARACTER SET LIKE ‘GB%’;</li>
+<li>SHOW VARIABLES LIKE ‘CHARACTER_SET%’;</li>
+<li>SHOW COLLATION LIKE ‘GB%’;</li>
+</ul>
+</li>
+<li><p>字符集</p>
+<ul>
+<li><p>存储数据时的字符集</p>
+<ul>
+<li>在server\database\table\column四个级别指定所使用的字符集</li>
+<li>服务器字符集和服务器排序规则分别由变量character_set_server和变量collation_server控制</li>
+<li>数据库字符集和数据库排序规则<ul>
+<li>CREATE DATABASE\ALTER DATABASE 都有选项可以指定数据库字符集和排序规则</li>
+<li>CREATE DATABASE db_name [[DEFAULT] CHARACTER SET charset_name] [[DEFAULT] COLLATE collation_name]</li>
+<li>ALTER DATABASE db_name [[DEFAULT] CHARACTER SET charset_name] [[DEFAULT] COLLATE collation_name]</li>
+</ul>
+</li>
+<li>每个表都有一个表字符集和表排序规则<ul>
+<li>CREATE TABLE tbl_name (column_list) [[DEFAULT] CHARACTER SET charset_name] [COLLATE collation_name]]</li>
+<li>ALTER TABLE tbl_name [[DEFAULT] CHARACTER SET charset_name] [COLLATE collation_name]</li>
+</ul>
+</li>
+<li>每一个字符列都有一个列字符集和列排序规则<ul>
+<li>col_name {CHAR | VARCHAR | TEXT} (col_length) [CHARACTER SET charset_name] [COLLATE collation_name]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>重要的字符集变量</p>
+<ul>
+<li>character_set_client 客户端发送过来的sql语句的编码</li>
+<li>character_set_connection 服务器收到客户端的语句后，要转换的编码<ul>
+<li>mysql server收到请求后将请求数据从character_set_client转换为character_set_connection</li>
+<li>进行内部操作前请求数据从character_set_connection转换为内部操作字符集</li>
+<li>最后将操作结果从内部操作字符集转换为character_set_results</li>
+</ul>
+</li>
+<li>character_set_results server执行语句后，返回给客户端的数据的编码</li>
+<li>客户端设置命令<ul>
+<li>set names gkb/utf8</li>
+<li>show variables like ‘CHARACTER%’;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查询</p>
+<ul>
+<li>缺省的转义字符是 <code>\</code></li>
+</ul>
+</li>
+<li><p>复制表结构/数据</p>
+<ul>
+<li><blockquote>
+<p>PPT 3-3 P14</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Oracle</strong></p>
+<ul>
+<li>Database和Instance是一对一关系。Database值服务器上所有数据文件、日志文件的综合，Instance值运行在服务器的一组后台进程。Schema是指某个User名下所有数据库对象的综合，而不是一个独立存在的实体，相当于数据库对象的命名空间，与UserName等价。</li>
+<li>创建一个数据库用户，先创建表空间<code>CREATE TABLESPACE &lt;DB_NAME&gt; DATAFILE &#39;PATH/TO/LOAD&#39; SIZE 100M AUTOEXTEND ON NEXT 50M MAXSIZE 500M EXTENT MANAGEMENT LOCAL SEGMENT SPACE MANAGEMENT AUTO</code> 之后创建用户 <code>CREATE USER &lt;USER_NAME&gt; IDENTIFIED BY &#39;&lt;PASSWD&gt;&#39; DEFAULT TABLESPACE &lt;DB_NAME&gt;</code></li>
+<li>创建一个目标数据库/SCHEMA：安装时创建的/创建了user，就自动创建了schema</li>
+<li>用户授权： <code>GRANT CONNECT, RESOURCE, DBA TO &lt;USER&gt;;</code> <code>GRANT UNLIMITED TABLESPACE TO &lt;USER&gt;;</code></li>
+<li>数据类型<ul>
+<li>DATE：日期加时间，精确到秒，固定7bytes</li>
+<li>TIMESTAMP：日期加时间，精确到毫秒</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231114111320318.png" alt="image-20231114111320318"></li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231114111330664.png" alt="image-20231114111330664"></li>
+<li>双引号标识的对象名/字段名区分大小写</li>
+<li>字符串拼接：<code>||</code></li>
+<li>标识符：区分大小写，建议全部大写</li>
+<li>Oracle中双引号标识的对象名/字段名区分大小写</li>
+</ul>
+</li>
+<li>数据库编码与排序规则<ul>
+<li>SHOW PARAMETERS NLS;</li>
+<li>NLS_DATABASE_PARAMETERS</li>
+<li>nls_instance_parameters</li>
+<li>nls_session_parameters</li>
+</ul>
+</li>
+<li>数据字典<ul>
+<li>有静态与动态之分：静态在用户访问数据字典时不会发生改变；动态依赖数据库运行性能，反应数据库运行的内在信息</li>
+<li>静态数据字典：<ul>
+<li>由表和视图组成，表是不能直接被访问的，可以访问的是视图</li>
+<li>视图有三类<ul>
+<li>user_*：存储当前用户所拥有的对象的信息</li>
+<li>all_*：用户能够访问的对象的信息</li>
+<li>dba_*：数据库中所有对象的信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动态数据库<ul>
+<li>以v$开头的视图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>查询<ul>
+<li>缺省的转义字符是 <code>\</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><span id="0x04-数据库设计的命名规范">0x04 数据库设计的命名规范</span></h2><blockquote>
+<p> 见CH3-SQL-1</p>
+</blockquote>
+<hr>
+
+
+<p><code>版权信息</code></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Yan Zhimin 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Yan Zhimin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.warmfire.com/2023/11/13/Database-Manual-DESKTOP-P9VTQEA/" title="Database Manual">http://www.warmfire.com/2023/11/13/Database-Manual-DESKTOP-P9VTQEA/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag"># 编程语言</a>
+              <a href="/tags/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/" rel="tag"># 学校课程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/13/Database-Manual/" rel="prev" title="Database Manual">
+      <i class="fa fa-chevron-left"></i> Database Manual
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/16/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC11%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="数据库第11周学习日志">
+      数据库第11周学习日志 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  
+  <div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  </div>
+ 
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTAxMy8zNTQ3NQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0x01  关系数据库理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">1 关系数据结构及形式化定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">2 关系操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">3 关系的完整性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">4 关系代数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">0x02 关系数据库语言 SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">0x03 Oracle, Mysql工程实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">0x04 数据库设计的命名规范</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yan Zhimin"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yan Zhimin</p>
+  <div class="site-description" itemprop="description">不忘初心，方得始终</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-09 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Zhimin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
