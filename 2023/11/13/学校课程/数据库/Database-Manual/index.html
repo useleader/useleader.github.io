@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="0x00 前言 记录数据库知识手册，涉及到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database Manual">
+<meta property="og:url" content="http://www.warmfire.com/2023/11/13/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/Database-Manual/index.html">
+<meta property="og:site_name" content="WarmFire">
+<meta property="og:description" content="0x00 前言 记录数据库知识手册，涉及到">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113113200209.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113112439396.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113112802826.png">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113114048546.png">
+<meta property="article:published_time" content="2023-11-13T01:34:40.000Z">
+<meta property="article:modified_time" content="2023-11-14T00:35:54.000Z">
+<meta property="article:author" content="Yan Zhimin">
+<meta property="article:tag" content="编程语言">
+<meta property="article:tag" content="学校课程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113113200209.png">
+
+<link rel="canonical" href="http://www.warmfire.com/2023/11/13/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/Database-Manual/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Database Manual | WarmFire</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="WarmFire" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WarmFire</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/11/13/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/Database-Manual/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="不忘初心，方得始终">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Database Manual
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-11-13 09:34:40" itemprop="dateCreated datePublished" datetime="2023-11-13T09:34:40+08:00">2023-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-14 08:35:54" itemprop="dateModified" datetime="2023-11-14T08:35:54+08:00">2023-11-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>0x00 前言</p>
+<p>记录数据库知识手册，涉及到</p>
+<span id="more"></span>
+<h2><span id="0x01-关系数据库理论">0x01  关系数据库理论</span></h2><h3><span id="1-关系数据结构及形式化定义">1 关系数据结构及形式化定义</span></h3><ol>
+<li>关系<ul>
+<li>组成：同一类实体型的实例集合；</li>
+<li>联系：实体之间，实体属性之间存在某种关联关系</li>
+<li>域：相同数据类型的值的集合（有限且不重复）</li>
+<li>笛卡尔积：允许某些域是相同的<ul>
+<li>笛卡尔积中每个元素是一个n元组</li>
+<li>元组中每个值叫做一个分量</li>
+<li>基数：集合中包含元素的个数</li>
+</ul>
+</li>
+<li>关系：笛卡尔积的子集叫做在域 $D_1,D_2,\cdots,D_n$上的关系，表示为 $R(D_1,D_2,\cdots,D_n)$<ul>
+<li>n也称目或度，R为关系名</li>
+<li>n=1：单元关系，n=2：二元关系</li>
+<li>超键：属性集合能够在关系中唯一标识元组<ul>
+<li>候选键/码 Candidate key：某一属性组的值能唯一标识一个元组<ul>
+<li>属性组是几个属性的集合</li>
+<li>最小超键</li>
+<li>主码/主键：一个关系中有多个候选码，选定其中一个为主码<ul>
+<li>外键：一个实体的主键被另外一个实体使用，以表达不同实体元组之间的关系（这里面的实体可以理解为一个关系）</li>
+<li>二者区别：</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113113200209.png" alt="image-20231113113200209"></li>
+<li>实体之间的关系依赖主键-外键关联实现<ul>
+<li>1对1，1对多</li>
+<li>多对多可能存在数据冗余以及追溯父节点的难以区分</li>
+<li>ER图的学习：<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113112439396.png" alt="image-20231113112439396"></li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113112802826.png" alt="image-20231113112802826"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>主属性：候选码中的所有属性，其余的属性称为非主属性</li>
+</ul>
+</li>
+<li>全码/键 All-key：关系模式的所有属性组是这个关系模式的候选码</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>三类关系<ol>
+<li>基本关系 （基本表或基表）</li>
+<li>查询表</li>
+<li>视图表</li>
+</ol>
+</li>
+<li>基本关系的性质<ol>
+<li>列同质：分量来自同一域</li>
+<li>不同列可以出自同一域</li>
+<li>行、列次序可交换</li>
+<li>任意两个元组候选码不能相同</li>
+<li>分量必须是原子值<ul>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231113114048546.png" alt="image-20231113114048546"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>关系模式<ul>
+<li>型 Type，结构</li>
+<li>R(U, D, DOM, F) 可以简记为 R(U)<ul>
+<li>R        关系名</li>
+<li>U        组成该关系的属性名集合</li>
+<li>D        U中属性所来自的域</li>
+<li>DOM   属性向域的映象集合</li>
+<li>F        属性间数据的依赖关系的集合</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>关系数据库<ul>
+<li>所有关系的集合构成一个关系数据库</li>
+<li>型：关系数据库模式 schema</li>
+<li>值：关系集合</li>
+</ul>
+</li>
+<li>关系模型的存储结构</li>
+</ol>
+<h3><span id="2-关系操作">2 关系操作</span></h3><blockquote>
+<p>引入记号：</p>
+<p>设关系为 $R(A_1,A_2,\cdots,A_n)$，$t\in R$，</p>
+<ol>
+<li>$t[A_i]$表示元组 $t$中对应属性 $A_i$的一个分量</li>
+<li>若 $A=\{A_{i_1},\cdots,A_{i_k}\}$，则 $t[A]$表示元组t相应分量的集合，$\bar{A}$表示除去A中属性后剩余的属性组</li>
+<li>$\overset{\frown}{t_rt_s}$ 元组连接，列数变为m+n列，前n个分量为R中的一个n元组，后m个分量为S中的一个m元组。</li>
+</ol>
+<p>设关系为 $R(X,Z)$</p>
+<ol>
+<li>象集 $Z_x=\{t[Z]|t\in R, t[X]=x\}$</li>
+</ol>
+</blockquote>
+<ul>
+<li><p>查询操作：</p>
+<ol>
+<li>选择 $\sigma$<ul>
+<li>$\sigma_F(R)=\{t|t\in R \and F(t)=True\}$</li>
+<li>$F:X_1\theta X_2$， $\theta$可以是比较运算符</li>
+<li>行的角度进行</li>
+<li>优先级：$\{(),\theta,\neg,\and,\or\}$</li>
+</ul>
+</li>
+<li>投影 $\pi$<ul>
+<li>$\pi_A(R)=\{t[A]|t\in R\}$</li>
+<li>列的角度进行，会避免重复行</li>
+</ul>
+</li>
+<li>连接 $\bowtie$<ul>
+<li>$R\underset{A\theta B}{\bowtie} S= \{\overset{\frown}{t_rt_s}|t_r\in R \and t_s\in S \and t_r[A] \theta t_s[B] \}$</li>
+<li>常用连接运算：<ul>
+<li>等值连接 $A\theta B:A=B$</li>
+<li>自然连接 Natural join $R\bowtie S=\{\overset{\frown}{t_rt_s}[U-B]|t_r\in R \and t_s\in S \and t_r[B]=t_s[B]\}$ <ul>
+<li>U是全体属性集合，B是R和S具有的相同的属性组</li>
+<li>行列角度进行运算，取消重复列</li>
+<li>悬浮元组：做自然连接时，关系R中某些元组可能在S中不存在公共属性上值相等的元组</li>
+<li>外连接：将悬浮元组保存在结果关系中，其他属性上填空值<ul>
+<li>左外连接：保留左边关系</li>
+<li>右外连接：保留右边关系</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>除 $\div$<ul>
+<li>$R\div S=\{t_r[X]|t_r\in R \and \pi_Y(S)\subset Y_x  \},x=t_r[X]$</li>
+<li>一般的 $\pi_y(S)\subset \pi_y(R)$成立</li>
+<li>行列进行操作</li>
+<li><code>查询...至少/全部的/所有的...</code>问题</li>
+<li>$R\div S=\pi_X(R)-\pi_X(\pi_X(R)\times\pi_y(S)-R)$</li>
+</ul>
+</li>
+<li>并 $\cup$<ul>
+<li>具有相同的目，相应的属性取自同一域</li>
+<li>结果不允许重复</li>
+</ul>
+</li>
+<li>差 $-$<ul>
+<li>具有相同的目，相应的属性取自同一域</li>
+<li>$R-S$结果为属于R但不属于S的元组构成</li>
+</ul>
+</li>
+<li>交 $\cap$<ul>
+<li>具有相同的目，相应的属性取自同一域</li>
+</ul>
+</li>
+<li>笛卡尔积 $\times$<ul>
+<li>$R \times S$<ul>
+<li>$R$：n目关系，$k_1$个元组</li>
+<li>$S$：m目关系，$k_2$个元组</li>
+<li>结果为 $m+n$列，$k_1\times k_2$行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>并、差、笛卡尔积、投影、选择为五种基本运算</li>
+</ul>
+</li>
+<li><p>数据更新</p>
+<ol>
+<li>插入</li>
+<li>删除</li>
+<li>修改</li>
+</ol>
+</li>
+<li><p>关系操作的对象和结果均是集合</p>
+</li>
+<li><p>关系数据库语言有两类</p>
+<ol>
+<li>关系代数语言：关系运算来表达查询要求，对关系代数表达式求值</li>
+<li>关系演算语言：用为此来表达查询要求</li>
+</ol>
+<ul>
+<li>SQL具有关系代数和关系演算的双重特点</li>
+</ul>
+</li>
+</ul>
+<h3><span id="3-关系的完整性">3 关系的完整性</span></h3><ul>
+<li><p>三类完整性约束</p>
+<ol>
+<li>实体完整性<ul>
+<li>主属性不能取空值</li>
+<li>NULL是不知道或不存在或无意义或不适用的值<ul>
+<li>NULL不能参与算数、比较或逻辑运算</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>参照完整性<ul>
+<li>引用其他关系的主键作为外键F的关系R称为参照关系，被引用主键对应的关系S称为被参照关系或目标关系</li>
+<li>R与S不一定是不同的关系</li>
+<li>主码外码必须在同一个域上，但不一定要同名</li>
+<li>参照关系中的外码值要么等于被参照关系的主码值，要么为空值（F的每个属性值均为空值）</li>
+<li>关系数据库不支持m:n联系，因为会造成大量的数据冗余，不符合数据库设计的基本要求</li>
+</ul>
+</li>
+<li>用户定义的完整性<ul>
+<li>满足具体的语义要求</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>1，2合称关系的两个不变性</li>
+</ul>
+</li>
+</ul>
+<h3><span id="4-关系代数">4 关系代数</span></h3><ul>
+<li><p>抽象的查询语言，关系代数的运算符有两类</p>
+<ol>
+<li>集合运算符</li>
+<li>专门的关系运算符</li>
+</ol>
+<ul>
+<li>集合运算符涉及到关系的行，专门的关系运算涉及到行与列</li>
+</ul>
+</li>
+</ul>
+<h2><span id="0x02-关系数据库语言-sql">0x02 关系数据库语言 SQL</span></h2><ul>
+<li>特点<ol>
+<li>综合统一<ul>
+<li>数据定义语言 DDL    Create/Alter/Drop</li>
+<li>数据操纵语言 DML   Insert/ Select/Update/Delete</li>
+<li>数据控制语言 DCL     Grant/Revoke</li>
+<li>事务控制语言 TCL     Begin Transaction/Commit/Rollback</li>
+</ul>
+</li>
+<li>高度非过程化</li>
+<li>面向集合的操作方式</li>
+<li>以同一种语法结构提供多种使用方式<ul>
+<li>独立语言</li>
+<li>嵌入式语言</li>
+<li>驱动程序API</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>基本概念<ul>
+<li>三级模式结构<ol>
+<li>外模式</li>
+<li>模式</li>
+<li>内模式</li>
+</ol>
+</li>
+<li>基本表<ul>
+<li>一个关系对应一个基本表</li>
+<li>一个基本表对应一个存储文件</li>
+<li>一个表可以有若干索引</li>
+</ul>
+</li>
+<li>存储表<ul>
+<li>逻辑结构</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><span id="0x03-oracle-mysql工程实践">0x03 Oracle, Mysql工程实践</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Yan Zhimin 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Yan Zhimin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.warmfire.com/2023/11/13/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/Database-Manual/" title="Database Manual">http://www.warmfire.com/2023/11/13/学校课程/数据库/Database-Manual/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" rel="tag"># 编程语言</a>
+              <a href="/tags/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/" rel="tag"># 学校课程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/02/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/" rel="prev" title="数据库实验记录">
+      <i class="fa fa-chevron-left"></i> 数据库实验记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/16/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC11%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="数据库第11周学习日志">
+      数据库第11周学习日志 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  
+  <div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  </div>
+ 
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTAxMy8zNTQ3NQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0x01  关系数据库理论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">1 关系数据结构及形式化定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">2 关系操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">3 关系的完整性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">4 关系代数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">0x02 关系数据库语言 SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">0x03 Oracle, Mysql工程实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">0x04</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yan Zhimin"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yan Zhimin</p>
+  <div class="site-description" itemprop="description">不忘初心，方得始终</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-09 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Zhimin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

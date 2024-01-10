@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="0x00 前言 关系数据库理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库第12周学习日志">
+<meta property="og:url" content="http://www.warmfire.com/2023/11/17/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC12%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:site_name" content="WarmFire">
+<meta property="og:description" content="0x00 前言 关系数据库理论">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231117152439523.png">
+<meta property="article:published_time" content="2023-11-17T03:28:32.000Z">
+<meta property="article:modified_time" content="2024-01-10T03:22:18.449Z">
+<meta property="article:author" content="Yan Zhimin">
+<meta property="article:tag" content="学校课程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231117152439523.png">
+
+<link rel="canonical" href="http://www.warmfire.com/2023/11/17/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC12%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据库第12周学习日志 | WarmFire</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="WarmFire" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WarmFire</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/11/17/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC12%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="不忘初心，方得始终">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据库第12周学习日志
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-11-17 11:28:32" itemprop="dateCreated datePublished" datetime="2023-11-17T11:28:32+08:00">2023-11-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-10 11:22:18" itemprop="dateModified" datetime="2024-01-10T11:22:18+08:00">2024-01-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>0x00 前言</p>
+<p>关系数据库理论</p>
+<span id="more"></span>
+<h2><span id="0x01-问题的提出">0x01  问题的提出</span></h2><ul>
+<li><p>把关系模式看作一个三元组 $R<u,f>$</u,f></p>
+</li>
+<li><p>作为一个二维表，关系要符合一个最基本的条件：</p>
+<ul>
+<li><p>每个分量必须是不可分的数据项</p>
+</li>
+<li><p>满足了这个条件的关系模式属于<strong>第一范式（1NF）</strong></p>
+</li>
+</ul>
+</li>
+<li><p>数据依赖</p>
+<ul>
+<li>一个关系内部属性之间的一种约束关系</li>
+<li>数据内在的性质，语义的体现</li>
+<li>设计关系模式时，除给出属性全集外，还需给出数据依赖集合</li>
+<li>分为两类：函数依赖（FD）、多值依赖（MVD）</li>
+</ul>
+</li>
+<li><p>$R(U,F)$中存在的问题</p>
+<ul>
+<li>数据冗余</li>
+<li>更新异常</li>
+<li>插入异常</li>
+<li>删除异常</li>
+<li>原因：模式中某些数据依赖引起的</li>
+<li>解决：用规范化理论改造关系模式消除其中不合适的数据依赖</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2><span id="0x02-规范化">0x02 规范化</span></h2><h3><span id="1-函数依赖">1 函数依赖</span></h3><h4><span id="函数依赖">函数依赖</span></h4><ul>
+<li>定义：设 $R(U)$时一个属性集U上的关系模式，$X,Y$是U的子集。若对于 $R(U)$的<strong>任意一个可能关系r</strong>，r中不可能<strong>存在两个元组</strong>在X上的属性值相等，而在Y上的属性值不等，则称 <code>X函数确定Y</code>或 <code>Y函数依赖于X</code>，记作 $X\rightarrow Y$</li>
+<li>$X\rightarrow Y,Y\rightarrow X \Longrightarrow X \leftarrow\rightarrow Y$</li>
+<li>若Y不函数依赖于X，则记为 $X\not\rightarrow Y$</li>
+<li>函数依赖是R的所有关系实例均要满足的约束条件</li>
+<li>语义概念，只能根据数据的语义来确定一个函数依赖</li>
+<li>本质上是对属性间取值的一种约束，是一种数据依赖，是问题域业务规则的体现</li>
+</ul>
+<h4><span id="平凡函数依赖与非平凡函数依赖">平凡函数依赖与非平凡函数依赖</span></h4><ul>
+<li>$X\rightarrow Y , but\ Y \not\subseteq X,then \ X\rightarrow Y$是非平凡的函数依赖</li>
+<li>$X\rightarrow Y , and\ Y \subseteq X,then \ X\rightarrow Y$是平凡的函数依赖</li>
+<li>平凡函数依赖必然成立</li>
+<li>$X\rightarrow Y$，则称X为这个函数依赖的决定因素</li>
+</ul>
+<h4><span id="完全函数依赖与部分函数依赖">完全函数依赖与部分函数依赖</span></h4><ul>
+<li>在 $R(U)$中，如果 $X\rightarrow Y$，并且对于X的任何一个真子集 $X’$，都有 $X’\not\rightarrow Y$，则称Y对X完全函数依赖，记作 $X\overset{F}{\rightarrow}Y$</li>
+<li>若 $X\rightarrow Y$​，但Y不完全函数依赖于X，则称Y对X部分函数依赖，记作$X\overset{P}{\rightarrow}Y$</li>
+</ul>
+<h4><span id="传递函数依赖">传递函数依赖</span></h4><ul>
+<li>定义：在 $R(U)$中，如果 $X\rightarrow Y , Y \not\subseteq X,Y\not{\rightarrow}X, Y\rightarrow Z , Z \not\subseteq Y$，则称Z对X传递函数依赖，记为 $X\overset{传递}{\rightarrow}Z$</li>
+<li>如果 $Y\rightarrow X$则Z直接依赖于X，而不是传递依赖</li>
+<li>存在非受控冗余</li>
+</ul>
+<h3><span id="2-码键">2 码/键</span></h3><ul>
+<li>定义：设K为 $R<u,f>$中的属性或属性组合，若 $K\overset{F}{\rightarrow}U$，则K称为R的一个候选键/码</u,f></li>
+<li>部分依赖则成为超键</li>
+<li>候选键是最小的超码</li>
+<li>多个候选码选定一个为主码</li>
+<li>定义：关系模式R中属性或属性组X并非R的码，但X是另一个关系模式的码，则X是R的外部码</li>
+<li>定义：对于满足一组函数依赖F的关系模式 $R<u,f>$，其中任何一个关系r，若函数依赖 $X\rightarrow Y$成立，则称F逻辑蕴涵 $X\rightarrow Y$</u,f></li>
+<li>Armstrong公理系统<ul>
+<li>设<em>U</em>为属性集总体，<em>F</em>是<em>U</em>上的一组函数依赖， 于是有关系模式<em>R</em> &lt;<em>U</em>,<em>F</em> &gt;。对<em>R</em> &lt;<em>U</em>,<em>F</em>&gt; 来说有以下的推理规则：</li>
+<li>A1 自反律：若 $Y\subseteq X\subseteq U$，则F逻辑蕴涵 $X\rightarrow Y$</li>
+<li>A2 增广律：若 F逻辑蕴涵 $X\rightarrow Y$，且 $Z\subseteq U$，则F逻辑蕴涵 $XZ\rightarrow YZ$</li>
+<li>A3 传递律：若F逻辑蕴涵 $X\rightarrow Y$与$Y\rightarrow Z$，则F逻辑蕴涵 $X\rightarrow Z$</li>
+<li>三条推理规则：<ul>
+<li>合并规则：由<em>X</em>→<em>Y</em>，<em>X</em>→<em>Z</em>，有<em>X</em>→<em>YZ</em>。</li>
+<li>伪传递规则：由<em>X</em>→<em>Y</em>，<em>WY</em>→<em>Z</em>，有<em>XW</em>→<em>Z</em>。</li>
+<li>分解规则：$X\rightarrow Y, Z\subseteq Y$,有 $X\rightarrow Z$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><span id="3-范式-nf">3 范式 NF</span></h3><ul>
+<li>符合某一种级别的关系模式的集合</li>
+<li>种类<ul>
+<li>第一范式(1NF)</li>
+<li>第二范式(2NF)</li>
+<li>第三范式(3NF)</li>
+<li>BC范式(BCNF)</li>
+<li>第四范式(4NF)</li>
+<li>第五范式(5NF)</li>
+</ul>
+</li>
+<li><img src="http://warmfire-store.oss-cn-beijing.aliyuncs.com//img/image-20231117152439523.png" alt="image-20231117152439523"></li>
+<li>一个低一级范式的关系模式，通过模式分解，可以转换为若干个高一级范式的关系模式的集合，这个过程称为规范化</li>
+</ul>
+<h3><span id="4-2nf">4 2NF</span></h3><ul>
+<li>定义：若关系模式 $R\in 1NF$，且每个非主属性都完全函数依赖于任何一个候选码，则 $R\in2NF$</li>
+<li>关系模式不属于2NF，会产生以下问题：<ul>
+<li>插入异常</li>
+<li>删除异常</li>
+<li>修改复杂</li>
+</ul>
+</li>
+<li>解决的是非主属性对复合主键的部份依赖</li>
+<li>单一候选键一定符合</li>
+</ul>
+<h3><span id="5-3nf">5 3NF</span></h3><ul>
+<li>定义：设关系模式 $R<u,f>\in 1NF$，若R中不存在这样的码X、属性组Y及非主属性Z $(Z\not\subseteq Y),s.t. \ X\rightarrow Y , Y\rightarrow Z$成立，$Y\not\rightarrow X$，则称 $R<u,f>\in 3NF$</u,f></u,f></li>
+<li>即不存在传递依赖</li>
+<li>3NF通常解决的是非主属性之间的依赖关系，非主属性对候选键的传递依赖。</li>
+<li>属性组Y可能包括部分主属性、非主属性、或二者组合</li>
+</ul>
+<h3><span id="6-bcnf">6 BCNF</span></h3><ul>
+<li>设关系模式 $R<u,f>\in1NF$，若 $X\rightarrow Y \ and \ Y\not\subseteq X$时X必含有码，则 $R<u,f>\in BCNF$</u,f></u,f></li>
+<li>每一个决定属性集都包含候选码</li>
+<li>解决了主属性组（但不构成候选键）对候选键的部分或者传递依赖关系</li>
+<li>即除了所有属性（组）对候选键的依赖关系之外，没有任何其他的依赖关系</li>
+<li>总结：<ul>
+<li>2NF解决非主属性对候选键的部分依赖</li>
+<li>3NF解决非主属性对候选键的传递依赖</li>
+<li>BCNF解决主属性对候选键的部分或传递依赖</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3><span id="7-多值依赖">7 多值依赖</span></h3><ul>
+<li>定义：MVD 设 $R(U)$是属性集U上的一个关系模式。<em>X，Y，Z</em>是U的子集，且 $Z=U-X-Y$。关系模式<em>R(U)</em>中多值依赖 $X\rightarrow\rightarrow Y$成立，当且仅当对<em>R(U)</em>的任意关系r，给定的一对 $(x,z)$值，有一组Y的值，仅仅决定于x值而与z值无关</li>
+<li>Y和Z相互独立</li>
+<li>平凡多值依赖：Z为空的情况</li>
+<li>性质：<ul>
+<li>对称性：即若X→→Y，则X→→Z，其中Z＝U－X－Y</li>
+<li>传递性：即若X→→Y，Y→→Z， 则X→→Z -Y。</li>
+<li>函数依赖是多值依赖的特例：即若X→Y，则 X→→Y。</li>
+<li>若X→→Y，X→→Z，则X→→YZ。</li>
+<li>若X→→Y，X→→Z，则X→→Y∩Z。</li>
+<li>若X→→Y，X→→Z，则X→→Y-Z，X→→Z -Y。</li>
+</ul>
+</li>
+</ul>
+<h3><span id="8-4nf">8 4NF</span></h3><ul>
+<li>定义：设关系模式 $R<u,f>\in1NF$，若 对于R的每个非平凡多值依赖 $X\rightarrow\rightarrow Y$ 时X都含有码，则 $R<u,f>\in 4NF$</u,f></u,f></li>
+<li>性质：<ul>
+<li>不允许有非平凡且非函数依赖的多值依赖</li>
+<li>允许的非平凡多值依赖实际是函数依赖</li>
+<li>平凡的多值依赖属于第四范式</li>
+<li>4NF $\rightarrow$ BCNF</li>
+</ul>
+</li>
+</ul>
+<h2><span id="0x03-数据依赖的公理系统">0x03 数据依赖的公理系统</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Yan Zhimin 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Yan Zhimin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.warmfire.com/2023/11/17/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC12%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" title="数据库第12周学习日志">http://www.warmfire.com/2023/11/17/学校课程/数据库/数据库第12周学习日志/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/" rel="tag"># 学校课程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/16/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%AC11%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="数据库第11周学习日志">
+      <i class="fa fa-chevron-left"></i> 数据库第11周学习日志
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/19/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E5%B7%A5%E7%A7%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%88%86%E7%AC%AC11%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="next" title="数分第11周学习日志">
+      数分第11周学习日志 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  
+  <div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  </div>
+ 
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTAxMy8zNTQ3NQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0x01  问题的提出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">0x02 规范化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">1 函数依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.1.</span> <span class="nav-text">函数依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.2.</span> <span class="nav-text">平凡函数依赖与非平凡函数依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.3.</span> <span class="nav-text">完全函数依赖与部分函数依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.4.</span> <span class="nav-text">传递函数依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">2 码&#x2F;键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">3 范式 NF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">4 2NF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text">5 3NF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.</span> <span class="nav-text">6 BCNF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.7.</span> <span class="nav-text">7 多值依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.8.</span> <span class="nav-text">8 4NF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">0x03 数据依赖的公理系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">0x04</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yan Zhimin"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yan Zhimin</p>
+  <div class="site-description" itemprop="description">不忘初心，方得始终</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-09 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Zhimin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

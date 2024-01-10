@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.warmfire.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="0x00 前言 机器学习与深度学习  Transformer模型 预处理概念 T5模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习学习记录">
+<meta property="og:url" content="http://www.warmfire.com/2023/11/27/%E7%A7%91%E7%A0%94%E7%AB%9E%E8%B5%9B/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="WarmFire">
+<meta property="og:description" content="0x00 前言 机器学习与深度学习  Transformer模型 预处理概念 T5模型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-d04206d1a624dcaec8d56c79bea053b1_720w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-6a52fadb8ba310a12076aac79baa2be2_720w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-af307443f765f2ecf440534d76f7ba2b_720w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-5deb991462e2794a79772bbf5cd714d7_720w.webp">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-b1a8d9af6110e6d1b6a7615fc300a229_720w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-247e53593f78282caf557d84c1d2c1fa_720w.webp">
+<meta property="article:published_time" content="2023-11-27T00:40:24.000Z">
+<meta property="article:modified_time" content="2024-01-10T03:09:16.456Z">
+<meta property="article:author" content="Yan Zhimin">
+<meta property="article:tag" content="科研竞赛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-d04206d1a624dcaec8d56c79bea053b1_720w.webp">
+
+<link rel="canonical" href="http://www.warmfire.com/2023/11/27/%E7%A7%91%E7%A0%94%E7%AB%9E%E8%B5%9B/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>机器学习学习记录 | WarmFire</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="WarmFire" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WarmFire</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.warmfire.com/2023/11/27/%E7%A7%91%E7%A0%94%E7%AB%9E%E8%B5%9B/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Yan Zhimin">
+      <meta itemprop="description" content="不忘初心，方得始终">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WarmFire">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机器学习学习记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-11-27 08:40:24" itemprop="dateCreated datePublished" datetime="2023-11-27T08:40:24+08:00">2023-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-10 11:09:16" itemprop="dateModified" datetime="2024-01-10T11:09:16+08:00">2024-01-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AB%9E%E8%B5%9B/%E5%86%AF%E5%A6%82%E6%9D%AF%E4%B8%93%E5%88%A9/" itemprop="url" rel="index"><span itemprop="name">冯如杯专利</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+          
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>0x00 前言</p>
+<p>机器学习与深度学习</p>
+<ul>
+<li>Transformer模型</li>
+<li>预处理概念</li>
+<li>T5模型</li>
+</ul>
+<span id="more"></span>
+<h2><span id="0x01-transformer">0x01 Transformer</span></h2><h3><span id="overview">Overview</span></h3><ul>
+<li><code>Transformer</code> is a model proposed by Google in 2017 for machine translation.</li>
+<li>The inside of a Transformer is essentially an <code>Encoder-Decoder</code> structure.</li>
+<li>The whole network structure is entirely composed of <code>Attention</code> mechanism.</li>
+<li>Using a 6-layer <code>Encoder-Decoder</code> structure.</li>
+<li><img src="https://pic2.zhimg.com/80/v2-d04206d1a624dcaec8d56c79bea053b1_720w.webp" alt="img"></li>
+</ul>
+<h3><span id="example">Example</span></h3><ul>
+<li>For ease of understanding, we only look at one of the Encoder-Decoder structures.</li>
+<li><img src="https://pic3.zhimg.com/80/v2-6a52fadb8ba310a12076aac79baa2be2_720w.webp" alt="img"></li>
+<li>The encoder is responsible for mapping the language sequence into a hidden layer (step 2 above), which is a mathematical representation of the natural language sequence.</li>
+<li>The decoder remaps the hidden layers into natural language sequences, which allows us to solve various problems such as sentiment analysis, machine translation, summary generation, semantic relation extraction, etc.</li>
+<li>Briefly, what does each step of the diagram do:<ol>
+<li>Input a natural language sequence to the encoder: <code>Why do we work</code>(<code>为什么要工作</code>);</li>
+<li>The hidden layer output from the encoder is fed to the decoder;</li>
+<li>Input the <code>&lt; &gt;</code> as the start symbol to decoder;</li>
+<li>The decoder gets the first word “为”;</li>
+<li>Input the “为” to decoder;</li>
+<li>The decoder gets the second word “什”;</li>
+<li>The process is repeated until the end symbol is printed.</li>
+</ol>
+</li>
+</ul>
+<p>The content about encoder is divided into 4 parts, which are explained in turn.</p>
+<ul>
+<li><img src="https://pic4.zhimg.com/80/v2-af307443f765f2ecf440534d76f7ba2b_720w.webp" alt="img"></li>
+</ul>
+<h3><span id="positional-encoding"><strong>Positional Encoding</strong></span></h3><ul>
+<li><p>Input data X with dimensions <code>[batch size, sequence length]</code>, like <code>我们为什么工作</code></p>
+<ul>
+<li><p><code>batch size</code> is the size of batch, <code>sequence length</code> is the length of sentence. </p>
+</li>
+<li><p>i.e. if X=[“我们为什么工作”], batch size equals 1 and sequence length equals 7.</p>
+</li>
+<li>Briefly, it is the conversion of text -&gt; word vectors.</li>
+</ul>
+</li>
+<li><p>Output $X_{embedding}$ with dimensions <code>[batch size, sequence length, embedding dimension]</code>.</p>
+<ul>
+<li>The size of embedding dimension is determined by the <code>Word2Vec</code> algorithm, <code>Tramsformer</code> uses a word vector of <code>512</code> length.</li>
+<li>if X=[“我们为什么工作”], batch size equals 1, sequence length equals 7 and embedding dimension equals 512.</li>
+</ul>
+</li>
+<li><p><img src="https://pic4.zhimg.com/80/v2-5deb991462e2794a79772bbf5cd714d7_720w.webp" alt="img"></p>
+</li>
+<li><p>The position of the text is important. In order to retain this location information for the Transformer to learn, we need to use <code>location embedding</code>.</p>
+</li>
+<li><p><code>Transformer</code> uses the sin-cos rule.</p>
+<ul>
+<li>$PE_{(pos,2i)}=\sin(pos/10000^{2i/d_{model}})$</li>
+<li>$PE_{(pos,2i+1)}=\cos(pos/10000^{2i/d_{model}})$</li>
+<li><code>pos</code> refers to the position of the word in the sentence, ranging from [0,h), i refers to the dimension of the word embedding, and the range is $[0,d_{model})$.</li>
+</ul>
+</li>
+<li><p>Then unique texture location information is generated, and the model learns the dependencies between locations and the temporal characteristic of natural language.</p>
+</li>
+<li><p>Finally,  $X_{embedding}$ and position embeddings are added and sent to the next layer.</p>
+</li>
+<li><p>```python</p>
+<h1><span id="导入依赖库">导入依赖库</span></h1><p>import numpy as np<br>import matplotlib.pyplot as plt<br>import seaborn as sns<br>import math</p>
+<p>def get_positional_encoding(max_seq_len, embed_dim):</p>
+<pre><code># 初始化一个positional encoding
+# embed_dim: 字嵌入的维度
+# max_seq_len: 最大的序列长度
+positional_encoding = np.array([
+    [pos / np.power(10000, 2 * i / embed_dim) for i in range(embed_dim)]
+    if pos != 0 else np.zeros(embed_dim) for pos in range(max_seq_len)])
+positional_encoding[1:, 0::2] = np.sin(positional_encoding[1:, 0::2])  # dim 2i 偶数
+positional_encoding[1:, 1::2] = np.cos(positional_encoding[1:, 1::2])  # dim 2i+1 奇数
+# 归一化, 用位置嵌入的每一行除以它的模长
+# denominator = np.sqrt(np.sum(position_enc**2, axis=1, keepdims=True))
+# position_enc = position_enc / (denominator + 1e-8)
+return positional_encoding
+</code></pre><p>positional_encoding = get_positional_encoding(max_seq_len=100, embed_dim=16)<br>plt.figure(figsize=(10,10))<br>sns.heatmap(positional_encoding)<br>plt.title(“Sinusoidal Function”)<br>plt.xlabel(“hidden dimension”)<br>plt.ylabel(“sequence length”)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">### **Self-attention layer**</span><br><span class="line"></span><br><span class="line">1. ![img](https://pic3.zhimg.com/80/v2-fa1f2a80f5c311fc2a51e8c1d37655b2_720w.webp)</span><br><span class="line"></span><br><span class="line">- The meaning of multi head is that the resulting matrix of $QK^T$ is called the attention matrix, and it shows how similar each word is to other words.</span><br><span class="line">- The larger the dot product, the closer the two vectors are.</span><br><span class="line">- ![img](https://pic4.zhimg.com/80/v2-3d94e8346052a261eed3356c46f05fa7_720w.webp)</span><br><span class="line">- Our goal is to have each word contain information about all the words in the current sentence, and with the attention layer, we do this. </span><br><span class="line">- It is important to note that the above `self attention` calculation in the process, we usually use `mini batch`, it is also more than a calculation of words, the above example in a sentence.</span><br><span class="line">- The length of each sentence is not the same and needs to be treated uniformly according to the length of the longest sentence. For short sentences, do the `Padding` operation, generally we use `0` to fill.</span><br><span class="line">- ![图片](https://mmbiz.qpic.cn/mmbiz_png/v1JN0W4OpXjr1iaicSWjfKiasqX6Af1z4ibPGzLrU09tucAobKyD7hDibroHYeAuLkPgpTUHUh17o8mw5aHMKwTvKow/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1)</span><br><span class="line"></span><br><span class="line">### **Residual linkage and layer normalization**</span><br><span class="line"></span><br><span class="line">- The residual design and layer normalization operations are added to prevent the gradient from disappearing and speed up the convergence.</span><br><span class="line"></span><br><span class="line">1. **residual design**</span><br><span class="line"></span><br><span class="line">   - We got in the previous step after attention matrix weighted `V`, namely `Attention(Q, K, V)`, we transpose it, making its and $X_&#123;embedding&#125;$ dimension is consistent, i.e. `[batch size, sequence length, embedding dimension]`, then we add them together to do the residual join, which adds the elements directly because they have the same dimensions.</span><br><span class="line">   - $X_&#123;embedding&#125;+Attention(Q, K,V)$</span><br><span class="line">   - In the following operation, after each module operation, the value before the operation and the value after the operation should be added to obtain the residual connection, so that the gradient can directly take a shortcut to the initial layer during training.</span><br><span class="line">   - $X+SubLayer(X)$</span><br><span class="line"></span><br><span class="line">2. **layer normalization**</span><br><span class="line"></span><br><span class="line">   - It normalizes the hidden layers of the neural network to standard normal distribution, namely `i.i.d` independent identically distributed, to speed up the training, the role of the accelerating convergence.</span><br><span class="line"></span><br><span class="line">   - $$</span><br><span class="line">     \mu_i=\frac&#123;1&#125;&#123;m&#125;\sum^m_&#123;i=1&#125;x_&#123;ij&#125;</span><br><span class="line">     $$</span><br><span class="line"></span><br><span class="line">     on the type of line in a matrix(row) average for the unit.</span><br><span class="line"></span><br><span class="line">   - $$</span><br><span class="line">     \sigma^2_j=\frac&#123;1&#125;&#123;n&#125;\sum^m_&#123;i=1&#125;(x_&#123;ij&#125;-\mu_j)^2</span><br><span class="line">     $$</span><br><span class="line"></span><br><span class="line">     on the type of line in a matrix(row) as the unit of variance.</span><br><span class="line"></span><br><span class="line">   - $$</span><br><span class="line">     LayerNorm(x)=\alpha\odot\frac&#123;x_&#123;ij&#125;-\mu_i&#125;&#123;\sqrt&#123;\sigma^2_i+\epsilon&#125;&#125;+\beta</span><br><span class="line">     $$</span><br><span class="line"></span><br><span class="line">     We introduce two trainable parameters to compensate for the information lost in the normalization process. Note that $\odot$ represents element-wise multiplication rather than dot  product, and we typically initialize $\alpha$ with all ones, and $\beta$ with all zeros.</span><br><span class="line"></span><br><span class="line">   - ```python</span><br><span class="line">     class ScaledDotProductAttention(nn.Module):</span><br><span class="line">         &#x27;&#x27;&#x27; Scaled Dot-Product Attention &#x27;&#x27;&#x27;</span><br><span class="line">     </span><br><span class="line">         def __init__(self, temperature, attn_dropout=0.1):</span><br><span class="line">             super().__init__()</span><br><span class="line">             self.temperature = temperature</span><br><span class="line">             self.dropout = nn.Dropout(attn_dropout)</span><br><span class="line">     </span><br><span class="line">         def forward(self, q, k, v, mask=None):</span><br><span class="line">             # self.temperature是论文中的d_k ** 0.5，防止梯度过大</span><br><span class="line">             # QxK/sqrt(dk)</span><br><span class="line">             attn = torch.matmul(q / self.temperature, k.transpose(2, 3))</span><br><span class="line">     </span><br><span class="line">             if mask is not None:</span><br><span class="line">                 # 屏蔽不想要的输出</span><br><span class="line">                 attn = attn.masked_fill(mask == 0, -1e9)</span><br><span class="line">             # softmax+dropout</span><br><span class="line">             attn = self.dropout(F.softmax(attn, dim=-1))</span><br><span class="line">             # 概率分布xV</span><br><span class="line">             output = torch.matmul(attn, v)</span><br><span class="line">     </span><br><span class="line">             return output, attn</span><br><span class="line">         </span><br><span class="line">     class MultiHeadAttention(nn.Module):</span><br><span class="line">         &#x27;&#x27;&#x27; Multi-Head Attention module &#x27;&#x27;&#x27;</span><br><span class="line">     </span><br><span class="line">         # n_head头的个数，默认是8</span><br><span class="line">         # d_model编码向量长度，例如本文说的512</span><br><span class="line">         # d_k, d_v的值一般会设置为 n_head * d_k=d_model，</span><br><span class="line">         # 此时concat后正好和原始输入一样，当然不相同也可以，因为后面有fc层</span><br><span class="line">         # 相当于将可学习矩阵分成独立的n_head份</span><br><span class="line">         def __init__(self, n_head, d_model, d_k, d_v, dropout=0.1):</span><br><span class="line">             super().__init__()</span><br><span class="line">             # 假设n_head=8，d_k=64</span><br><span class="line">             self.n_head = n_head</span><br><span class="line">             self.d_k = d_k</span><br><span class="line">             self.d_v = d_v</span><br><span class="line">             # d_model输入向量，n_head * d_k输出向量</span><br><span class="line">             # 可学习W^Q，W^K,W^V矩阵参数初始化</span><br><span class="line">             self.w_qs = nn.Linear(d_model, n_head * d_k, bias=False)</span><br><span class="line">             self.w_ks = nn.Linear(d_model, n_head * d_k, bias=False)</span><br><span class="line">             self.w_vs = nn.Linear(d_model, n_head * d_v, bias=False)</span><br><span class="line">             # 最后的输出维度变换操作</span><br><span class="line">             self.fc = nn.Linear(n_head * d_v, d_model, bias=False)</span><br><span class="line">             # 单头自注意力</span><br><span class="line">             self.attention = ScaledDotProductAttention(temperature=d_k ** 0.5)</span><br><span class="line">             self.dropout = nn.Dropout(dropout)</span><br><span class="line">             # 层归一化</span><br><span class="line">             self.layer_norm = nn.LayerNorm(d_model, eps=1e-6)</span><br><span class="line">     </span><br><span class="line">         def forward(self, q, k, v, mask=None):</span><br><span class="line">             # 假设qkv输入是(b,100,512),100是训练每个样本最大单词个数</span><br><span class="line">             # 一般qkv相等，即自注意力</span><br><span class="line">             residual = q</span><br><span class="line">             # 将输入x和可学习矩阵相乘，得到(b,100,512)输出</span><br><span class="line">             # 其中512的含义其实是8x64，8个head，每个head的可学习矩阵为64维度</span><br><span class="line">             # q的输出是(b,100,8,64),kv也是一样</span><br><span class="line">             q = self.w_qs(q).view(sz_b, len_q, n_head, d_k)</span><br><span class="line">             k = self.w_ks(k).view(sz_b, len_k, n_head, d_k)</span><br><span class="line">             v = self.w_vs(v).view(sz_b, len_v, n_head, d_v)</span><br><span class="line">     </span><br><span class="line">             # 变成(b,8,100,64)，方便后面计算，也就是8个头单独计算</span><br><span class="line">             q, k, v = q.transpose(1, 2), k.transpose(1, 2), v.transpose(1, 2)</span><br><span class="line">     </span><br><span class="line">             if mask is not None:</span><br><span class="line">                 mask = mask.unsqueeze(1)   # For head axis broadcasting.</span><br><span class="line">             # 输出q是(b,8,100,64),维持不变,内部计算流程是：</span><br><span class="line">             # q*k转置，除以d_k ** 0.5，输出维度是b,8,100,100即单词和单词直接的相似性</span><br><span class="line">             # 对最后一个维度进行softmax操作得到b,8,100,100</span><br><span class="line">             # 最后乘上V，得到b,8,100,64输出</span><br><span class="line">             q, attn = self.attention(q, k, v, mask=mask)</span><br><span class="line">     </span><br><span class="line">             # b,100,8,64--&gt;b,100,512</span><br><span class="line">             q = q.transpose(1, 2).contiguous().view(sz_b, len_q, -1)</span><br><span class="line">             q = self.dropout(self.fc(q))</span><br><span class="line">             # 残差计算</span><br><span class="line">             q += residual</span><br><span class="line">             # 层归一化，在512维度计算均值和方差，进行层归一化</span><br><span class="line">             q = self.layer_norm(q)</span><br><span class="line">     </span><br><span class="line">             return q, attn</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3><span id="feedforward-network"><strong>feedforward network</strong></span></h3><ul>
+<li><pre><code class="lang-python">class PositionwiseFeedForward(nn.Module):
+    &#39;&#39;&#39; A two-feed-forward-layer module &#39;&#39;&#39;
+
+    def __init__(self, d_in, d_hid, dropout=0.1):
+        super().__init__()
+        # 两个fc层，对最后的512维度进行变换
+        self.w_1 = nn.Linear(d_in, d_hid) # position-wise
+        self.w_2 = nn.Linear(d_hid, d_in) # position-wise
+        self.layer_norm = nn.LayerNorm(d_in, eps=1e-6)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, x):
+        residual = x
+
+        x = self.w_2(F.relu(self.w_1(x)))
+        x = self.dropout(x)
+        x += residual
+
+        x = self.layer_norm(x)
+
+        return x
+</code></pre>
+</li>
+</ul>
+<h3><span id="repeat-step-3"><strong>Repeat step 3</strong></span></h3><ul>
+<li><script type="math/tex; mode=display">
+X_{hidden} = X_{attention} + X_{hidden} \\
+X_{hidden} = LayerNorm(X_{hidden}) \\ 
+X_{hidden} \in R^{batch size * seq. len.* embed.dim. }</script></li>
+<li></li>
+</ul>
+<h2><span id="0x02-pre-train">0x02 Pre train</span></h2><blockquote>
+<ul>
+<li><strong>PTM:</strong> Pre-train Model, 预训练模型</li>
+<li><strong>LM</strong>: Language Model，语言模型</li>
+<li><strong>AR</strong>: Auto-Regressive，自回归</li>
+<li><strong>AE</strong>: Auto-Encoding，自编码</li>
+<li><strong>CLM</strong>: Causual Language Model</li>
+<li><strong>MLM</strong>: Masked Language Model</li>
+<li><strong>PLM</strong>: Permuted Language Model</li>
+<li><strong>NLU</strong>: Natural Language Understanding</li>
+<li><strong>NLG</strong>: Natural Language Generation</li>
+</ul>
+</blockquote>
+<h3><span id="1-whats-the-pre-train">1 What’s the pre train</span></h3><ul>
+<li>Model parameters are no longer randomly initialized but are pretrained by some task such as language model.</li>
+<li>The training task is decomposed into two steps: common learning and feature learning.</li>
+</ul>
+<h3><span id="2-how-to-pre-train">2 How to pre train</span></h3><h4><span id="21-two-basic-paradigms-autoregressivear-pretraining-and-autoencoderae-pretaining">2.1 Two basic paradigms: autoregressive(AR) pretraining and autoencoder(AE) pretaining</span></h4><p>GPT and BERT represent the two most basic pre-training paradigms. They are called “autoregressive”(e.g., GPT) and “autoencoder pre-training” (e.g., BERT), and they are suitable for different types of downstream tasks, with <strong>GPT</strong> often more suitable for <strong>text generation tasks</strong> and <strong>BERT</strong> often more suitable for <strong>text understanding tasks</strong>. Both are based on partial parameters of the Transformer architecture.</p>
+<ul>
+<li>GPT corresponds to the pretraining of the <strong>decoder</strong><ul>
+<li>GPT’s full name is Generative Pre-Training.</li>
+</ul>
+</li>
+<li>BERT corresponds to the pretraining of the <strong>encoder</strong><ul>
+<li>BERT’s full name is <strong>Bidirectional</strong> Encoder Representations form Transformers.</li>
+</ul>
+</li>
+</ul>
+<h4><span id="211-gpt-gt-arlm-applicable-to-the-nlg-task">2.1.1 GPT —&gt; AR/LM , applicable to the NLG task</span></h4><p>The optimization goal of GPT is the joint probability of the model sequence (from left to right or from right to left), which is a traditional language model, and the latter predicted word is conditioned on the first predicted word, which is suitable for text generation tasks.</p>
+<script type="math/tex; mode=display">
+p(x_{1;T}) = \Pi_{t=1}^Tp(x_t|x_{0:t-1})</script><h4><span id="212-bert-gt-aemlm-applicable-to-the-nlu-task">2.1.2 BERT —&gt; AE/MLM, applicable to the NLU task</span></h4><p>BERT works in a bidirectional way by replacing some tokens with special [MASK] characters and predicting these replaced characters on the target side.</p>
+<h3><span id="3-t5-model-nlp-text-to-text">3 T5 model: NLP Text-to-Text</span></h3><ul>
+<li>Full name is Transfer Text-to-Text Transformer.</li>
+<li>Turn all NLP tasks into Text-to-Text tasks.</li>
+<li>Data cleaning process<ul>
+<li>Only lines ending with a normal symbol are kept.</li>
+<li>Delete any pages containing Bad Words, specific words refer to <strong><a href="https://link.zhihu.com/?target=https%3A//github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words">List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words</a></strong></li>
+<li>Lines that contain Javascript words are removed.</li>
+<li>Pages containing curly braces commonly used in programming languages.</li>
+<li>Any page that contains “lorem ipsum”</li>
+<li>Repeat the situation in three consecutive sentences and keep one.</li>
+</ul>
+</li>
+</ul>
+<h4><span id="architecture-the-best-one">Architecture: The Best One</span></h4><p><img src="https://pic2.zhimg.com/80/v2-b1a8d9af6110e6d1b6a7615fc300a229_720w.webp" alt="img"></p>
+<p>T5 model actually is the Encoder-Decoder model of Transformer.</p>
+<h4><span id="objectives-search-search-search">Objectives: Search, Search, Search</span></h4><p><img src="https://pic3.zhimg.com/80/v2-247e53593f78282caf557d84c1d2c1fa_720w.webp" alt="img"></p>
+<ol>
+<li><p>First Part: Comparison of high-level methods (self-supervised pre-training methods)</p>
+<ol>
+<li>Language model style, from left to right;</li>
+<li>Bert-style, destroy a part, and then restore it;</li>
+<li>Deshuffling is to shuffle the text and then restore it.</li>
+</ol>
+<ul>
+<li>Bert-style is the best!</li>
+</ul>
+</li>
+<li><p>Second Part: A strategy when a section of text is corrupted.</p>
+<ol>
+<li>Mask, as most models do today, replace the corrupted token with a special character such as [M];</li>
+<li>The replace span method, it can be regarded as synthesizing a special character from adjacent [M] in the Mask method above, and replacing a special character for each small segment to improve the calculation efficiency.</li>
+<li>Drop method, without replacement operation, directly drops some characters at random.</li>
+</ol>
+<ul>
+<li>Replace spans is the best!</li>
+</ul>
+</li>
+<li><p>Third Part: What percentage of the text should be corrupted</p>
+<ul>
+<li>15% is the best!</li>
+</ul>
+</li>
+<li><p>Forth Part: Destroy a small segment of approximately how long</p>
+<ul>
+<li>3 is the best!</li>
+</ul>
+</li>
+</ol>
+<h3><span id="datasets">Datasets</span></h3><h2><span id="0x04-ganlm">0x04 GANLM</span></h2><hr>
+
+<p>版权信息</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Yan Zhimin 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Yan Zhimin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.warmfire.com/2023/11/27/%E7%A7%91%E7%A0%94%E7%AB%9E%E8%B5%9B/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="机器学习学习记录">http://www.warmfire.com/2023/11/27/科研竞赛/机器学习学习记录/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E7%A0%94%E7%AB%9E%E8%B5%9B/" rel="tag"># 科研竞赛</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/25/%E5%AD%A6%E6%A0%A1%E8%AF%BE%E7%A8%8B/%E5%B7%A5%E7%A7%91%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%88%86%E7%AC%AC13%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" rel="prev" title="数分第13周学习日志">
+      <i class="fa fa-chevron-left"></i> 数分第13周学习日志
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/27/%E7%A7%91%E7%A0%94%E7%AB%9E%E8%B5%9B/GANLM-Encoder-Decoder-Pre-training-with-an-Auxiliary-Discriminator/" rel="next" title="GANLM: Encoder-Decoder Pre-training with an Auxiliary Discriminator">
+      GANLM: Encoder-Decoder Pre-training with an Auxiliary Discriminator <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  
+  <div>
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  </div>
+ 
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81OTAxMy8zNTQ3NQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0x01 Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">Positional Encoding</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">导入依赖库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">0.1.</span> <span class="nav-text">feedforward network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">0.2.</span> <span class="nav-text">Repeat step 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">0x02 Pre train</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">1 What’s the pre train</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">2 How to pre train</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Two basic paradigms: autoregressive(AR) pretraining and autoencoder(AE) pretaining</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.1.1 GPT —&gt; AR&#x2F;LM , applicable to the NLG task</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.1.2 BERT —&gt; AE&#x2F;MLM, applicable to the NLU task</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">3 T5 model: NLP Text-to-Text</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.1.</span> <span class="nav-text">Architecture: The Best One</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.2.</span> <span class="nav-text">Objectives: Search, Search, Search</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">Datasets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">0x04 GANLM</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yan Zhimin"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Yan Zhimin</p>
+  <div class="site-description" itemprop="description">不忘初心，方得始终</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-09 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yan Zhimin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
