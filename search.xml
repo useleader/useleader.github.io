@@ -4,6 +4,249 @@
   
     
     <entry>
+      <title>2024-05-13又是一日</title>
+      <link href="/2024/05/13/2024-05-13%E5%8F%88%E6%98%AF%E4%B8%80%E6%97%A5/"/>
+      <url>/2024/05/13/2024-05-13%E5%8F%88%E6%98%AF%E4%B8%80%E6%97%A5/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>你说，我要是每天的日记上附带一首诗，是不是很有逼格</p><span id="more"></span><h2><span id="0x01">0x01</span></h2><p>想想最近干嘛先：</p><p>下午把升旗的事规划好了，接着把工业互联网的作业彻底搞定</p><p>晚上做做概统吧，第三讲感觉差不多了，今天真热啊</p><p>同时信息安全最后一次实验感觉也可以</p><h2><span id="0x02">0x02</span></h2><p>上午先是做实验，在下课之前做完了，那个John the Ripper我还浪费了好久去安装什么 John Blxxx的，结果发现我再run文件夹下就有john.exe这个文件，之后正常运行了，我对那个解压密码破解的挺感兴趣，毕竟很有可能用得到</p><p>之后工业互联网的时候我就把实验报告写完了，之后也没干啥</p><p>下午体育课上的挺好，就是太热了，在英语论文写作上和杨之烁交流的很好，知道了她是VR专业的，搞冯如杯是义务，而她做为队长工作量很大，考研的进展都被停滞了，可以看出来她是一个很负责的人，还挺乖的，舍不下对自己已经投入大量精力的事情，好良民！</p><p>晚上上hs课，主要就是把升旗的事安排明白了，大量的时间都没用来学习，回来洗了个澡，十一点上床，十一点半才睡觉。。。</p><h2><span id="0x03">0x03</span></h2><p>干！</p><p>专注模式，我得养成开专注模式的习惯，昨天定的上午2个半，下午3个，晚上2个半，今天开始八小时冲刺</p><h2><span id="0x04">0x04</span></h2><blockquote><p>偶成</p><p>【宋】朱熹</p><p>少年易老学难成，一寸光阴不可轻。</p><p>未觉池塘春草梦，阶前梧叶已秋声。</p></blockquote><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-05-13疲惫</title>
+      <link href="/2024/05/13/2024-05-13%E7%96%B2%E6%83%AB/"/>
+      <url>/2024/05/13/2024-05-13%E7%96%B2%E6%83%AB/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>实际是14号早上好疲惫</p><span id="more"></span><h2><span id="0x01-8小时学习已经成为目标">0x01 8小时学习已经成为目标</span></h2><p>仔细反思一天的学习时间好像还真没够8个小时</p><p>先是上午出门都已经八点了，之前的我可是八点前都到教室了，最近起的也挺晚，从明天开始一定好好睡觉，好好起床了</p><p>到了图书馆已经快九点多了，洛克王国上班刷刷就已经快十点了，这会才算是要开始学习了，上午专注了一个半小时之后就去吃饭了</p><p>中午在绿园逛了逛，回图书馆睡觉，在开始学就是下午两点了，下午先是专注了1个半小时，后续的效果就都不是很好了，好家伙，一种一鼓作气，再而衰，三而竭的美感</p><p>晚上更是重量级，全程没学入状态，后来打了打篮球，一直达到十点多，之后跟着同学聊处对象的事，</p><h2><span id="0x02">0x02</span></h2><p>总的来看，这一天学习时间甚至都到不了五个小时，先定个小目标，每天学习在8小时，上午两个半，下午三小时，晚上两小时半</p><p>同时每天一到ctf，每天背20min单词，每天保持20分钟运动</p><p>为了达成这样的目标，首先早上得保证到图书馆的时候是八点，之后可以按照课表的方式来学，有一个歪门点的方法就是硬去别人的课堂上蹭氛围。</p><p>下午和晚上也这么干，单词的学习放在中午1点半起来那段时间，ctf的做题放在学不进去的时候。</p><h2><span id="0x03">0x03</span></h2><p>最近的学习内容：概统，院长课</p><p>最近得完成的作业：工业互联网作业，实验</p><p>最近的竞赛：冯如杯制作组</p><p>周三晚上是线下集中更新PPT，冲击一手</p><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sql注入之堆叠注入</title>
+      <link href="/2024/05/12/sql%E6%B3%A8%E5%85%A5%E4%B9%8B%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/"/>
+      <url>/2024/05/12/sql%E6%B3%A8%E5%85%A5%E4%B9%8B%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><span id="more"></span><h2><span id="0x01">0x01</span></h2><h2><span id="0x02">0x02</span></h2><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-05-11反思</title>
+      <link href="/2024/05/12/2024-05-11%E5%8F%8D%E6%80%9D/"/>
+      <url>/2024/05/12/2024-05-11%E5%8F%8D%E6%80%9D/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>草草草，太堕落了</p><span id="more"></span><h2><span id="0x01">0x01</span></h2><p>最近导的太凶了，缺乏自律，自制</p><p>以后的娱乐手段还是通过手机来吧，手机删了B站之后就拿电脑看，以后的娱乐方式就是用手机简单看看小说，而且要定时看，不能玩起来没完没了</p><p>当然还是那句话，堵不如疏，我需要找到大块的学习内容来讲精力与时间投入在上面</p><h2><span id="0x02">0x02</span></h2><p>上午先是干啥来着，草，这记忆力，翻了翻历史记录，发现是给工业互联网配置anaconda环境去了</p><p>之后去作志愿了，有点浪费时间了</p><p>下午在寝室待着，打着配置工业互联网的环境基本效率极低，后来跟老朱去跑步了，感觉这会还挺有意义的，之后去吃饭</p><p>每天得保持训练训练</p><p>晚上的效率更是低的夸张，基本上一直在刷小说了。。。</p><p>幸亏单词还是背了的</p><h2><span id="0x03">0x03</span></h2><p>明天过概统，任务量上的估计是</p><ol><li>复习第二讲错题，过第三讲视频讲解</li><li>下午作第三讲例题，作第三讲习题</li><li>晚上规划规划工作内容</li></ol><p>养成一天做一道ctf的习惯，如果半小时没思路的话就去找题解，看题解怎么做的，总比卡在一个地方好几天好，这样会很打击学习的积极性</p><h2><span id="0x04">0x04</span></h2><p>看瓦棚的故事，发现真是想象力是没有边界的，放飞自己的想象，我就是无限自由的！</p><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-05-10又是一日</title>
+      <link href="/2024/05/11/2024-05-10%E5%8F%88%E6%98%AF%E4%B8%80%E6%97%A5/"/>
+      <url>/2024/05/11/2024-05-10%E5%8F%88%E6%98%AF%E4%B8%80%E6%97%A5/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>话说今天都干啥了啊</p><span id="more"></span><h2><span id="0x01">0x01</span></h2><p>仔细想想，好像是做概统+ 工业互联网作业</p><p>上午是做了做概统的例题，下午是做了概统的课后例题，他妈的，做题的状态不太好，有些题真容易错，做完之后后续的纠错还没有进行，明天改改</p><p>晚上写了些工业互联网作业，感觉还是配置成win10环境下的把，这样有process explorer能够好一点，明天给他正式搞掉，这么看效率有点低</p><p>冯如杯PPT还得进行改进啊，太有压力了</p><h2><span id="0x02">0x02</span></h2><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-05-09挑战极限的日记</title>
+      <link href="/2024/05/10/2024-05-09%E6%8C%91%E6%88%98%E6%9E%81%E9%99%90%E7%9A%84%E6%97%A5%E8%AE%B0/"/>
+      <url>/2024/05/10/2024-05-09%E6%8C%91%E6%88%98%E6%9E%81%E9%99%90%E7%9A%84%E6%97%A5%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>话说我为什么每次都是第二天早上写日记啊笑死</p><span id="more"></span><h2><span id="0x01-紧张又刺激的一天">0x01 紧张又刺激的一天？</span></h2><p>上午写了写篮球的作业，突然收到了挑战杯报名ddl</p><p>我尼玛，吓死我</p><p>差点错过</p><p>一整天疯狂在赶这个，我负责改PPT，他们三也陆续开始工作，最终也算是及时交上去了。</p><h2><span id="0x02">0x02</span></h2><p>明天上午弄概统吧，都多久没弄概统了，本来打算今天就弄得，结果被报名挑战杯弄得错过了</p><p>上午概统第二讲的任务量</p><p>下午第二讲错题梳理+工业互联网作业（延续到晚上</p><p>今天能把这两件事搞定就可以了</p><p>对了，别忘了背单词，这老卢真能装，明明早就开始背了，偏偏说没背，何必呢</p><h2><span id="0x03">0x03</span></h2><p>看看怎么为博客添加一个用户登录功能感觉也不错，实现的功能是只有登录的用户能够编辑查看日记部分。</p><p>突然发现这个功能以前竟然已经实现过了，hexo-admin</p><p>直接hexo server -d 登录就行</p><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-05-08日记</title>
+      <link href="/2024/05/09/2024-05-08%E6%97%A5%E8%AE%B0/"/>
+      <url>/2024/05/09/2024-05-08%E6%97%A5%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>今天上午在做实验，晚上在做实验，这次的工业互联网真是好难，工业互联网的作业也得赶紧写了</p><span id="more"></span><h2><span id="0x01">0x01</span></h2><p>上午开始做信息网络安全的实验，依然是没有设备做，只能等别人做完后去拿设备做，但是还挺好做的，问题不大</p><p>下午一方面看了谁动了我的奶酪一二，一方面把LETSniffer的环境配置了，本来以为两本书都是100页左右，看起来得挺费劲的，结果一看还挺朴素的，成年人的书籍的特色吗</p><p>晚上是工业互联网的实验，这实验也太难了，老师也催了催赶紧把作业写了，想来未来的工作内容包括工业互联网+概统+信安赛+信息安全</p><h2><span id="0x02">0x02</span></h2><p>谁动了我的奶酪里面的这部书里面让我印象较为深刻的反而是两个老鼠，</p><p>嗅嗅是我向往羡慕的类型，他对局势的变化有着敏锐的直觉，这说明首先他有着广泛的信息源，其次他的大局观能够驾驭目前的发展形势并进行预测，这也使得它能够在奶酪在减少时便早早注意到，并且很快的寻找到新的奶酪。而为了能够拥有广泛的信息源首先得维护一个健康的社交圈子，在圈子中大家交流情报，之后为了维护这个圈子也得展示自己的价值，要不拿hzgg的那个群开始练手，同时我还有酒吧群，我完全是有加入这个圈子的可能性的。</p><p>匆匆乍一听名字其实理解偏了，以为说是那种忙到感动自我的，故事里面并没有讨论到这种人，说的反而是那种fast-follower，一旦发生变化，能够很快跟上节奏的人，真是和哼哼形成了鲜明对比，也难怪他也是赢赢赢得那种，我估计现实生活中这种人是纯纯得大卷王吧，哈哈哈</p><h2><span id="0x03">0x03</span></h2><p>为了维护Hzgg粉丝群，首先保持日常的水群，在无事时让群也保持一个活跃度，其次多主动交流一些情报，这样能够让大家认识到我的价值，这个群的价值。</p><p>也和小包多交流，问问相关经验，水群也是门学问</p><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-05-07日记</title>
+      <link href="/2024/05/07/2024-05-07%E6%97%A5%E8%AE%B0/"/>
+      <url>/2024/05/07/2024-05-07%E6%97%A5%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>每日反思</p><span id="more"></span><h2><span id="0x01">0x01</span></h2><p>感觉我目前的一个主要问题就是所处的氛围中竞争感太低，就不是那么紧迫，进而效率也低，内耗也严重；</p><p>想到每次期末烤漆的时候高强度的竞争氛围使得我的效率更高，所以我要想办法加入一个高竞争的圈子中。</p><p>而且，每天还是不断在学新知识，没有对之前只是的一个温习的过程，这样很容易熊瞎子掰苞米。</p><h2><span id="0x02">0x02</span></h2><p>今天晚上回寝室，洗衣服，并且把第二讲的相关习题做完，注意多思考多思考，给大脑快放3年的假期了！！！</p><p>结果洗了衣服后基本就在刷B站了，真是禁不住诱惑！</p><p>淦</p><p>晚上和舍友聊天一直聊到一点，感觉也还挺不错的。</p><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>从零开始的狼人杀生活</title>
+      <link href="/2024/05/07/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%94%9F%E6%B4%BB/"/>
+      <url>/2024/05/07/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%8B%BC%E4%BA%BA%E6%9D%80%E7%94%9F%E6%B4%BB/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>嘿嘿嘿，狼人杀我来了，嘿嘿嘿</p><span id="more"></span><h2><span id="0x01-基本规则">0x01 基本规则</span></h2><p>两个对立阵营，无中立：好人阵营，狼人阵营</p><p>好人阵营有平民和神职人物，</p><h2><span id="0x02">0x02</span></h2><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-05-06小日记来喽</title>
+      <link href="/2024/05/06/2024-05-06%E5%B0%8F%E6%97%A5%E8%AE%B0%E6%9D%A5%E5%96%BD/"/>
+      <url>/2024/05/06/2024-05-06%E5%B0%8F%E6%97%A5%E8%AE%B0%E6%9D%A5%E5%96%BD/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><span id="more"></span><h2><span id="0x01-5月4日">0x01 5月4日</span></h2><p>话说是54青年节，乌鱼子的一天，全部时间投入到了回报比特别低的信安赛中，基本无进展，莫名其妙的rtl能够接收到信号了，但是gps欺骗依旧是没能实现的问题</p><h2><span id="0x02-5月5日">0x02 5月5日</span></h2><p>又把大量的时间放在信安赛上了，就像无头苍蝇一样乱撞</p><h2><span id="0x03-5月6日">0x03 5月6日</span></h2><p>今天把Python安全编程的作业水完了，还有工业互联网</p><p>概统好久没推进了</p><p>急急急</p><p>思考思考，想成为一个优秀的领袖，领导，需要能够有良好的人际关系，社交能力，能够主导讨论的动向，同时有最终决策的考量。</p><p>今晚回去后洗个澡，把工业互联网的作业推动推动，今晚争取把前两点搞掉，如果能全部完成的话就更好了。</p><p>噫，我怎么光刷小说了</p><p>宝贵的时间又浪费了</p><p>而且看的也不是很爽</p><p>明天开始再用专注软件专注吧</p><p>好久没用了</p><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-05-04补录最近日记</title>
+      <link href="/2024/05/04/2024-05-04%E8%A1%A5%E5%BD%95%E6%9C%80%E8%BF%91%E6%97%A5%E8%AE%B0/"/>
+      <url>/2024/05/04/2024-05-04%E8%A1%A5%E5%BD%95%E6%9C%80%E8%BF%91%E6%97%A5%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>唔，这两天玩的真累啊，这会补一下最近的日记。</p><span id="more"></span><h2><span id="0x01-5月2日蓟州旅">0x01 5月2日蓟州旅</span></h2><p>为了防止睡觉睡过，1号晚上睡觉前就把手机放在了床下，早上早早地把我叫醒，好困，不过幸亏我仍是抽出一段时间来拉了泡大的，要不然路上得憋死我。</p><p>出门后先是从地铁口那个门出发的，淦，结果门没开，又重新折返，幸亏时间来得及，之后就是枯燥的坐地铁，赶地铁，疯狂换站，也是准时到了。</p><p>经典北京站，到了之后就已经在检车了，一刻没有耽误，直接就进入了火车，在车上旁边有个露大腿的小姐姐坐在旁边，美滋滋，同时在看圆桌的阳光神官，笑死我了，这作者太他妈有才了。</p><p>到站之后就一边听歌，一边闲逛着在蓟州逛逛，出了火车站就坐个大客，寻思着随便坐坐，结果看到有很多人在一站下车了，我也就跟着下去了。</p><p>到的地方是一条步行街，正好早上没吃饭呢就买了一份炸鸡，真难吃，呸！</p><p>中间广场有一个大喷泉，梦回火车站广场了。</p><p>之后朝旭哥开着车来了，我、我妈、三姨、朝旭哥四个人出发去蓟县古长城，路上一波波的车，虽说不少，但也没想象的那么夸张。</p><p>进入这里之后，真是长见识了，这个山，太夸张了，太陡峭了，太险峰了，还有飞流直下的瀑布，感觉在那里真是得很清凉，中午就在那里吃了个野餐，感觉真不错，吃的烧饼、咸鸭蛋、牛肉、椰肉罐头，之后去爬长城了，真是有点让人害怕</p><h2><span id="0x02-5月3日承德之旅">0x02 5月3日承德之旅</span></h2><p>承德的山好夸张！好牛逼！</p><p>避暑山庄真的好大好大，就是可惜玩的时间有点少，有些景点都没去，小布达拉宫也没进去，十分期待以后再来！</p><h2><span id="0x03-5月3日神秘聚餐">0x03 5月3日神秘聚餐</span></h2><p>不得不说，真的是干货满满，这种大家不同领域（理工农商）、不同阶段（学生、工作）的交流沙龙真的是很能够带来巨大的信息量，当然饭店的菜品也是很好吃的，那么~香的红烧肉真的太爽了。</p><p>这一次的交流可谓是信息量巨大，为了方便，我分几点进行梳理：</p><ol><li><strong>认清自我</strong>：认清自我真是一件很难做到的事情，对我自己来说，总是想要的太多，忙忙碌碌的，在mbti之类的人格测试中很多时候选择的选项不是真实的自我，而是我理想的自我，最终得出的结果也难免失真，所以我也就不太关注这测评结果的反馈细节，总觉得他测得不太准似地:sweat_smile:，但是娜姐组织的那个记录自己最有成就感的事情全过程的引导我去思考我真正擅长的，真正渴望的，相信这个过程能够更好地让我认清自我，在以后的学习工作中，如果用这种思维的框架来思考我的工作与安排，相信能让我对整个大局的把控更加全面，不再那么迷茫。</li><li><strong>反思自我</strong>：我有罪，我反思，我反思我太久没反思了，正是意识到了这个问题，我最近开始写日记了，与咱们的沙龙不谋而合，学习生活中能够学的东西无穷无尽，但我真正需要的东西确实需要通过思考与交流筛选出来的，埋头苦学除了感动自己外真是帮助有限，养成<strong>复盘的习惯</strong>，周期性的复盘，像是定期体检一样反思反思我的规划，<del>现在就是在复盘哦</del> ，正所谓小包曰：学而不思则罔，这个习惯，必须得坚持下来！</li><li><strong>塑造自我</strong>：朋友圈！朋友圈！朋友圈！重要的事情说三遍，时代变了，身边的社交基本都是电子社交，大家通过微信啥进行聊天了，朋友圈是我让大家认识我的一个重要途径，因此我要有意识地去打造一个基于我更优于我的人设了（<del>我要开始吹牛了</del>，其实我是不太习惯的，总感觉做人应该谦逊点，有什么成就都到处拿来显摆让我感到羞耻，算了，一步一步来吧，先是做到遇到一些牛的事情的时候，针对事情发一个认真的朋友圈，宣传宣传自己，也方便大家通过朋友圈来认识自己，之前还一直感叹没啥社交，跟别人说话感觉也没啥好聊的，那就照着娜姐的指引来，多在别人的朋友圈里露露面，点赞，评论，终究会让人更多地认识自己！</li><li>Tips<ul><li>包总太强了，学生工作能力拉爆了，以后人文，人际啥的我一定要多问问他！</li><li>收获了一些团日活动的活动形式，感觉大有可为</li><li>基于目标逆推的思维方式，这个能够让我更清晰，明确地达到最终的目的</li><li>有些突然想不起来了，说不准突然就能想起来，先来个未完待续吧</li></ul></li></ol><h2><span id="0x04-未来工作规划">0x04 未来工作规划</span></h2><p>卧槽，工业互联网作业还没做，包括两部分，分别是小组作业，课上的作业题；</p><p>Python安全编程还没搞；</p><p>之后院长课，概统都是重量级任务</p><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>preg_match字符匹配</title>
+      <link href="/2024/05/01/preg-match%E5%AD%97%E7%AC%A6%E5%8C%B9%E9%85%8D/"/>
+      <url>/2024/05/01/preg-match%E5%AD%97%E7%AC%A6%E5%8C%B9%E9%85%8D/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>web题里面遇到了RCE中字符过滤的问题，记录一下其中常见的绕过方法。</p><span id="more"></span><h2><span id="0x01-正则表达式">0x01 正则表达式</span></h2><h3><span id="普通字符">普通字符</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[ABC] </span><br><span class="line">- 匹配[...]中的所有字符</span><br><span class="line">[^ABC]</span><br><span class="line">- 匹配除了[...]中字符的所有字符</span><br><span class="line">[A-Z]</span><br><span class="line">- 表示一个区间</span><br><span class="line">.</span><br><span class="line">- 匹配换行符(\n,\r)之外的任何单个字符</span><br><span class="line">[\s\S]</span><br><span class="line">- \s匹配所有空白符，包括换行</span><br><span class="line">- \S匹配所有非空白符，不包括换行</span><br><span class="line">\w</span><br><span class="line">- 匹配字母、数字、下划线</span><br><span class="line">\d</span><br><span class="line">- 匹配任意一个阿拉伯数字</span><br></pre></td></tr></table></figure><h3><span id="非打印字符">非打印字符</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\cx</span><br><span class="line">- 匹配由x指明的控制字符</span><br><span class="line">\f</span><br><span class="line">- 匹配一个换页符。等价于 \x0c 和 \cL</span><br><span class="line">\n</span><br><span class="line">- 匹配一个换行符。等价于 \x0a 和 \cJ</span><br><span class="line">\r</span><br><span class="line">- 匹配一个回车符。等价于 \x0d 和 \cM</span><br><span class="line">\t</span><br><span class="line">- 匹配一个制表符。等价于 \x09 和 \cI</span><br><span class="line">\v</span><br><span class="line">- 匹配一个垂直制表符。等价于 \x0b 和 \cK</span><br></pre></td></tr></table></figure><h3><span id="特殊字符">特殊字符</span></h3><div class="table-container"><table><thead><tr><th style="text-align:left">特别字符</th><th style="text-align:left">描述</th></tr></thead><tbody><tr><td style="text-align:left">$</td><td style="text-align:left">匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 <script type="math/tex">` 也匹配 '\n' 或 '\r'。要匹配 `</script> 字符本身，请使用 <code>\$</code>。</td></tr><tr><td style="text-align:left">( )</td><td style="text-align:left">标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 <code>\(</code> 和 <code>\)</code>。</td></tr><tr><td style="text-align:left">*</td><td style="text-align:left">匹配前面的子表达式零次或多次。要匹配 <em> 字符，请使用 `\</em>`。</td></tr><tr><td style="text-align:left">+</td><td style="text-align:left">匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 <code>\+</code>。</td></tr><tr><td style="text-align:left">.</td><td style="text-align:left">匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用 <code>\.</code> 。</td></tr><tr><td style="text-align:left">[</td><td style="text-align:left">标记一个中括号表达式的开始。要匹配 [，请使用 <code>\[</code>。</td></tr><tr><td style="text-align:left">?</td><td style="text-align:left">匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 <code>\?</code>。</td></tr><tr><td style="text-align:left">\</td><td style="text-align:left">将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘<code>\\</code>‘ 匹配 “<code>\</code>“，而 ‘<code>\(</code>‘ 则匹配 “(“。</td></tr><tr><td style="text-align:left">^</td><td style="text-align:left">匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 ^ 字符本身，请使用 <code>\^</code>。</td></tr><tr><td style="text-align:left">{</td><td style="text-align:left">标记限定符表达式的开始。要匹配 {，请使用 <code>\&#123;</code>。</td></tr><tr><td style="text-align:left">\</td><td style="text-align:left"></td><td>指明两项之间的一个选择。要匹配 \</td><td>，请使用 `\</td><td>`。</td></tr></tbody></table></div><h3><span id="定位符">定位符</span></h3><div class="table-container"><table><thead><tr><th style="text-align:left">字符</th><th style="text-align:left">描述</th></tr></thead><tbody><tr><td style="text-align:left">^</td><td style="text-align:left">匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。</td></tr><tr><td style="text-align:left">$</td><td style="text-align:left">匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。</td></tr><tr><td style="text-align:left">\b</td><td style="text-align:left">匹配一个单词边界，即字与空格间的位置。</td></tr><tr><td style="text-align:left">\B</td><td style="text-align:left">非单词边界匹配。</td></tr></tbody></table></div><h2><span id="0x02-preg_match正则绕过">0x02 preg_match正则绕过</span></h2><p><a href="https://www.cnblogs.com/tomyyyyy/p/13905357.html#空格">CTF中WEB题——RCE - tomyyyyy - 博客园 (cnblogs.com)</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match))&#123;</span><br><span class="line">    echo preg_match(&quot;/\&amp;|\/|\?|\*|\&lt;|[\x&#123;00&#125;-\x&#123;20&#125;]|\&gt;|\&#x27;|\&quot;|\\|\(|\)|\[|\]|\&#123;|\&#125;/&quot;, $ip, $match);</span><br><span class="line">    die(&quot;fxck your symbol!&quot;);</span><br><span class="line">  &#125; else if(preg_match(&quot;/ /&quot;, $ip))&#123;</span><br><span class="line">    die(&quot;fxck your space!&quot;);</span><br><span class="line">  &#125; else if(preg_match(&quot;/bash/&quot;, $ip))&#123;</span><br><span class="line">    die(&quot;fxck your bash!&quot;);</span><br><span class="line">  &#125; else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span><br><span class="line">    die(&quot;fxck your flag!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  $a = shell_exec(&quot;ping -c 4 &quot;.$ip);</span><br><span class="line">  echo &quot;</span><br><span class="line">&quot;;</span><br><span class="line">  print_r($a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><p>preg_match中正则表达式需要写在 <code>/ /</code>之中</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">过滤的字符如下：</span><br><span class="line">&#x27;,&quot;,\,(,),[,],&#123;,&#125;</span><br><span class="line">空格</span><br><span class="line">bash</span><br><span class="line">不可以有flag四个字母依次出现</span><br></pre></td></tr></table></figure><p>由于不能有flag4个字母，则第一个思路是正则表达式，第二个思路是</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1=f;3=a;2=l;4=g;cat$IFS$1$2$3$4.php</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--?php</span><br><span class="line">$flag = &quot;flag&#123;b827bd0b-adca-4a9c-8315-36ce5e6ba703&#125;&quot;;</span><br><span class="line">?--&gt;</span><br></pre></td></tr></table></figure><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CTF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-5-1日记</title>
+      <link href="/2024/05/01/%E9%97%B2%E8%81%8A/2024-5-1%E6%97%A5%E8%AE%B0/"/>
+      <url>/2024/05/01/%E9%97%B2%E8%81%8A/2024-5-1%E6%97%A5%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><span id="more"></span><h2><span id="0x01">0x01</span></h2><h2><span id="0x02">0x02</span></h2><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 闲聊 </category>
+          
+          <category> 生活反思 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 闲聊档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-4-30日记</title>
+      <link href="/2024/04/30/%E9%97%B2%E8%81%8A/2024-4-30%E6%97%A5%E8%AE%B0/"/>
+      <url>/2024/04/30/%E9%97%B2%E8%81%8A/2024-4-30%E6%97%A5%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>今天是狂欢的一天，玩的真累</p><span id="more"></span><h2><span id="0x01-生活记录">0x01 生活记录</span></h2><p>上午也没离开寝室，早上起来后把洛克王国的每日打工做完之后就开始写日记，昨天的日记真是写了好久，笑死:sweat_smile:</p><p>之后快到中午的时候简单看了看大疆无人机的情况，对应申请的内容还没写完，明天把申请书和老卢一起搞定他吧；</p><p>下午去ktv唱歌，一直唱了5个小时，真给我累完了，之后去吃筋头巴脑，吃的好饱；</p><p>本来晚上想打打篮球的，结果场里全是人，没整成，有点遗憾；</p><p>晚上回来就写个日记，再看看CTF吧</p><h2><span id="0x02">0x02</span></h2><h2><span id="0x03">0x03</span></h2><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 闲聊 </category>
+          
+          <category> 生活反思 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 闲聊档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2024-4-29 突发奇想的日记环节</title>
+      <link href="/2024/04/29/%E9%97%B2%E8%81%8A/2024-4-29-%E7%AA%81%E5%8F%91%E5%A5%87%E6%83%B3%E7%9A%84%E6%97%A5%E8%AE%B0%E7%8E%AF%E8%8A%82/"/>
+      <url>/2024/04/29/%E9%97%B2%E8%81%8A/2024-4-29-%E7%AA%81%E5%8F%91%E5%A5%87%E6%83%B3%E7%9A%84%E6%97%A5%E8%AE%B0%E7%8E%AF%E8%8A%82/</url>
+      
+        <content type="html"><![CDATA[<p>0x00 前言</p><p>说起来这个博客真的是好久没有处理了，最近正好开始做ctf题目了，一边开始写写wp，一边开始简单写写日记吧，也不是必须得一天一写，主要是反思反思今天一天干什么了，有什么收获！</p><span id="more"></span><h2><span id="0x01-生活经历">0x01 生活经历</span></h2><p>早八起的有点晚，到实验室的时候竟然都晚了两分钟，这实验做的也没啥感觉，之后就开始做BUUCTF了，这个平台最开始的时候只寻思从Basic做起，结果没想到这么难，后来看了看Web方面，竟然还好，就开始做这部分的题了，成果还不错，一天做了5道题，最后卡在ping ping ping 这里了，感觉像是关于字符匹配绕过的，难住我了，有意思。</p><p>当然，最近的学习基本一直是伴随着大奉打更人的有声书听的，学习的效率并不高，打算之后的娱乐就不是再看或听新的小说了，重新精读一次这个小说。</p><p>老舅的事也确定下来了，总共得赔9w，得蹲3年，真点背啊。</p><p>明天下午去唱歌，5月2号去蓟州和承德，期待 ！</p><h2><span id="0x02-ctf生活">0x02 CTF生活</span></h2><p>一共做了5道题：</p><h3><span id="极客大挑战-2019easysql">[极客大挑战 2019]EasySQL</span></h3><p>主要的考点是一个简单的sql注入，我直接输一个万能密码就过关了</p><h3><span id="极客大挑战-2019havefun">[极客大挑战 2019]Havefun</span></h3><p>查看网页源代码，在注释部分观察到设置<code>$cat=dog</code></p><h3><span id="hctf-2018warmup">[HCTF 2018]WarmUp</span></h3><p>查看源代码知道访问 <code>source.php</code>，访问后显示源码：</p><p><img src="https://img-blog.csdnimg.cn/424d35d71acb40f48634ee468f57a2fc.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeTE4NjM0Mjk3OTc2,size_16,color_FFFFFF,t_70#pic_center" alt="img"></p><p>知道了其中有白名单进行过滤，分别访问source.php与hint.php，先进入flag.php获取flag的文件名</p><p>之后查看源码，发现当没有白名单中的元素后，会进行一次编码，并在最后加一个？之后判断遇到的第一个问号之前的内容为主要url，所以我们将？的信息进行两次编码，让其将source.php作为目录，不断访问/../../../../../../ffffffllllllaaaaaaggggg获取flag</p><h3><span id="actf2020-新生赛include">[ACTF2020 新生赛]Include</span></h3><p>这块真是没想出来访问哪个，简单找了找wp后，得知是文件包含的题目</p><p>对应的原因是 ?file=这个参数，利用php:filter协议实现读取，flag就在注释里面</p><h3><span id="actf2020-新生赛exec">[ACTF2020 新生赛]Exec</span></h3><p>命令注入，到根目录打开flag</p><h2><span id="0x03-学习思考">0x03 学习思考</span></h2><p>最近好久没学习概统了，还有英语单词也没背，同时院长课也应该背一背，目前信安赛的进度难以捉摸，真得好好想想未来规划了。</p><h2><span id="0x04">0x04</span></h2><p><hr><br>版权信息</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 闲聊 </category>
+          
+          <category> 生活反思 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 闲聊档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Code Llama</title>
       <link href="/2024/01/21/%E7%A7%91%E7%A0%94%E7%AB%9E%E8%B5%9B/Code-Lemma/"/>
       <url>/2024/01/21/%E7%A7%91%E7%A0%94%E7%AB%9E%E8%B5%9B/Code-Lemma/</url>
