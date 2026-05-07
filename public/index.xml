@@ -5,18 +5,6 @@
       <link>https://useleader.github.io</link>
       <description>Last 10 notes on useleader</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
-      <item>
-    <title>Hello World</title>
-    <link>https://useleader.github.io/hello-world</link>
-    <guid>https://useleader.github.io/hello-world</guid>
-    <description><![CDATA[ Hello World Hi everyone! This is my first post on the new blog. I’m a researcher working on fuzzing, machine learning, and software security. ]]></description>
-    <pubDate>Thu, 07 May 2026 03:25:36 GMT</pubDate>
-  </item><item>
-    <title>Home</title>
-    <link>https://useleader.github.io/</link>
-    <guid>https://useleader.github.io/</guid>
-    <description><![CDATA[ Welcome to My Digital Garden A place for learning notes, paper reading, engineering实践, and more. ]]></description>
-    <pubDate>Thu, 07 May 2026 03:23:10 GMT</pubDate>
-  </item>
+      
     </channel>
   </rss>
