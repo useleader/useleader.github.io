@@ -1,0 +1,163 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1778076342917,
+  "projectRoot": "/home/yanzm/useleader.github.io",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": "camelCase",
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "lib"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "2023": {
+      "path": "2023",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1778076342901,
+      "keyFiles": []
+    },
+    "2024": {
+      "path": "2024",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1778076342907,
+      "keyFiles": []
+    },
+    "about": {
+      "path": "about",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1778076342910,
+      "keyFiles": [
+        "index.html"
+      ]
+    },
+    "archives": {
+      "path": "archives",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1778076342911,
+      "keyFiles": [
+        "index.html"
+      ]
+    },
+    "categories": {
+      "path": "categories",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1778076342912,
+      "keyFiles": [
+        "index.html"
+      ]
+    },
+    "css": {
+      "path": "css",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1778076342912,
+      "keyFiles": [
+        "main.css"
+      ]
+    },
+    "images": {
+      "path": "images",
+      "purpose": null,
+      "fileCount": 19,
+      "lastAccessed": 1778076342913,
+      "keyFiles": [
+        "PR算法.png",
+        "algolia_logo.svg",
+        "apple-touch-icon-next.png",
+        "avatar.gif",
+        "avatar.png"
+      ]
+    },
+    "js": {
+      "path": "js",
+      "purpose": null,
+      "fileCount": 6,
+      "lastAccessed": 1778076342913,
+      "keyFiles": [
+        "algolia-search.js",
+        "bookmark.js",
+        "local-search.js",
+        "motion.js",
+        "next-boot.js"
+      ]
+    },
+    "lib": {
+      "path": "lib",
+      "purpose": "Library code",
+      "fileCount": 1,
+      "lastAccessed": 1778076342914,
+      "keyFiles": [
+        "anime.min.js"
+      ]
+    },
+    "page": {
+      "path": "page",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1778076342914,
+      "keyFiles": []
+    },
+    "resources": {
+      "path": "resources",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1778076342914,
+      "keyFiles": [
+        "index.html"
+      ]
+    },
+    "tags": {
+      "path": "tags",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1778076342915,
+      "keyFiles": [
+        "index.html"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "quartz.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778121332829,
+      "type": "file"
+    },
+    {
+      "path": "quartz/cfg.ts",
+      "accessCount": 1,
+      "lastAccessed": 1778121347070,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
