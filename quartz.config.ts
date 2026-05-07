@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "useleader.github.io",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "0. PeriodicNotes", "0.-PeriodicNotes"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -52,6 +52,9 @@ const config: QuartzConfig = {
         },
       },
     },
+    author: "useleader",
+    email: "a13684703281@163.com",
+    github: "https://github.com/useleader/",
   },
   plugins: {
     transformers: [
@@ -73,7 +76,7 @@ const config: QuartzConfig = {
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.RemoveDrafts()],
+    filters: [Plugin.ExplicitPublish()],
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
