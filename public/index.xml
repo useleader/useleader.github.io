@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Quartz 4</title>
+      <link>https://quartz.jzhao.xyz</link>
+      <description>Last 10 notes on Quartz 4</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>【1】博客阅读</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%901%E3%80%91%E5%8D%9A%E5%AE%A2%E9%98%85%E8%AF%BB</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%901%E3%80%91%E5%8D%9A%E5%AE%A2%E9%98%85%E8%AF%BB</guid>
+    <description><![CDATA[  学习链接 |AFLplusplus . ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:03 GMT</pubDate>
+  </item><item>
+    <title>【0】环境部署</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900%E3%80%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900%E3%80%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2</guid>
+    <description><![CDATA[ Getting started 图形化学习【0.1】参考资料 - AFL++ documentation 指导方案 【0.2】参考资料 - Tutorials 不同版本之间带来的重要改变在【0.3】参考资料 - Important changes in AFL++，主要两个分支好用stable与dev fuzzer比较使用FuzzBench aflplusplus设置，或者使用Afl-clang-fast（AFL_LLVM_CMPLOG=1【5】三大编译器对比） Building and installing AFL++ 镜像重命名 docker tag docker.io/aflpluspl... ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:03 GMT</pubDate>
+  </item><item>
+    <title>【0.4】 参考资料 - Building and installing AFL++</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900.4%E3%80%91-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99---Building-and-installing-AFL++</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900.4%E3%80%91-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99---Building-and-installing-AFL++</guid>
+    <description><![CDATA[ Linux on x86 An easy way to install AFL++ with everything compiled is available via docker: You can use the Dockerfile or just pull directly from the Docker Hub (for x86_64 and arm64): docker pull aflplusplus/aflplusplus:latest docker run -ti -v /location/of/your/target:/src aflplusplus/aflplusplus ... ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:03 GMT</pubDate>
+  </item><item>
+    <title>【0.3】参考资料 - Important changes in AFL++</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900.3%E3%80%91%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99---Important-changes-in-AFL++</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900.3%E3%80%91%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99---Important-changes-in-AFL++</guid>
+    <description><![CDATA[ This document lists important changes in AFL++, for example, major behavior changes. ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:03 GMT</pubDate>
+  </item><item>
+    <title>【0.2】参考资料 - Tutorials</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900.2%E3%80%91%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99---Tutorials</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900.2%E3%80%91%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99---Tutorials</guid>
+    <description><![CDATA[ If you are a total newbie, try this guide: github.com/alex-maleno/Fuzzing-Module Here are some good write-ups to show how to effectively use AFL++: aflplus.plus/docs/tutorials/libxml2_tutorial/ bananamafia.dev/post/gb-fuzz/ bushido-sec.com/index.php/2023/06/19/the-art-of-fuzzing/ securitylab.github.... ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:03 GMT</pubDate>
+  </item><item>
+    <title>【0.1】参考资料 - AFL++ documentation</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900.1%E3%80%91%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99---AFL++-documentation</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/AFL++/%E3%80%900.1%E3%80%91%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99---AFL++-documentation</guid>
+    <description><![CDATA[ This is the overview of the AFL++ docs content. For general information on AFL++, see the README.md of the repository. ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:03 GMT</pubDate>
+  </item><item>
+    <title>【4】chat-llm代码解析</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/Chatafl/%E3%80%904%E3%80%91chat-llm%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/Chatafl/%E3%80%904%E3%80%91chat-llm%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90</guid>
+    <description><![CDATA[ 函数列表： 对于非Instruct格式的调用返回： { &quot;choices&quot;: [ { &quot;message&quot;: { &quot;role&quot;: &quot;&lt;string&gt;&quot;, &quot;content&quot;: &quot;&lt;string&gt;&quot; }, &quot;finish_reason&quot;: &quot;&lt;string&gt;&quot; } ], &quot;usage&quot;: { &quot;prompt_tokens&quot;: 123, &quot;completio... ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:02 GMT</pubDate>
+  </item><item>
+    <title>【3】功能分析</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/Chatafl/%E3%80%903%E3%80%91%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/Chatafl/%E3%80%903%E3%80%91%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90</guid>
+    <description><![CDATA[ 创新点1：检查LLM生成的语法 语法生成的源代码位于afl-fuzz.c中的setup_llm_grammars函数中 void setup_llm_grammars() { ACTF(&quot;Getting grammars from LLM...&quot;); // 打印一条状态信息，ACTF是afl的日志宏 khash_t(consistency_table) *const_table = kh_init(consistency_table); // 初始化一个khash（哈希表）指针，用于保存“header -&gt; field_table” 的映射（后面会把每个 messag... ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:02 GMT</pubDate>
+  </item><item>
+    <title>【3.1】协议特定回调</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/Chatafl/%E3%80%903.1%E3%80%91%E5%8D%8F%E8%AE%AE%E7%89%B9%E5%AE%9A%E5%9B%9E%E8%B0%83</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/Chatafl/%E3%80%903.1%E3%80%91%E5%8D%8F%E8%AE%AE%E7%89%B9%E5%AE%9A%E5%9B%9E%E8%B0%83</guid>
+    <description><![CDATA[  特性协议特定回调extract_requests函数所属层面网络协议栈底层（如TCP/IP实现）Web应用层（如PHP服务器端脚本）主要目的由协议栈在特定网络事件（连接建立、数据到达等）时自动调用，实现协议逻辑主动从HTTP请求（如$_POST, $_GET）中提取并预处理用户提交的数据控制方式事件驱动，由系统/协议栈自动调用由应用程序员在代码中主动调用关键角色实现协议状态机、流量控制、可靠传输等网络核心机制处理用户输入，是Web应用业务逻辑的一部分，常涉及安全过滤 协议特定回调 协议特定回调是深度嵌入在网络协议栈实现中的一种编程模式。它的核心思想是：应用程序向协议栈预先注册好一系列函数（回... ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:02 GMT</pubDate>
+  </item><item>
+    <title>【2】环境部署</title>
+    <link>https://quartz.jzhao.xyz/4.-Archives/Chatafl/%E3%80%902%E3%80%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2</link>
+    <guid>https://quartz.jzhao.xyz/4.-Archives/Chatafl/%E3%80%902%E3%80%91%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2</guid>
+    <description><![CDATA[ 1.1. Installing Dependencies Docker, Bash, Python3 with pandas and matplotlib libraries. ]]></description>
+    <pubDate>Thu, 07 May 2026 02:39:02 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
