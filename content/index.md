@@ -1,8 +1,5 @@
 ---
-title: Home
+title: useleader
 ---
 
-# Welcome to My Digital Garden
-
-This is my personal blog powered by Quartz.
-
+Welcome to my digital garden.
