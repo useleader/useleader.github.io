@@ -9,7 +9,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": null,
+    "buildCommand": "cd ~/useleader.github.io && npm run build 2>&1 | tail -30",
     "testCommand": null,
     "lintCommand": null,
     "devCommand": null,
@@ -148,14 +148,38 @@
   "hotPaths": [
     {
       "path": "quartz.config.ts",
-      "accessCount": 1,
-      "lastAccessed": 1778121332829,
+      "accessCount": 5,
+      "lastAccessed": 1778134635157,
       "type": "file"
     },
     {
       "path": "quartz/cfg.ts",
       "accessCount": 1,
       "lastAccessed": 1778121347070,
+      "type": "file"
+    },
+    {
+      "path": "quartz/plugins/emitters/ogImage.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778133944922,
+      "type": "file"
+    },
+    {
+      "path": "quartz/util/og.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1778133957554,
+      "type": "file"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-05-07-content-cleanup-design.md",
+      "accessCount": 1,
+      "lastAccessed": 1778136267276,
+      "type": "file"
+    },
+    {
+      "path": "content/index.md",
+      "accessCount": 1,
+      "lastAccessed": 1778466055685,
       "type": "file"
     }
   ],

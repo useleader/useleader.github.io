@@ -5,6 +5,36 @@
       <link>https://useleader.github.io</link>
       <description>Last 10 notes on useleader</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
-      
+      <item>
+    <title>论文写作方法指南</title>
+    <link>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E6%96%B9%E6%B3%95%E6%8C%87%E5%8D%97</link>
+    <guid>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E6%96%B9%E6%B3%95%E6%8C%87%E5%8D%97</guid>
+    <description><![CDATA[ 论文写作方法指南 推荐工作流 遵循以下顺序能较高质量完成论文： 定章节结构 — 先搭好骨架，明确每章要解决什么问题 画图梳理思路 — 用图把整体逻辑跑通，图能暴露逻辑漏洞 写中文注释 — 每章写好对应的中文注释，不着急写英文 精校中文 — 仔细校对中文，确保表达准确、逻辑通顺 翻译为英文 — 基于精校后的中文生成英文 精校英文 — 确保英文地道、术语统一 先中文后英文的好处：中文是母语，能更敏锐地发现逻辑和表达问题。 论文的核心是论证，不是写作 论文本质上是在证明： 问题存在 方法合理 方法有效 结论可信 如果这条论证链成立，即使语言普通，论文也有价值。 如果论证链不成立，即使文笔华丽，也没有... ]]></description>
+    <pubDate>Mon, 11 May 2026 01:52:29 GMT</pubDate>
+  </item><item>
+    <title>论文项目工程规范</title>
+    <link>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/%E8%AE%BA%E6%96%87%E9%A1%B9%E7%9B%AE%E5%B7%A5%E7%A8%8B%E8%A7%84%E8%8C%83</link>
+    <guid>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/%E8%AE%BA%E6%96%87%E9%A1%B9%E7%9B%AE%E5%B7%A5%E7%A8%8B%E8%A7%84%E8%8C%83</guid>
+    <description><![CDATA[ 论文项目工程规范 文件组织建议 推荐LaTeX项目采用以下结构： your-paper/ ├── template.tex # 模板文件（格式、宏包、样式定义） ├── main.tex # 主文件，正文全部内容写在这里 ├── refs.bib # 所有参考文献 ├── imgs/ # 所有图片 ├── tables/ # 所有表格 └── algs/ # 所有算法 各文件职责 template.tex — 预置格式、宏包、全局设置 main.tex — 所有正文内容，方便统一管理和编译 refs.bib — 所有参考文献，避免散落各处 不建议把图片、表格、算法分别放在章节子文件夹里，统一收... ]]></description>
+    <pubDate>Sun, 10 May 2026 14:50:13 GMT</pubDate>
+  </item><item>
+    <title>AI辅助写作警示</title>
+    <link>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/AI%E8%BE%85%E5%8A%A9%E5%86%99%E4%BD%9C%E8%AD%A6%E7%A4%BA</link>
+    <guid>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/AI%E8%BE%85%E5%8A%A9%E5%86%99%E4%BD%9C%E8%AD%A6%E7%A4%BA</guid>
+    <description><![CDATA[ AI辅助写作警示 最重要原则：AI 不负责学术正确性 AI的职责是： 组织语言 调整结构 改善表达 提供灵感 AI 不 负责： 理论正确性 实验真实性 因果关系成立 数学推导正确 创新点是否真实存在 判断论文是否成立的责任，始终在作者本人。 检查清单 每次使用 AI 后都问自己： 这个结论真的是实验支持的吗？ 这个因果关系是否被证明？ 这个术语在领域内是否真实存在？ 这个创新点是否确实区别于已有工作？ 这句话是否只是听起来合理？ 核心原则：不要惯着AI 看到高深词汇不要试图理解，直接怼回去。 AI很可能就是在瞎写，用专业术语堆砌来震慑读者、让自己显得权威。遇到这种情况： 要求它给出具体例子 要... ]]></description>
+    <pubDate>Sun, 10 May 2026 14:36:30 GMT</pubDate>
+  </item><item>
+    <title>Beam Search：超越贪心的序列解码</title>
+    <link>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/Beam-Search%EF%BC%9A%E8%B6%85%E8%B6%8A%E8%B4%AA%E5%BF%83%E7%9A%84%E5%BA%8F%E5%88%97%E8%A7%A3%E7%A0%81</link>
+    <guid>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/Beam-Search%EF%BC%9A%E8%B6%85%E8%B6%8A%E8%B4%AA%E5%BF%83%E7%9A%84%E5%BA%8F%E5%88%97%E8%A7%A3%E7%A0%81</guid>
+    <description><![CDATA[ Beam Search：超越贪心的序列解码 在序列生成任务（如机器翻译、文本生成）中，我们通常需要从模型输出的概率分布中选择下一个 token。简单的方法是贪心选择概率最高的词，但这种方法容易陷入局部最优。Beam Search（束搜索）是一种折中方案，在计算效率和生成质量之间取得平衡。本文将带你深入理解 Beam Search 的核心原理及其变种。 贪心解码的问题 贪心解码（Greedy Decoding）在每一步都选择概率最高的 token： P(&quot;The&quot;) = 0.3 → 选中 P(&quot;cat&quot;) = 0.5 → 选中 P(&quot;sat&qu... ]]></description>
+    <pubDate>Sat, 09 May 2026 13:00:54 GMT</pubDate>
+  </item><item>
+    <title>深入理解 BPE：字节对编码</title>
+    <link>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-BPE%EF%BC%9A%E5%AD%97%E8%8A%82%E5%AF%B9%E7%BC%96%E7%A0%81</link>
+    <guid>https://useleader.github.io/AI%E6%8A%80%E6%9C%AF/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-BPE%EF%BC%9A%E5%AD%97%E8%8A%82%E5%AF%B9%E7%BC%96%E7%A0%81</guid>
+    <description><![CDATA[ 深入理解 BPE：字节对编码 BPE（Byte Pair Encoding，字节对编码）是一种广泛应用于 NLP 的子词切分算法，是现代大语言模型（如 GPT、RoBERTa）的重要基础技术。本文将带你深入理解 BPE 的核心原理，并与相关算法进行对比。 为什么需要 BPE？ 在自然语言处理中，我们通常面临两个核心问题： OOV（Out-of-Vocabulary）问题：传统词级别词表无法处理未见过的单词 词表膨胀：词表越大，Embedding 矩阵和 softmax 层也越大 BPE 通过将文本切分为子词（subword）来解决这些问题。它既保留了词的语义完整性，又通过共享子词单元来处理低频... ]]></description>
+    <pubDate>Sat, 09 May 2026 12:59:11 GMT</pubDate>
+  </item>
     </channel>
   </rss>
